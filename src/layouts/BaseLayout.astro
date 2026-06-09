@@ -46,6 +46,61 @@ const currentPath = Astro.url.pathname;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title} -- ESco Tech Transformation</title>
+
+    <!-- Password gate (client-side, casual protection only) -->
+    <script is:inline>
+      (function () {
+        var EXPECTED = '2a5cb9ee58a5fb5953b3c3e08251edf28163fcd00ed446d2ea3a4daa7334f4f5';
+        var KEY = 'esco_tt_auth_v1';
+        try { if (sessionStorage.getItem(KEY) === EXPECTED) return; } catch (e) {}
+
+        // Hide page contents until authed
+        document.documentElement.style.visibility = 'hidden';
+
+        async function sha256(s) {
+          var buf = new TextEncoder().encode(s);
+          var hash = await crypto.subtle.digest('SHA-256', buf);
+          return Array.from(new Uint8Array(hash))
+            .map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+        }
+
+        function gate() {
+          document.documentElement.style.visibility = 'visible';
+          document.body.innerHTML =
+            '<div id="gate" style="position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Inter,system-ui,sans-serif;">' +
+            '  <form id="gate-form" style="max-width:340px;width:100%;padding:2rem;text-align:left;">' +
+            '    <div style="font-size:1.75rem;font-weight:800;color:oklch(0.3529 0.131 313.78);letter-spacing:-0.01em;line-height:1;">ESco</div>' +
+            '    <div style="font-size:0.7rem;font-weight:700;color:oklch(0.7193 0.123 193.41);letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem;">Tech Transformation</div>' +
+            '    <div style="height:3px;background:#f08a6e;margin:1.25rem 0 1.5rem;width:60px;"></div>' +
+            '    <label for="gate-pw" style="display:block;font-size:0.8rem;color:#374151;font-weight:600;margin-bottom:0.5rem;">Password</label>' +
+            '    <input id="gate-pw" type="password" autocomplete="off" autofocus style="width:100%;padding:0.6rem 0.75rem;font-size:0.95rem;border:1px solid #d1d5db;border-radius:6px;outline:none;font-family:inherit;" />' +
+            '    <div id="gate-err" style="color:#b91c1c;font-size:0.8rem;margin-top:0.5rem;min-height:1.1rem;"></div>' +
+            '    <button type="submit" style="margin-top:0.5rem;width:100%;padding:0.65rem;background:oklch(0.408 0.157 313.5);color:#fff;border:none;border-radius:6px;font-weight:600;font-size:0.9rem;cursor:pointer;font-family:inherit;">Continue</button>' +
+            '    <div style="font-size:0.7rem;color:#9ca3af;margin-top:1rem;line-height:1.5;">This site documents an internal technology programme. Access is restricted.</div>' +
+            '  </form>' +
+            '</div>';
+
+          document.getElementById('gate-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            var pw = document.getElementById('gate-pw').value;
+            var hex = await sha256(pw);
+            if (hex === EXPECTED) {
+              try { sessionStorage.setItem(KEY, EXPECTED); } catch (e) {}
+              location.reload();
+            } else {
+              document.getElementById('gate-err').textContent = 'Incorrect password.';
+              document.getElementById('gate-pw').select();
+            }
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', gate);
+        } else {
+          gate();
+        }
+      })();
+    </script>
     <style is:global>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
