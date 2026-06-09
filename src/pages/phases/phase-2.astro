@@ -6,42 +6,27 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <h1 class="page-title">Phase 2</h1>
   <p class="page-subtitle">Buy an off-the-shelf replacement for Myriad <span class="verdict rejected">Not affordable</span></p>
-
-  <h2 class="section-heading">Period</h2>
-  <!-- PASTE: phase-2-period from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 2 period.</strong> The approximate dates this phase ran and any relevant context about timing.</span>
-  </div>
+  <p class="phase-meta">May 2023 to June 2024</p>
 
   <h2 class="section-heading">Hypothesis</h2>
-  <!-- PASTE: phase-2-hypothesis from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 2 hypothesis.</strong> The assumption being tested -- what an off-the-shelf product replacement would deliver, and why this seemed viable after Phase 1.</span>
-  </div>
+  <p>Could we buy an off-the-shelf software solution to completely replace Myriad and modernise subscription management in one step?</p>
 
   <h2 class="section-heading">What we explored</h2>
-  <!-- PASTE: phase-2-explored from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 2 exploration.</strong> The vendors assessed, the products evaluated, and the criteria used to judge them.</span>
-  </div>
+  <p>We conducted a light-touch market research exercise, benchmarking five alternative software vendors -- including Pelcro, Affino, AdvantageCS, and ChargeBee -- and obtaining quotes. We also ran cross-departmental SWOT analyses on Myriad and interviewed other publishers about their experiences with alternative systems.</p>
 
   <h2 class="section-heading">What we found</h2>
-  <!-- PASTE: phase-2-findings from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 2 findings.</strong> What the market research and vendor engagement revealed -- costs, capabilities, gaps, and concerns.</span>
-  </div>
+  <p>Every alternative system evaluated was significantly more expensive than Myriad. Internal teams had mixed feelings: Customer Service valued Myriad's rigid controls, while Client Management found it clunky and limiting.</p>
+  <p>Most critically, we discovered that our bespoke external systems were so tightly coupled to Myriad that a direct "lift and shift" migration was impossible. A direct replacement would require unpicking years of custom integrations before any new system could be brought in.</p>
 
   <h2 class="section-heading">Decision and reasoning</h2>
-  <!-- PASTE: phase-2-decision from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 2 decision.</strong> Why off-the-shelf replacement was judged not affordable at the scale required, and what this meant for the programme.</span>
-  </div>
+  <p>We decided not to migrate to a new system immediately. Before any replacement could be viable, we needed to "detangle" our custom systems from Myriad by building a middle integration layer. This would allow ESco to integrate payment processing and eCommerce out of the box in the future, and make any future CRM swap far more straightforward.</p>
 
   <h2 class="section-heading">Key supporting documents</h2>
-  <!-- PASTE: phase-2-documents from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 2 supporting documents.</strong> Market assessments, vendor evaluations, cost modelling, or other relevant artefacts.</span>
-  </div>
+  <ul class="doc-list">
+    <li>Tech Transformation Phase 2 Report v1.pdf</li>
+    <li>2024_06_13_FindingsWithNotes.pdf</li>
+    <li>2023_05_11_Phase 2 Kick Off v1.pdf</li>
+  </ul>
 
   <div class="page-nav">
     <a href="/phases/phase-1"><span aria-hidden="true">&lt;-</span> Phase 1</a>
@@ -51,7 +36,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  .page-subtitle { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
+  .page-subtitle { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .phase-meta {
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-list {
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
   .page-nav {
     display: flex;
     justify-content: space-between;

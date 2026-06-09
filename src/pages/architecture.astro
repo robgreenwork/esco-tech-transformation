@@ -5,42 +5,120 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Architecture">
 
   <h1 class="page-title">Architecture</h1>
-  <p class="page-subtitle">The technical shape of the chosen solution -- components, integrations, and design principles.</p>
+  <p class="page-subtitle">The technical shape of the chosen solution -- the Harbour and Crane pattern, and the CRM-agnostic design that underpins it.</p>
 
-  <h2 class="section-heading">Architecture overview</h2>
-  <!-- PASTE: architecture-overview from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: architecture overview.</strong> A summary of the overall architecture -- the layers, the components, and how they fit together.</span>
-  </div>
+  <h2 class="section-heading">The CRM-agnostic approach</h2>
+  <p>The central objective of the architecture is to ensure ESco is not locked to Myriad, or any single CRM. By making backend systems interchangeable, ESco dramatically reduces vendor lock-in risk. If a new client wants to use their own CRM, or if ESco decides to replace Myriad entirely, the core microservices continue to function without a complete system rebuild.</p>
+  <p>This matters because the acquisition of Gordon and Gotch (the company behind Myriad) by Intermedia created genuine uncertainty about Myriad's long-term roadmap and pricing. The architecture is designed so that Myriad can be swapped out -- or supplemented -- without disruption to the systems around it.</p>
 
   <h2 class="section-heading">Core components</h2>
-  <!-- PASTE: architecture-components from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: core components.</strong> The individual systems, platforms, and services that make up the chosen architecture, and what each one does.</span>
+
+  <div class="component-grid">
+    <div class="component-card">
+      <div class="component-name">The Crane</div>
+      <div class="component-subtitle">ETL / RTL Engine</div>
+      <p>The intermediary tool built to extract, receive, transform, and load data. It acts as the universal translator between the CRM and the microservices. ESco is currently evaluating whether to continue building this in-house or procure an iPaaS (Integration Platform as a Service).</p>
+    </div>
+    <div class="component-card">
+      <div class="component-name">The Harbour</div>
+      <div class="component-subtitle">Process Queue System</div>
+      <p>The central data repository, built on MongoDB. Initially used in Phase 3 as a static data warehouse with a flexible schema. In Phase 4, repurposed to act as a process queue system -- reducing storage costs and enabling microservices to consume and action queued tasks.</p>
+    </div>
+    <div class="component-card">
+      <div class="component-name">Microservices</div>
+      <div class="component-subtitle">Modular business processes</div>
+      <p>Independent services (such as the Aimee AI chatbot, eCommerce processing, and document generation) that interact with the Harbour. Designed to be replaceable and independent of the core CRM. A Microservices Audit is currently underway to review all existing services.</p>
+    </div>
+    <div class="component-card">
+      <div class="component-name">Google Cloud Platform</div>
+      <div class="component-subtitle">Cloud infrastructure</div>
+      <p>Chosen to host the new architecture, including API endpoints and AI integrations, shifting ESco away from on-premises servers. GCP environments were successfully configured during Phase 3.</p>
+    </div>
   </div>
 
-  <h2 class="section-heading">Integration approach</h2>
-  <!-- PASTE: architecture-integrations from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: integration approach.</strong> How components communicate and share data -- protocols, patterns, and key integration points.</span>
-  </div>
+  <h2 class="section-heading">How data flows</h2>
+  <p>Data processing is bi-directional. The flow works as follows:</p>
+  <ol class="flow-list">
+    <li>An event occurs in the CRM (for example, a subscription update).</li>
+    <li>A webhook fires in real time and passes the data to the Crane.</li>
+    <li>The Crane translates and loads the data into the Harbour as a queued item.</li>
+    <li>An independent microservice reads from the queue, performs its specific task (such as fulfilment, reporting, or document generation), and writes the result back to the Harbour.</li>
+    <li>The Crane detects the update and pushes the result back to the CRM.</li>
+  </ol>
+  <p>This replaces the old approach of manual or scheduled polling, where systems were checked periodically rather than updated in real time.</p>
+
+  <h2 class="section-heading">Integration layer</h2>
+  <p>The integration layer relies on an ESco API and webhooks. Webhooks allow the architecture to respond to real-time events in the CRM rather than batch-processing data on a schedule. This is a significant shift from how ESco systems historically operated and is central to making the architecture scalable and responsive.</p>
 
   <h2 class="section-heading">Design principles</h2>
-  <!-- PASTE: architecture-principles from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: design principles.</strong> The guiding principles behind architectural decisions -- interchangeability, adaptability, and any other constraints or values that shaped the approach.</span>
-  </div>
+  <ul>
+    <li><strong>CRM agnostic:</strong> no component should be permanently tied to Myriad or any specific subscription management platform.</li>
+    <li><strong>Interchangeable:</strong> individual components (Crane, Harbour, microservices, CRM) should be replaceable without rebuilding the whole.</li>
+    <li><strong>Modular:</strong> each microservice does one thing and does it independently.</li>
+    <li><strong>Momentum over perfection:</strong> accepted tools can be swapped via standard procurement once the proof of concept is validated -- the priority is to prove the concept first.</li>
+  </ul>
 
-  <h2 class="section-heading">What was ruled out and why</h2>
-  <!-- PASTE: architecture-ruled-out from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: ruled-out options.</strong> Architectural approaches that were considered and rejected, with the reasoning behind each decision.</span>
+  <h2 class="section-heading">Known risks and open questions</h2>
+  <div class="risk-box">
+    <p><strong>MongoDB as a queue system.</strong> External consultants flagged that document databases are not naturally optimised for high-throughput queueing semantics. The internal team accepted this risk and proceeded with MongoDB to maintain momentum, noting that the underlying tools can be swapped out if the proof of concept validates the approach but MongoDB buckles under production queue loads.</p>
   </div>
-
-  <h2 class="section-heading">Diagrams and reference material</h2>
-  <!-- PASTE: architecture-diagrams from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: architecture diagrams.</strong> Links or embedded diagrams illustrating the architecture.</span>
+  <div class="risk-box">
+    <p><strong>Build or buy for the Crane.</strong> Whether ESco builds the ETL/RTL Crane entirely in-house or procures an external iPaaS platform is still unresolved and sits as an open procurement decision.</p>
   </div>
 
 </BaseLayout>
+
+<style>
+  p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 0.875rem; font-size: 0.9375rem; line-height: 1.7; }
+  li { margin-bottom: 0.35rem; }
+  strong { font-weight: 600; }
+
+  .flow-list { counter-reset: flow; }
+  .flow-list li { margin-bottom: 0.4rem; }
+
+  .component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .component-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: var(--sidebar-bg);
+  }
+  .component-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.15rem;
+  }
+  .component-subtitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+  }
+  .component-card p {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+  }
+
+  .risk-box {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 6px;
+    padding: 0.875rem 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .risk-box p {
+    font-size: 0.875rem;
+    color: #7c2d12;
+    margin-bottom: 0;
+  }
+</style>

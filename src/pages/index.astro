@@ -4,30 +4,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const phases = [
   {
     number: '1',
-    label: 'Build on Azure and the Microsoft stack',
     period: 'Phase 1',
+    label: 'Build on Azure and the Microsoft stack',
+    dates: 'Mid-2022 to Early 2023',
     verdict: 'Not viable',
     verdictClass: 'rejected',
     href: '/phases/phase-1',
-    description: 'Explored building a new platform on Azure and the Microsoft technology stack as a route to modernisation.',
+    summary: 'Evaluated the feasibility of moving existing infrastructure entirely to the cloud using Microsoft Azure. Concluded this was too expensive, too disruptive, and the legacy Myriad database had compatibility issues.',
   },
   {
     number: '2',
-    label: 'Buy an off-the-shelf replacement for Myriad',
     period: 'Phase 2',
+    label: 'Buy an off-the-shelf replacement for Myriad',
+    dates: 'May 2023 to June 2024',
     verdict: 'Not affordable',
     verdictClass: 'rejected',
     href: '/phases/phase-2',
-    description: 'Assessed the market for an off-the-shelf product that could replace the existing Myriad system outright.',
+    summary: 'Researched off-the-shelf replacement software for Myriad. Found that alternatives were significantly more expensive, and that bespoke integrations were too tightly coupled to Myriad for a clean migration.',
   },
   {
     number: '3',
-    label: 'Hybrid build and buy -- interchangeable adaptable infrastructure',
     period: 'Phase 3',
+    label: 'Hybrid build and buy -- interchangeable adaptable infrastructure',
+    dates: 'Late 2023 to Mid-2025',
     verdict: 'Chosen path',
     verdictClass: 'chosen',
     href: '/phases/phase-3',
-    description: 'Developed a hybrid approach: buying best-of-breed components where available and building where necessary, on an adaptable, interchangeable infrastructure.',
+    summary: 'Built the Harbour and Crane architecture to prove a CRM-agnostic approach, initially focused on the Single Customer View product. Technical concept was validated. Now expanding to cover core Subscriptions, Memberships, and Charities (Phase 4).',
   },
 ];
 ---
@@ -37,16 +40,13 @@ const phases = [
   <h1 class="page-title">ESco Tech Transformation</h1>
   <p class="page-subtitle">A four-year programme of work to understand, explore, and ultimately decide the future technology direction for ESco. This site documents the journey -- the hypotheses tested, the evidence gathered, the decisions made, and the path chosen.</p>
 
-  <!-- PROGRAMME OVERVIEW -->
   <h2 class="section-heading">About this programme</h2>
-  <!-- PASTE: programme-overview from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: programme overview.</strong> A brief description of why this programme was initiated, the scope of the challenge, and who was involved.</span>
-  </div>
+  <p class="body-text">ESco is a publishing services bureau offering subscription management, customer service, and eCommerce solutions. For many years the business relied heavily on Myriad as its core subscription management database -- a single point of failure that had accumulated significant technical debt, an outdated interface, and deeply embedded bespoke integrations that made it slow to adapt.</p>
+  <p class="body-text">When the company behind Myriad (Gordon and Gotch) was acquired by Intermedia, the urgency to reduce dependency on any single CRM became critical. The Tech Transformation programme was initiated to find a path to a CRM-agnostic architecture: one where ESco could plug in new systems, cut operating costs, improve scalability, and confidently price and sell services with healthy margins.</p>
+  <p class="body-text">The programme was designed to protect the core business for existing publishing clients while enabling ESco to scale into new verticals -- memberships, charities, and non-publishing subscription businesses.</p>
 
-  <!-- VISUAL TIMELINE -->
-  <h2 class="section-heading" style="margin-top: 2.5rem;">The three phases</h2>
-  <p class="intro-text">The programme moved through three distinct phases. Each phase began with a hypothesis, was tested with evidence, and ended with a clear verdict that shaped what came next.</p>
+  <h2 class="section-heading">The three phases</h2>
+  <p class="intro-text">The programme moved through three distinct phases. Each began with a hypothesis, was tested with evidence, and ended with a clear verdict that shaped what came next.</p>
 
   <div class="timeline">
     {phases.map((phase, i) => (
@@ -60,20 +60,24 @@ const phases = [
         <div class="timeline-card">
           <div class="timeline-card-header">
             <span class="phase-label">{phase.period}</span>
+            <span class="phase-dates">{phase.dates}</span>
             <span class={`verdict ${phase.verdictClass}`}>{phase.verdict}</span>
           </div>
           <h3 class="timeline-title">{phase.label}</h3>
-          <p class="timeline-desc">{phase.description}</p>
+          <p class="timeline-desc">{phase.summary}</p>
           <a href={phase.href} class="timeline-link">Read phase detail <span aria-hidden="true">-&gt;</span></a>
         </div>
       </div>
     ))}
   </div>
 
-  <!-- HOW TO USE THIS SITE -->
+  <div class="note-box">
+    <strong>Note: Phase 4 is underway.</strong> In July 2025, following weak market demand for the Single Customer View product and the Intermedia acquisition of Gordon and Gotch, the programme pivoted into Phase 4 -- expanding the new architecture to cover the core Subscriptions, Memberships, and Charities business. See <a href="/current-state">Current State</a> for details.
+  </div>
+
   <h2 class="section-heading">How to use this site</h2>
-  <p class="body-text">Each phase has its own page covering: the period it ran, the hypothesis being tested, what was explored, what was found, the decision reached, and the key supporting documents. Use the navigation on the left to move between sections.</p>
-  <p class="body-text">The <a href="/architecture">Architecture</a> page documents the technical choices made. <a href="/decisions">Decisions and Rationale</a> captures the key forks in the road. <a href="/current-state">Current State</a> describes where the programme sits at the point of handover. <a href="/reference">Reference</a> collects supporting materials.</p>
+  <p class="body-text">Each phase has its own page covering the period it ran, the hypothesis being tested, what was explored, what was found, the decision reached, and the key supporting documents. Use the navigation on the left to move between sections.</p>
+  <p class="body-text">The <a href="/architecture">Architecture</a> page documents the technical shape of the chosen solution. <a href="/decisions">Decisions and Rationale</a> captures the key forks in the road. <a href="/current-state">Current State</a> describes where the programme sits at handover. <a href="/reference">Reference</a> collects people, tools, and the glossary.</p>
 
 </BaseLayout>
 
@@ -92,12 +96,25 @@ const phases = [
   }
   .body-text a { color: var(--accent); }
 
+  .note-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    padding: 0.875rem 1.1rem;
+    font-size: 0.875rem;
+    color: #1e40af;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .note-box strong { font-weight: 700; }
+  .note-box a { color: #1d4ed8; }
+
   /* TIMELINE */
   .timeline {
     display: flex;
     flex-direction: column;
     gap: 0;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .timeline-item {
@@ -149,8 +166,9 @@ const phases = [
   .timeline-card-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     margin-bottom: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .phase-label {
@@ -160,6 +178,12 @@ const phases = [
     letter-spacing: 0.08em;
     color: var(--text-faint);
   }
+
+  .phase-dates {
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+  .phase-dates::before { content: '\00B7'; margin-right: 0.4rem; }
 
   .timeline-title {
     font-size: 1rem;
@@ -181,7 +205,6 @@ const phases = [
     font-weight: 600;
     color: var(--accent);
     text-decoration: none;
-    letter-spacing: 0.01em;
   }
   .timeline-link:hover { text-decoration: underline; }
 </style>

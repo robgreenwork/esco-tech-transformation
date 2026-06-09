@@ -6,42 +6,37 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <h1 class="page-title">Phase 3</h1>
   <p class="page-subtitle">Hybrid build and buy -- interchangeable adaptable infrastructure <span class="verdict chosen">Chosen path</span></p>
-
-  <h2 class="section-heading">Period</h2>
-  <!-- PASTE: phase-3-period from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 3 period.</strong> The approximate dates this phase ran and where things stand at the point of handover.</span>
-  </div>
+  <p class="phase-meta">Late 2023 to Mid-2025</p>
 
   <h2 class="section-heading">Hypothesis</h2>
-  <!-- PASTE: phase-3-hypothesis from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 3 hypothesis.</strong> The assumption behind the hybrid approach -- what combining best-of-breed purchasing with targeted building would achieve, and why previous phases pointed here.</span>
-  </div>
+  <p>Could we build a hybrid, adaptable infrastructure -- the Harbour and Crane -- to process data specifically for the Single Customer View product, and in doing so prove the CRM-agnostic approach that Phases 1 and 2 pointed towards?</p>
 
   <h2 class="section-heading">What we explored</h2>
-  <!-- PASTE: phase-3-explored from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 3 exploration.</strong> The architectural patterns, component options, integration strategies, and build-versus-buy decisions explored in this phase.</span>
-  </div>
+  <p>We set up Google Cloud Platform (GCP) and MongoDB cloud environments. We designed and built two core components:</p>
+  <ul>
+    <li><strong>The Crane</strong> -- a custom ESco integration service to extract, transform, and load data from Myriad via APIs.</li>
+    <li><strong>The Harbour</strong> -- a central MongoDB data warehouse to receive and store that data for downstream use.</li>
+  </ul>
+  <p>The initial use case was the Single Customer View product, which uses Orbit (Apteco) to present a consolidated view of subscriber data drawn from multiple sources.</p>
 
   <h2 class="section-heading">What we found</h2>
-  <!-- PASTE: phase-3-findings from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 3 findings.</strong> Evidence gathered, prototypes built, integrations tested, and the validation (or challenges) encountered along the way.</span>
-  </div>
+  <p>The technical architecture was successful as a proof of concept. GCP and MongoDB environments were configured and functioning. The Crane and Harbour pattern was proven to work.</p>
+  <p>However, it became apparent that the market appetite for the Single Customer View service was not strong enough to justify ongoing, exclusive investment. The commercial case for SCV as a standalone product did not hold up.</p>
 
   <h2 class="section-heading">Decision and reasoning</h2>
-  <!-- PASTE: phase-3-decision from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 3 decision.</strong> Why this approach was selected as the chosen path, and what the key commitments and trade-offs are going forward.</span>
-  </div>
+  <p>We halted exclusive development on the SCV product and pivoted the strategic focus. Two factors drove this decision:</p>
+  <ol>
+    <li><strong>Weak commercial demand</strong> for SCV as a standalone product.</li>
+    <li><strong>The Intermedia acquisition of Gordon and Gotch</strong> -- the company behind Myriad -- which made becoming CRM agnostic across all core products an urgent business priority, not just a longer-term aspiration.</li>
+  </ol>
+  <p>The Phase 3 architecture was sound. The pivot was not a rejection of the approach -- it was an expansion of it. Phase 4 applies the same Harbour and Crane pattern to the full Subscriptions, Memberships, and Charities business.</p>
 
   <h2 class="section-heading">Key supporting documents</h2>
-  <!-- PASTE: phase-3-documents from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: phase 3 supporting documents.</strong> Architecture proposals, decision records, roadmaps, or other artefacts that support this direction.</span>
-  </div>
+  <ul class="doc-list">
+    <li>Single Customer View - Definition V1.0.docx</li>
+    <li>SCV Business Case v1.docx</li>
+    <li>Tech Transformation Phase 3 Interval 1_BoardMeetingUpdate_08072025.pdf</li>
+  </ul>
 
   <div class="page-nav">
     <a href="/phases/phase-2"><span aria-hidden="true">&lt;-</span> Phase 2</a>
@@ -51,7 +46,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  .page-subtitle { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 0.875rem; font-size: 0.9375rem; line-height: 1.7; }
+  li { margin-bottom: 0.3rem; }
+  strong { font-weight: 600; }
+  .page-subtitle { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .phase-meta {
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-list {
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
   .page-nav {
     display: flex;
     justify-content: space-between;

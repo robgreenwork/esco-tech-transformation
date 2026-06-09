@@ -5,42 +5,82 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Current State">
 
   <h1 class="page-title">Current State</h1>
-  <p class="page-subtitle">Where the programme stands at the point of handover -- what is in place, what is in progress, and what remains to be done.</p>
+  <p class="page-subtitle">Where the programme stands at the point of handover -- what is complete, what is in progress, and what remains open.</p>
 
-  <h2 class="section-heading">Where we are now</h2>
-  <!-- PASTE: current-state-summary from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: current state summary.</strong> A clear description of the programme's position at handover -- what has been delivered, what is running, and what is not yet complete.</span>
-  </div>
-
-  <h2 class="section-heading">What is live and operational</h2>
-  <!-- PASTE: current-state-live from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: live systems.</strong> Systems, integrations, or processes that are running in production and being used.</span>
-  </div>
+  <h2 class="section-heading">What is complete</h2>
+  <ul>
+    <li>Phase 1 and Phase 2 research and evaluation stages are fully complete.</li>
+    <li>The Phase 3 Single Customer View proof of concept is complete, including foundational setup of GCP and MongoDB environments.</li>
+    <li>Phase 4 Interval 1, Task 1 (project board alignment) and Task 2 (narrow proof of concept plan creation) are done.</li>
+  </ul>
 
   <h2 class="section-heading">What is in progress</h2>
-  <!-- PASTE: current-state-in-progress from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: work in progress.</strong> Initiatives, builds, or workstreams that are underway at the point of handover but not yet complete.</span>
+  <ul>
+    <li><strong>Phase 4 narrow proof of concept</strong> -- delivery of the Books/Backs and Comm Docs microservices as test cases for the expanded Harbour and Crane architecture.</li>
+    <li><strong>Microservices Audit</strong> -- a review of all existing microservices to decide whether to keep, improve, rebuild, buy, or retire each one.</li>
+    <li><strong>Aimee AI chatbot</strong> -- development of an agentic AI chatbot for the client portal, enabling self-service promo code creation and other subscriber service tasks.</li>
+  </ul>
+
+  <h2 class="section-heading">What has been parked</h2>
+  <ul>
+    <li><strong>Single Customer View as a standalone product</strong> -- full-scale development halted due to weak market demand. The underlying architecture it validated is being reused for Phase 4.</li>
+    <li><strong>Full cloud migration of legacy on-premises servers</strong> -- delayed until non-Myriad dependencies are detangled through Phase 4.</li>
+  </ul>
+
+  <h2 class="section-heading">Open questions and risks</h2>
+
+  <div class="risk-item">
+    <div class="risk-title">MongoDB as a queue system</div>
+    <p>The Phase 3 documents championed MongoDB for its flexible schema as a data warehouse. When Phase 4 pivoted to using it as a high-throughput process queue, external consultants explicitly warned that document databases are not optimised for queueing semantics and will introduce operational complexity at scale. The internal team proceeded anyway to maintain momentum. It remains an open question whether MongoDB will perform adequately under production queue loads, or whether it will need to be replaced with a purpose-built queue tool.</p>
   </div>
 
-  <h2 class="section-heading">What remains to be done</h2>
-  <!-- PASTE: current-state-outstanding from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: outstanding work.</strong> Known tasks, decisions, or investments that have not yet been started or completed, and any priorities or dependencies.</span>
+  <div class="risk-item">
+    <div class="risk-title">Build or buy for the Crane</div>
+    <p>Whether ESco builds the ETL/RTL Crane entirely in-house or procures an external iPaaS (Integration Platform as a Service) is still unresolved. This is an open procurement decision that will need to be addressed once the narrow proof of concept validates the overall approach.</p>
   </div>
 
-  <h2 class="section-heading">Risks and open questions</h2>
-  <!-- PASTE: current-state-risks from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: risks and open questions.</strong> Known risks, uncertainties, or questions that the incoming team will need to address.</span>
+  <div class="risk-item">
+    <div class="risk-title">Intermedia's roadmap for Myriad</div>
+    <p>Commercials still need to establish Intermedia's actual long-term plan and pricing structure for Myriad following the acquisition of Gordon and Gotch. This affects the urgency and investment case for the full CRM-agnostic transition.</p>
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">Cloud deployment blockers for Aimee</div>
+    <p>Meeting notes indicate outstanding issues deploying updates to the cloud for the Aimee AI environment, which was blocking AI environment mirroring. Status at handover is unclear and should be confirmed with the development team.</p>
   </div>
 
   <h2 class="section-heading">Handover notes</h2>
-  <!-- PASTE: current-state-handover from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: handover notes.</strong> Specific guidance, context, or information for the person or team picking this up.</span>
-  </div>
+  <p>The programme is at an active pivot point. Phase 3 proved the technical concept. Phase 4 is the strategic expansion of that concept to the core business. The two immediate priorities for whoever picks this up are:</p>
+  <ol>
+    <li>Complete the Phase 4 narrow proof of concept (Books/Backs and Comm Docs microservices) to validate the architecture at the Subscriptions/Memberships/Charities level.</li>
+    <li>Resolve the open build-or-buy decision on the Crane, informed by what the PoC reveals about integration complexity and volume.</li>
+  </ol>
+  <p>The Microservices Audit will run in parallel and is important context for both decisions above.</p>
 
 </BaseLayout>
+
+<style>
+  p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; font-size: 0.9375rem; line-height: 1.7; }
+  li { margin-bottom: 0.4rem; color: var(--text); }
+  strong { font-weight: 600; }
+
+  .risk-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0.875rem;
+  }
+  .risk-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .risk-item p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    line-height: 1.65;
+  }
+</style>

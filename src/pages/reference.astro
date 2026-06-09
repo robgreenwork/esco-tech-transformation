@@ -1,34 +1,137 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const people = [
+  { name: 'Rob Green',         role: 'Project Sponsor (SLT)',                       detail: 'Strategic direction and approval of key decisions.' },
+  { name: 'Laura Evans',       role: 'Project Manager, Phase 4',                    detail: 'Client Management Department.' },
+  { name: 'Federica Rainaldi', role: 'Project Manager, Phase 3',                    detail: '' },
+  { name: 'Alistair Wood',     role: 'Lead, Phase 2 software benchmarking',         detail: '' },
+  { name: 'Greg Viney',        role: 'IT Development Team',                         detail: 'Building the architecture and proof of concepts.' },
+  { name: 'Darren Laplain',    role: 'IT Development Team',                         detail: 'Building the architecture and proof of concepts.' },
+  { name: 'Ed Caswell',        role: 'Tech Lead -- AI implementation',              detail: 'Responsible for Aimee development.' },
+  { name: 'Ivan Teage',        role: 'External Solution Architect (Harmonication)', detail: 'Advising on conceptual architecture.' },
+  { name: 'James McBurnie',    role: 'External Technical Architect (Async Jam)',    detail: 'Advising on practical tech implementation and cloud deployment.' },
+];
+
+const tools = [
+  { name: 'Myriad',              desc: 'ESco\'s legacy, on-premises core subscription management database. The system this programme is designed to reduce dependency on.' },
+  { name: 'MongoDB',             desc: 'A NoSQL document database used for the Harbour -- initially as a data warehouse (Phase 3), then as a process queue system (Phase 4).' },
+  { name: 'Google Cloud Platform (GCP)', desc: 'The cloud infrastructure provider hosting the new architecture, API endpoints, and AI services.' },
+  { name: 'Microsoft Azure',     desc: 'Microsoft\'s cloud platform. Evaluated during Phase 1 for a full infrastructure migration. Rejected.' },
+  { name: 'Aimee',               desc: 'An agentic AI chatbot for the ESco client portal, enabling self-service tasks such as promotion code creation.' },
+  { name: 'Orbit (Apteco)',      desc: 'A third-party business intelligence and data analysis tool, used for the Single Customer View product in Phase 3.' },
+  { name: 'GoCardless',          desc: 'A cloud-based Direct Debit platform being integrated to replace traditional BACS processing.' },
+  { name: 'Zoho Desk',           desc: 'A customer support platform being integrated to handle omnichannel subscriber service.' },
+];
+
+const glossary = [
+  { term: 'The Crane (ETL / RTL Engine)', def: 'ESco\'s custom middleware tool that extracts, receives, transforms, and loads data. Acts as the universal translator between the CRM and all downstream microservices.' },
+  { term: 'The Harbour (Process Queue System)', def: 'The central data repository (built on MongoDB) that holds data in schemas and queues tasks for microservices to consume and action.' },
+  { term: 'SCV (Single Customer View)', def: 'A consolidated, 360-degree view of all data held about a single customer, gathered from multiple different systems. The initial use case for the Phase 3 architecture.' },
+  { term: 'CRM agnostic', def: 'An architectural approach in which no core system is permanently dependent on a specific CRM platform, allowing the CRM layer to be swapped without rebuilding everything around it.' },
+  { term: 'iPaaS', def: 'Integration Platform as a Service. Cloud-based tools that connect different software applications. ESco is evaluating whether to procure one to replace or supplement the in-house Crane.' },
+  { term: 'Webhook', def: 'An automated, event-driven message sent from one system to another in real time when a specific action occurs -- for example, when a customer updates their subscription. Replaces the older approach of scheduled polling.' },
+  { term: 'Microservice', def: 'A small, independent software service that does one specific thing (such as fulfilment, document generation, or AI responses). Designed to be replaceable without affecting other services.' },
+  { term: 'Proof of concept (PoC)', def: 'A narrow, focused build to test whether a technical approach works in principle, before committing to full-scale development.' },
+];
 ---
 
 <BaseLayout title="Reference">
 
   <h1 class="page-title">Reference</h1>
-  <p class="page-subtitle">Supporting materials, key documents, and resources for the programme.</p>
+  <p class="page-subtitle">People, systems, tools, and terminology used across the programme.</p>
 
-  <h2 class="section-heading">Key documents</h2>
-  <!-- PASTE: reference-key-documents from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: key documents.</strong> Links or references to the most important documents from across the programme -- proposals, strategies, assessments, and decision records.</span>
+  <h2 class="section-heading">Key people</h2>
+  <div class="people-list">
+    {people.map(p => (
+      <div class="person-row">
+        <div class="person-name">{p.name}</div>
+        <div class="person-role">
+          {p.role}{p.detail ? ` -- ${p.detail}` : ''}
+        </div>
+      </div>
+    ))}
   </div>
 
-  <h2 class="section-heading">Suppliers and partners</h2>
-  <!-- PASTE: reference-suppliers from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: suppliers and partners.</strong> Organisations involved in the programme, their roles, and any relevant contact or contract information.</span>
+  <h2 class="section-heading">Systems and tools</h2>
+  <div class="tool-list">
+    {tools.map(t => (
+      <div class="tool-row">
+        <div class="tool-name">{t.name}</div>
+        <div class="tool-desc">{t.desc}</div>
+      </div>
+    ))}
   </div>
 
   <h2 class="section-heading">Glossary</h2>
-  <!-- PASTE: reference-glossary from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: glossary.</strong> Definitions of terms, acronyms, or product names used throughout this site and the wider programme documentation.</span>
-  </div>
-
-  <h2 class="section-heading">Further reading</h2>
-  <!-- PASTE: reference-further-reading from NotebookLM -->
-  <div class="placeholder">
-    <span><strong>Content pending: further reading.</strong> External resources, frameworks, or references that informed the programme.</span>
-  </div>
+  <dl class="glossary">
+    {glossary.map(g => (
+      <>
+        <dt>{g.term}</dt>
+        <dd>{g.def}</dd>
+      </>
+    ))}
+  </dl>
 
 </BaseLayout>
+
+<style>
+  p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
+
+  /* PEOPLE */
+  .people-list { margin-bottom: 2rem; }
+  .person-row {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .person-row:first-child { border-top: 1px solid var(--border); }
+  .person-name {
+    font-weight: 700;
+    color: var(--text);
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+  .person-role { color: var(--text-muted); }
+
+  /* TOOLS */
+  .tool-list { margin-bottom: 2rem; }
+  .tool-row {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .tool-row:first-child { border-top: 1px solid var(--border); }
+  .tool-name {
+    font-weight: 700;
+    color: var(--text);
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+  .tool-desc { color: var(--text-muted); }
+
+  /* GLOSSARY */
+  .glossary { margin-bottom: 2rem; }
+  .glossary dt {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 1.1rem;
+  }
+  .glossary dd {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 0.2rem;
+  }
+</style>
