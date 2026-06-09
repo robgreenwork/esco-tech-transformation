@@ -3,30 +3,76 @@ import PhaseLayout from '../../layouts/PhaseLayout.astro';
 ---
 
 <PhaseLayout
-  title="Foundation"
+  title="Delivery"
   phase="foundation"
-  description="Building the base — infrastructure, team, governance, and the initial technical choices."
+  description="Improving the pace of delivery by bringing in an Agile delivery model and the right processes."
 >
-  <div class="placeholder-notice">
-    Populate each section below with content from your NotebookLM research.
-  </div>
+  <div class="workstream-grid">
 
-  <div class="sections">
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Was Set Out to Achieve</h2>
-      <p>[Placeholder]</p>
-    </section>
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Happened</h2>
-      <p>[Placeholder]</p>
-    </section>
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Was Learned</h2>
-      <p>[Placeholder]</p>
-    </section>
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Came Next</h2>
-      <p>[Placeholder]</p>
-    </section>
+    <div class="ws-card now">
+      <div class="ws-badge">NOW</div>
+      <h3>Initial actions</h3>
+      <ul>
+        <li>Run a <strong>workshop with key stakeholders</strong> to map out the existing delivery process, identifying pain points and opportunities</li>
+        <li>Work with the leadership team to identify and <strong>prioritise potential solutions</strong> to improve the delivery process</li>
+        <li>Test ideas around improving the delivery process</li>
+        <li>Potentially begin <strong>recruitment for a Technology Delivery Specialist</strong> role to own and continuously improve the delivery process</li>
+      </ul>
+    </div>
+
+    <div class="ws-card next">
+      <div class="ws-badge">NEXT</div>
+      <h3>Follow-on actions</h3>
+      <ul>
+        <li>Onboard and begin coaching the new Technology Delivery Specialist role</li>
+        <li>Begin introducing more elements of an <strong>Agile framework</strong> in partnership with the Technology Delivery Specialist role</li>
+      </ul>
+    </div>
+
+    <div class="ws-card placeholder">
+      <div class="ws-badge placeholder-badge">WHAT HAPPENED</div>
+      <h3>What actually happened</h3>
+      <p><em>[Placeholder — add what was actually delivered on the delivery workstream, what changed from plan, and key decisions.]</em></p>
+    </div>
+
+    <div class="ws-card placeholder">
+      <div class="ws-badge placeholder-badge">LESSONS</div>
+      <h3>What was learned</h3>
+      <p><em>[Placeholder — insights and reflections on improving delivery at ESco.]</em></p>
+    </div>
+
   </div>
 </PhaseLayout>
+
+<style>
+  .workstream-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+  .ws-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    border-left: 5px solid var(--border);
+  }
+  .ws-card.now { border-left-color: var(--teal); }
+  .ws-card.next { border-left-color: var(--purple-light); }
+  .ws-card.placeholder { border-left-color: var(--border); background: var(--grey-bg); }
+  .ws-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+    background: var(--teal-tint);
+    color: var(--teal);
+  }
+  .ws-card.next .ws-badge { background: var(--purple-tint); color: var(--purple); }
+  .placeholder-badge { background: var(--border) !important; color: var(--text-muted) !important; }
+  .ws-card h3 { font-size: 1rem; font-weight: 700; color: var(--purple-dark); margin-bottom: 0.75rem; }
+  .ws-card ul { padding-left: 1.25rem; }
+  .ws-card li { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.4rem; }
+  .ws-card li strong { color: var(--text); }
+  .ws-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+</style>

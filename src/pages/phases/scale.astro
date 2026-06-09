@@ -3,30 +3,76 @@ import PhaseLayout from '../../layouts/PhaseLayout.astro';
 ---
 
 <PhaseLayout
-  title="Scale & Embed"
+  title="Tech Strategy"
   phase="scale"
-  description="Making it stick — embedding new ways of working, handing over ownership, and closing the programme."
+  description="Defining the direction for ESco Tech for the next 12–18 months, identifying what the first steps are, and keeping the whole organisation engaged."
 >
-  <div class="placeholder-notice">
-    Populate each section below with content from your NotebookLM research.
-  </div>
+  <div class="workstream-grid">
 
-  <div class="sections">
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Was Set Out to Achieve</h2>
-      <p>[Placeholder]</p>
-    </section>
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Happened</h2>
-      <p>[Placeholder]</p>
-    </section>
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Was Learned</h2>
-      <p>[Placeholder]</p>
-    </section>
-    <section class="card" style="margin-bottom:1.25rem">
-      <h2>What Came Next</h2>
-      <p>[Placeholder]</p>
-    </section>
+    <div class="ws-card now">
+      <div class="ws-badge">NOW</div>
+      <h3>Initial actions</h3>
+      <ul>
+        <li>Run <strong>workshops to define the Vision and Goals</strong> for Technology for the next 12–18 months</li>
+        <li>Translate Strategy into <strong>SMART objectives</strong> for the next 3 months, and agree the owner for each</li>
+        <li>Run regular sessions to <strong>feedback on progress</strong> against objectives</li>
+        <li>Convert objectives into a <strong>Technology Roadmap</strong> to engage the rest of the organisation</li>
+      </ul>
+    </div>
+
+    <div class="ws-card next">
+      <div class="ws-badge">NEXT</div>
+      <h3>Follow-on actions</h3>
+      <ul>
+        <li>Run the <strong>next 3-month objectives session</strong></li>
+        <li>Conduct an <strong>assessment of the ESco product and services portfolio</strong></li>
+      </ul>
+    </div>
+
+    <div class="ws-card placeholder">
+      <div class="ws-badge placeholder-badge">WHAT HAPPENED</div>
+      <h3>What actually happened</h3>
+      <p><em>[Placeholder — add what the strategy looked like when defined, how it evolved, and how the roadmap was received by the business.]</em></p>
+    </div>
+
+    <div class="ws-card placeholder">
+      <div class="ws-badge placeholder-badge">LESSONS</div>
+      <h3>What was learned</h3>
+      <p><em>[Placeholder — reflections on the strategy process, what worked, and what you'd approach differently.]</em></p>
+    </div>
+
   </div>
 </PhaseLayout>
+
+<style>
+  .workstream-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+  .ws-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    border-left: 5px solid var(--border);
+  }
+  .ws-card.now { border-left-color: var(--teal); }
+  .ws-card.next { border-left-color: var(--purple-light); }
+  .ws-card.placeholder { border-left-color: var(--border); background: var(--grey-bg); }
+  .ws-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+    background: var(--teal-tint);
+    color: var(--teal);
+  }
+  .ws-card.next .ws-badge { background: var(--purple-tint); color: var(--purple); }
+  .placeholder-badge { background: var(--border) !important; color: var(--text-muted) !important; }
+  .ws-card h3 { font-size: 1rem; font-weight: 700; color: var(--purple-dark); margin-bottom: 0.75rem; }
+  .ws-card ul { padding-left: 1.25rem; }
+  .ws-card li { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.4rem; }
+  .ws-card li strong { color: var(--text); }
+  .ws-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+</style>
