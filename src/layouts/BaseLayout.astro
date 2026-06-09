@@ -3,7 +3,14 @@ interface Props {
   title: string;
   description?: string;
 }
-const { title, description = 'Esco Tech Transformation — a four-year programme of digital change.' } = Astro.props;
+const { title, description = 'A four-year programme of digital transformation at ESco.' } = Astro.props;
+const nav = [
+  { href: '/',                  label: 'Overview' },
+  { href: '/timeline',          label: 'Timeline' },
+  { href: '/phases/discovery',  label: 'Phases' },
+  { href: '/roles',             label: 'Roles' },
+  { href: '/lessons',           label: 'Lessons Learned' },
+];
 ---
 
 <html lang="en">
@@ -12,38 +19,49 @@ const { title, description = 'Esco Tech Transformation — a four-year programme
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>{title} | Esco Tech Transformation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title} | ESco Tech Transformation</title>
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        --c-bg: #0f1117;
-        --c-surface: #1a1d27;
-        --c-border: #2a2d3a;
-        --c-accent: #4f8ef7;
-        --c-accent-dim: #2a4a8a;
-        --c-text: #e2e8f0;
-        --c-muted: #8892a4;
-        --font: 'Inter', system-ui, sans-serif;
-        --max-w: 1100px;
+        --purple:        #5E2589;
+        --purple-dark:   #3D1A6E;
+        --purple-light:  #8B4EC4;
+        --purple-tint:   #F3EEF9;
+        --teal:          #3DBFB5;
+        --teal-light:    #B8E8E4;
+        --teal-tint:     #EBF8F7;
+        --pink:          #F07870;
+        --white:         #FFFFFF;
+        --grey-bg:       #F7F5FB;
+        --border:        #E5DDF2;
+        --text:          #1A0A2E;
+        --text-muted:    #6B5E82;
+        --font:          'Poppins', system-ui, sans-serif;
+        --max-w:         1100px;
+        --radius:        16px;
+        --radius-lg:     24px;
       }
 
       body {
         font-family: var(--font);
-        background: var(--c-bg);
-        color: var(--c-text);
+        background: var(--white);
+        color: var(--text);
         line-height: 1.6;
         min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
       }
 
-      /* NAV */
+      /* ── NAV ── */
       nav {
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(15,17,23,0.92);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--c-border);
+        background: var(--white);
+        border-bottom: 3px solid var(--pink);
       }
       .nav-inner {
         max-width: var(--max-w);
@@ -52,14 +70,27 @@ const { title, description = 'Esco Tech Transformation — a four-year programme
         display: flex;
         align-items: center;
         gap: 2rem;
-        height: 56px;
+        height: 64px;
       }
       .nav-brand {
-        font-weight: 700;
-        font-size: 0.95rem;
-        color: var(--c-text);
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
         text-decoration: none;
-        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-brand .brand-esco {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--purple);
+        letter-spacing: -0.01em;
+      }
+      .nav-brand .brand-sub {
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--teal);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
       .nav-links {
         display: flex;
@@ -68,72 +99,82 @@ const { title, description = 'Esco Tech Transformation — a four-year programme
         flex-wrap: wrap;
       }
       .nav-links a {
-        padding: 0.35rem 0.75rem;
-        border-radius: 6px;
-        color: var(--c-muted);
+        padding: 0.4rem 1rem;
+        border-radius: 999px;
+        color: var(--text-muted);
         text-decoration: none;
-        font-size: 0.875rem;
-        transition: color 0.15s, background 0.15s;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.15s;
+        white-space: nowrap;
       }
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: var(--c-text);
-        background: var(--c-surface);
+      .nav-links a:hover {
+        background: var(--purple-tint);
+        color: var(--purple);
       }
       .nav-links a.active {
-        color: var(--c-accent);
+        background: var(--purple);
+        color: var(--white);
       }
 
-      /* MAIN */
+      /* ── MAIN ── */
       main {
         max-width: var(--max-w);
         margin: 0 auto;
         padding: 3rem 1.5rem 6rem;
       }
 
-      /* FOOTER */
+      /* ── FOOTER ── */
       footer {
-        border-top: 1px solid var(--c-border);
+        background: var(--purple-dark);
+        color: rgba(255,255,255,0.6);
         text-align: center;
         padding: 2rem 1.5rem;
-        color: var(--c-muted);
         font-size: 0.8rem;
       }
+      footer strong { color: var(--white); }
 
-      /* SHARED COMPONENTS */
+      /* ── PAGE HEADER ── */
       .page-header {
         margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid var(--c-border);
       }
       .page-header .label {
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--c-accent);
-        margin-bottom: 0.75rem;
+        color: var(--teal);
+        background: var(--teal-tint);
+        padding: 0.3rem 0.8rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
       }
       .page-header h1 {
         font-size: clamp(1.75rem, 4vw, 2.75rem);
-        font-weight: 700;
-        line-height: 1.2;
+        font-weight: 800;
+        line-height: 1.15;
+        color: var(--purple-dark);
         margin-bottom: 1rem;
       }
       .page-header p {
-        font-size: 1.1rem;
-        color: var(--c-muted);
-        max-width: 680px;
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        max-width: 640px;
+        line-height: 1.7;
       }
 
+      /* ── CARDS ── */
       .card {
-        background: var(--c-surface);
-        border: 1px solid var(--c-border);
-        border-radius: 12px;
-        padding: 1.5rem;
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+        transition: border-color 0.15s, box-shadow 0.15s;
       }
-      .card h2, .card h3 { margin-bottom: 0.75rem; }
-      .card p { color: var(--c-muted); font-size: 0.95rem; }
+      .card:hover { border-color: var(--purple-light); box-shadow: 0 4px 20px rgba(94,37,137,0.08); }
+      .card h2, .card h3 { color: var(--purple-dark); margin-bottom: 0.6rem; font-weight: 700; }
+      .card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
 
       .grid-2 {
         display: grid;
@@ -141,27 +182,57 @@ const { title, description = 'Esco Tech Transformation — a four-year programme
         gap: 1.25rem;
       }
 
+      /* ── PLACEHOLDER NOTICE ── */
       .placeholder-notice {
-        background: var(--c-accent-dim);
-        border: 1px solid var(--c-accent);
-        border-radius: 8px;
-        padding: 1rem 1.25rem;
-        font-size: 0.875rem;
-        color: var(--c-accent);
+        background: var(--teal-tint);
+        border: 1.5px solid var(--teal-light);
+        border-radius: var(--radius);
+        padding: 0.9rem 1.25rem;
+        font-size: 0.85rem;
+        color: var(--purple);
+        font-weight: 500;
         margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .placeholder-notice::before { content: '✏️'; }
+
+      /* ── SECTION HEADINGS ── */
+      .section-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--purple-dark);
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .section-title::after {
+        content: '';
+        flex: 1;
+        height: 2px;
+        background: var(--border);
+        border-radius: 1px;
       }
     </style>
   </head>
   <body>
     <nav>
       <div class="nav-inner">
-        <a class="nav-brand" href="/">Esco Tech Transformation</a>
+        <a class="nav-brand" href="/">
+          <span class="brand-esco">ESco</span>
+          <span class="brand-sub">Tech Transformation</span>
+        </a>
         <ul class="nav-links">
-          <li><a href="/" class={Astro.url.pathname === '/' ? 'active' : ''}>Overview</a></li>
-          <li><a href="/timeline" class={Astro.url.pathname.startsWith('/timeline') ? 'active' : ''}>Timeline</a></li>
-          <li><a href="/phases/discovery" class={Astro.url.pathname.startsWith('/phases') ? 'active' : ''}>Phases</a></li>
-          <li><a href="/roles" class={Astro.url.pathname.startsWith('/roles') ? 'active' : ''}>Roles</a></li>
-          <li><a href="/lessons" class={Astro.url.pathname.startsWith('/lessons') ? 'active' : ''}>Lessons Learned</a></li>
+          {nav.map(({ href, label }) => {
+            const isActive = href === '/'
+              ? Astro.url.pathname === '/'
+              : Astro.url.pathname.startsWith(href);
+            return (
+              <li><a href={href} class={isActive ? 'active' : ''}>{label}</a></li>
+            );
+          })}
         </ul>
       </div>
     </nav>
@@ -169,7 +240,7 @@ const { title, description = 'Esco Tech Transformation — a four-year programme
       <slot />
     </main>
     <footer>
-      <p>Esco Tech Transformation &mdash; 2020–2024 &mdash; Rob Green</p>
+      <p><strong>ESco Tech Transformation</strong> &nbsp;·&nbsp; 2020–2024 &nbsp;·&nbsp; Rob Green</p>
     </footer>
   </body>
 </html>

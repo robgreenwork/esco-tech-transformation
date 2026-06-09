@@ -3,49 +3,212 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Overview">
-  <div class="page-header">
-    <div class="label">2020 – 2024</div>
-    <h1>Esco Tech Transformation</h1>
-    <p>
-      A four-year programme to modernise the technology, processes, and culture
-      at Esco — from the original mandate through to delivery and lessons learned.
-    </p>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">2020 – 2024 · ESco</div>
+    <h1>Tech Transformation<br/><span>Programme</span></h1>
+    <p>A four-year programme to modernise the technology, processes, and culture at ESco — from the original mandate through to delivery and lessons learned.</p>
+    <div class="hero-chips">
+      <span>4 Years</span>
+      <span>Enterprise-wide</span>
+      <span>Digital Transformation</span>
+    </div>
   </div>
 
-  <div class="placeholder-notice">
-    Content coming soon — this site is being built out. Each section below will be populated with the full programme detail.
-  </div>
-
-  <!-- Mission / original mandate -->
-  <section style="margin-bottom: 3rem;">
-    <h2 style="margin-bottom: 1.25rem; font-size: 1.4rem;">The Original Mandate</h2>
-    <div class="card">
-      <p>
-        <em>[Placeholder — add the key goals from your original slide deck here: what you committed to deliver, the problem statement, the scope, and the success criteria.]</em>
-      </p>
+  <!-- MANDATE -->
+  <section class="section">
+    <h2 class="section-title">The Original Mandate</h2>
+    <div class="mandate-card">
+      <div class="mandate-icon">🎯</div>
+      <div>
+        <h3>What We Set Out To Do</h3>
+        <p><em>[Placeholder — add the key goals from your original slide deck here: what you committed to deliver, the problem statement, the scope, and the success criteria.]</em></p>
+      </div>
     </div>
   </section>
 
-  <!-- Quick-nav cards -->
-  <section>
-    <h2 style="margin-bottom: 1.25rem; font-size: 1.4rem;">Explore the Programme</h2>
-    <div class="grid-2">
-      <a href="/timeline" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
-        <h3>Timeline</h3>
-        <p>A chronological view of the programme — key milestones, decisions, and pivots from start to finish.</p>
+  <!-- NAV CARDS -->
+  <section class="section">
+    <h2 class="section-title">Explore the Programme</h2>
+    <div class="nav-grid">
+      <a href="/timeline" class="nav-card">
+        <div class="nav-card-icon" style="background:#EBF8F7; color:#3DBFB5">📅</div>
+        <div>
+          <h3>Timeline</h3>
+          <p>Key milestones, decisions, and pivots from start to finish in chronological order.</p>
+        </div>
+        <div class="nav-card-arrow">→</div>
       </a>
-      <a href="/phases/discovery" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
-        <h3>Phases</h3>
-        <p>Deep-dives into each phase: objectives, what was delivered, what changed, and what came next.</p>
+      <a href="/phases/discovery" class="nav-card">
+        <div class="nav-card-icon" style="background:#F3EEF9; color:#8B4EC4">🗂</div>
+        <div>
+          <h3>Phases</h3>
+          <p>Deep-dives into each phase: objectives, what was delivered, what changed, and what came next.</p>
+        </div>
+        <div class="nav-card-arrow">→</div>
       </a>
-      <a href="/roles" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
-        <h3>Roles &amp; Responsibilities</h3>
-        <p>Who was involved, what each person or team owned, and how the structure evolved over time.</p>
+      <a href="/roles" class="nav-card">
+        <div class="nav-card-icon" style="background:#FEF0EF; color:#F07870">👥</div>
+        <div>
+          <h3>Roles &amp; Responsibilities</h3>
+          <p>Who was involved, what each person or team owned, and how the structure evolved.</p>
+        </div>
+        <div class="nav-card-arrow">→</div>
       </a>
-      <a href="/lessons" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
-        <h3>Lessons Learned</h3>
-        <p>Honest reflections on what worked, what didn't, and what you'd do differently.</p>
+      <a href="/lessons" class="nav-card">
+        <div class="nav-card-icon" style="background:#F3EEF9; color:#5E2589">💡</div>
+        <div>
+          <h3>Lessons Learned</h3>
+          <p>Honest reflections on what worked, what didn't, and what we'd do differently.</p>
+        </div>
+        <div class="nav-card-arrow">→</div>
       </a>
     </div>
   </section>
+
 </BaseLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, var(--purple-light) 100%);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem 3rem;
+    margin-bottom: 3.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(61,191,181,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 span { color: var(--teal-light); }
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-chips span {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 3rem; }
+
+  /* MANDATE CARD */
+  .mandate-card {
+    background: var(--purple-tint);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .mandate-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(94,37,137,0.1);
+  }
+  .mandate-card h3 { color: var(--purple-dark); font-weight: 700; margin-bottom: 0.5rem; }
+  .mandate-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+  /* NAV CARDS */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .nav-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .nav-card:hover {
+    border-color: var(--purple);
+    box-shadow: 0 8px 30px rgba(94,37,137,0.12);
+    transform: translateY(-2px);
+  }
+  .nav-card-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .nav-card h3 { color: var(--purple-dark); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .nav-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; }
+  .nav-card-arrow {
+    position: absolute;
+    top: 1.25rem; right: 1.25rem;
+    color: var(--purple-light);
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .nav-card:hover .nav-card-arrow { opacity: 1; }
+</style>
