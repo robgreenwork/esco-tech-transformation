@@ -50,8 +50,8 @@ const currentPath = Astro.url.pathname;
     <!-- Password gate (client-side, casual protection only) -->
     <script is:inline>
       (function () {
-        var EXPECTED = '2a5cb9ee58a5fb5953b3c3e08251edf28163fcd00ed446d2ea3a4daa7334f4f5';
-        var KEY = 'esco_tt_auth_v1';
+        var EXPECTED = '71fb4daceabfa1591d91fe464f68abae9e937088c1de9baf4022959c5f87c617';
+        var KEY = 'esco_tt_auth_v2';
         try { if (sessionStorage.getItem(KEY) === EXPECTED) return; } catch (e) {}
 
         // Hide page contents until authed
