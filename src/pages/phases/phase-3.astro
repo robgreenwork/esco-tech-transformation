@@ -4,9 +4,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout title="Phase 3 -- Hybrid build and buy">
 
-  <h1 class="page-title">Phase 3</h1>
-  <p class="page-subtitle">Hybrid build and buy -- interchangeable adaptable infrastructure <span class="verdict chosen">Chosen path</span></p>
-  <p class="phase-meta">Late 2023 to Mid-2025</p>
+  <div class="page-hero">
+    <div class="hero-eyebrow">Phase 3 · Late 2023 to Mid-2025</div>
+    <h1 class="page-title">Hybrid build and buy -- interchangeable adaptable infrastructure</h1>
+    <p class="page-subtitle"><span class="verdict chosen">Chosen path</span></p>
+  </div>
+
+  <div class="page-body">
 
   <h2 class="section-heading">Hypothesis</h2>
   <p>Could we build a hybrid, adaptable infrastructure -- the Harbour and Crane -- to process data specifically for the Single Customer View product, and in doing so prove the CRM-agnostic approach that Phases 1 and 2 pointed towards?</p>
@@ -43,6 +47,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <a href="/architecture">Architecture <span aria-hidden="true">-&gt;</span></a>
   </div>
 
+  </div>
 </BaseLayout>
 
 <style>
@@ -50,14 +55,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   ul, ol { padding-left: 1.5rem; margin-bottom: 0.875rem; font-size: 0.9375rem; line-height: 1.7; }
   li { margin-bottom: 0.3rem; }
   strong { font-weight: 600; }
-  .page-subtitle { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-  .phase-meta {
-    font-size: 0.8rem;
-    color: var(--text-faint);
-    margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-  }
   .doc-list {
     padding-left: 1.5rem;
     font-size: 0.9rem;

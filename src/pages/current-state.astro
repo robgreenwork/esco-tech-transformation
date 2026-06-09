@@ -4,8 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Current State">
 
-  <h1 class="page-title">Current State</h1>
-  <p class="page-subtitle">Where the programme stands at the point of handover -- what is complete, what is in progress, and what remains open.</p>
+  <div class="page-hero">
+    <div class="hero-eyebrow">Status at handover</div>
+    <h1 class="page-title">Current State</h1>
+    <p class="page-subtitle">Where the programme stands at the point of handover -- what is complete, what is in progress, and what remains open.</p>
+  </div>
+
+  <div class="page-body">
 
   <h2 class="section-heading">What is complete</h2>
   <ul>
@@ -57,6 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ol>
   <p>The Microservices Audit will run in parallel and is important context for both decisions above.</p>
 
+  </div>
 </BaseLayout>
 
 <style>

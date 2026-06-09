@@ -4,9 +4,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout title="Phase 2 -- Off-the-shelf replacement for Myriad">
 
-  <h1 class="page-title">Phase 2</h1>
-  <p class="page-subtitle">Buy an off-the-shelf replacement for Myriad <span class="verdict rejected">Not affordable</span></p>
-  <p class="phase-meta">May 2023 to June 2024</p>
+  <div class="page-hero">
+    <div class="hero-eyebrow">Phase 2 · May 2023 to June 2024</div>
+    <h1 class="page-title">Buy an off-the-shelf replacement for Myriad</h1>
+    <p class="page-subtitle"><span class="verdict rejected">Not affordable</span></p>
+  </div>
+
+  <div class="page-body">
 
   <h2 class="section-heading">Hypothesis</h2>
   <p>Could we buy an off-the-shelf software solution to completely replace Myriad and modernise subscription management in one step?</p>
@@ -33,18 +37,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <a href="/phases/phase-3">Phase 3 <span aria-hidden="true">-&gt;</span></a>
   </div>
 
+  </div>
 </BaseLayout>
 
 <style>
   p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
-  .page-subtitle { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-  .phase-meta {
-    font-size: 0.8rem;
-    color: var(--text-faint);
-    margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-  }
   .doc-list {
     padding-left: 1.5rem;
     font-size: 0.9rem;

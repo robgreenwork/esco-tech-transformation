@@ -4,9 +4,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout title="Phase 1 -- Azure and the Microsoft stack">
 
-  <h1 class="page-title">Phase 1</h1>
-  <p class="page-subtitle">Build on Azure and the Microsoft stack <span class="verdict rejected">Not viable</span></p>
-  <p class="phase-meta">Mid-2022 to Early 2023</p>
+  <div class="page-hero">
+    <div class="hero-eyebrow">Phase 1 · Mid-2022 to Early 2023</div>
+    <h1 class="page-title">Build on Azure and the Microsoft stack</h1>
+    <p class="page-subtitle"><span class="verdict rejected">Not viable</span></p>
+  </div>
+
+  <div class="page-body">
 
   <h2 class="section-heading">Hypothesis</h2>
   <p>Could we build new infrastructure on Azure and the Microsoft stack? The phase tested the viability of moving to the cloud by trialling the move on an independent process.</p>
@@ -32,18 +36,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <a href="/phases/phase-2">Phase 2 <span aria-hidden="true">-&gt;</span></a>
   </div>
 
+  </div>
 </BaseLayout>
 
 <style>
   p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
-  .page-subtitle { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-  .phase-meta {
-    font-size: 0.8rem;
-    color: var(--text-faint);
-    margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-  }
   .doc-list {
     padding-left: 1.5rem;
     font-size: 0.9rem;

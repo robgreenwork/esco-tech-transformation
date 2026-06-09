@@ -37,8 +37,13 @@ const phases = [
 
 <BaseLayout title="Overview">
 
-  <h1 class="page-title">ESco Tech Transformation</h1>
-  <p class="page-subtitle">A four-year programme of work to understand, explore, and ultimately decide the future technology direction for ESco. This site documents the journey -- the hypotheses tested, the evidence gathered, the decisions made, and the path chosen.</p>
+  <div class="page-hero">
+    <div class="hero-eyebrow">Programme overview</div>
+    <h1 class="page-title">ESco Tech Transformation</h1>
+    <p class="page-subtitle">A four-year programme of work to understand, explore, and ultimately decide the future technology direction for ESco. This site documents the journey -- the hypotheses tested, the evidence gathered, the decisions made, and the path chosen.</p>
+  </div>
+
+  <div class="page-body">
 
   <h2 class="section-heading">About this programme</h2>
   <p class="body-text">ESco is a publishing services bureau offering subscription management, customer service, and eCommerce solutions. For many years the business relied heavily on Myriad as its core subscription management database -- a single point of failure that had accumulated significant technical debt, an outdated interface, and deeply embedded bespoke integrations that made it slow to adapt.</p>
@@ -79,6 +84,7 @@ const phases = [
   <p class="body-text">Each phase has its own page covering the period it ran, the hypothesis being tested, what was explored, what was found, the decision reached, and the key supporting documents. Use the navigation on the left to move between sections.</p>
   <p class="body-text">The <a href="/architecture">Architecture</a> page documents the technical shape of the chosen solution. <a href="/decisions">Decisions and Rationale</a> captures the key forks in the road. <a href="/current-state">Current State</a> describes where the programme sits at handover. <a href="/reference">Reference</a> collects people, tools, and the glossary.</p>
 
+  </div>
 </BaseLayout>
 
 <style>

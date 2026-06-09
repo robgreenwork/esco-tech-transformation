@@ -24,10 +24,10 @@ const nav = [
   },
   {
     items: [
-      { href: '/architecture',   label: 'Architecture' },
-      { href: '/decisions',      label: 'Decisions and Rationale' },
-      { href: '/current-state',  label: 'Current State' },
-      { href: '/reference',      label: 'Reference' },
+      { href: '/architecture',  label: 'Architecture' },
+      { href: '/decisions',     label: 'Decisions and Rationale' },
+      { href: '/current-state', label: 'Current State' },
+      { href: '/reference',     label: 'Reference' },
     ],
   },
 ];
@@ -44,33 +44,47 @@ const currentPath = Astro.url.pathname;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title} -- ESco Tech Transformation</title>
     <style is:global>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        --font:           'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        --bg:             #ffffff;
-        --sidebar-bg:     #f8f9fa;
-        --text:           #1c1917;
-        --text-muted:     #6b7280;
-        --text-faint:     #9ca3af;
-        --border:         #e5e7eb;
-        --accent:         #5b21b6;
-        --accent-light:   #f5f3ff;
-        --banner-bg:      #fef9c3;
-        --banner-border:  #fde047;
-        --banner-text:    #713f12;
-        --ph-bg:          #fefce8;
-        --ph-border:      #fde047;
-        --ph-text:        #854d0e;
-        --chosen-bg:      #dcfce7;
-        --chosen-text:    #14532d;
-        --rejected-bg:    #f1f5f9;
-        --rejected-text:  #475569;
-        --sidebar-w:      244px;
-        --banner-h:       40px;
+        --font:            'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+        /* ESco brand colours (exact from esco.co.uk) */
+        --esco-purple:       oklch(0.408 0.157 313.5);
+        --esco-purple-dark:  oklch(0.3529 0.131 313.78);
+        --esco-teal:         oklch(0.7193 0.123 193.41);
+        --esco-teal-light:   oklch(0.8698 0.074 194.81);
+
+        /* Layout */
+        --bg:              #ffffff;
+        --sidebar-bg:      #f8f9fa;
+        --text:            #1c1917;
+        --text-muted:      #6b7280;
+        --text-faint:      #9ca3af;
+        --border:          #e5e7eb;
+        --accent:          var(--esco-purple);
+        --accent-light:    oklch(0.96 0.02 313.5);
+
+        /* Status colours */
+        --banner-bg:       #fef9c3;
+        --banner-border:   #fde047;
+        --banner-text:     #713f12;
+        --ph-bg:           #fefce8;
+        --ph-border:       #fde047;
+        --ph-text:         #854d0e;
+        --chosen-bg:       #dcfce7;
+        --chosen-text:     #14532d;
+        --rejected-bg:     #f1f5f9;
+        --rejected-text:   #475569;
+
+        /* Dimensions */
+        --topbar-h:        64px;
+        --banner-h:        36px;
+        --sidebar-w:       248px;
+        --header-h:        calc(var(--topbar-h) + var(--banner-h));
       }
 
       html { font-size: 16px; }
@@ -83,15 +97,96 @@ const currentPath = Astro.url.pathname;
         -webkit-font-smoothing: antialiased;
       }
 
-      /* ── DRAFT BANNER ─────────────────────────────── */
-      .draft-banner {
+      /* ═══════════════════════════════════════════
+         TOP BAR  —  full-width ESco-branded header
+      ══════════════════════════════════════════════ */
+      .topbar {
         position: fixed;
         top: 0; left: 0; right: 0;
+        height: var(--topbar-h);
+        background: var(--esco-purple);
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem 0 0;
+        z-index: 300;
+        gap: 0;
+      }
+
+      /* Sidebar-width logo block */
+      .topbar-logo {
+        width: var(--sidebar-w);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 1.25rem;
+        height: 100%;
+        text-decoration: none;
+        border-right: 1px solid rgba(255,255,255,0.12);
+        gap: 0.75rem;
+      }
+
+      /* SVG wordmark */
+      .esco-wordmark {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        line-height: 1;
+      }
+      .esco-wordmark .wm-esco {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+      .esco-wordmark .wm-esco span {
+        color: var(--esco-teal);
+      }
+      /* Teal swoosh underline */
+      .esco-swoosh {
+        display: block;
+        width: 48px;
+        height: 6px;
+        margin-top: 2px;
+        overflow: visible;
+      }
+
+      /* Right side of topbar: programme title */
+      .topbar-title {
+        flex: 1;
+        padding-left: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .topbar-title .tt-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--esco-teal);
+        line-height: 1;
+        margin-bottom: 0.2rem;
+      }
+      .topbar-title .tt-name {
+        font-size: 0.975rem;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.2;
+      }
+
+      /* ═══════════════════════════════════════════
+         DRAFT BANNER
+      ══════════════════════════════════════════════ */
+      .draft-banner {
+        position: fixed;
+        top: var(--topbar-h);
+        left: 0; right: 0;
         height: var(--banner-h);
         background: var(--banner-bg);
         border-bottom: 1px solid var(--banner-border);
         color: var(--banner-text);
-        font-size: 0.8rem;
+        font-size: 0.775rem;
         font-weight: 500;
         display: flex;
         align-items: center;
@@ -102,49 +197,30 @@ const currentPath = Astro.url.pathname;
       }
       .draft-banner strong { font-weight: 700; }
 
-      /* ── LAYOUT ───────────────────────────────────── */
+      /* ═══════════════════════════════════════════
+         LAYOUT
+      ══════════════════════════════════════════════ */
       .site {
         display: flex;
         min-height: 100vh;
-        padding-top: var(--banner-h);
+        padding-top: var(--header-h);
       }
 
-      /* ── SIDEBAR ──────────────────────────────────── */
+      /* ═══════════════════════════════════════════
+         SIDEBAR
+      ══════════════════════════════════════════════ */
       .sidebar {
         width: var(--sidebar-w);
         flex-shrink: 0;
         position: sticky;
-        top: var(--banner-h);
-        height: calc(100vh - var(--banner-h));
+        top: var(--header-h);
+        height: calc(100vh - var(--header-h));
         overflow-y: auto;
         background: var(--sidebar-bg);
         border-right: 1px solid var(--border);
-        padding: 1.5rem 0;
+        padding: 1.25rem 0 2rem;
         display: flex;
         flex-direction: column;
-        gap: 0;
-      }
-
-      .sidebar-brand {
-        padding: 0 1.25rem 1.25rem;
-        border-bottom: 1px solid var(--border);
-        margin-bottom: 1rem;
-        text-decoration: none;
-      }
-      .sidebar-brand .brand-top {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--accent);
-        display: block;
-      }
-      .sidebar-brand .brand-sub {
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        display: block;
-        margin-top: 0.1rem;
       }
 
       .nav-group { margin-bottom: 0.25rem; }
@@ -155,7 +231,7 @@ const currentPath = Astro.url.pathname;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         color: var(--text-faint);
-        padding: 0.75rem 1.25rem 0.25rem;
+        padding: 0.875rem 1.25rem 0.3rem;
         display: block;
       }
 
@@ -167,7 +243,6 @@ const currentPath = Astro.url.pathname;
         font-size: 0.875rem;
         color: var(--text-muted);
         text-decoration: none;
-        border-radius: 0;
         transition: color 0.1s, background 0.1s;
         border-left: 2px solid transparent;
       }
@@ -176,57 +251,104 @@ const currentPath = Astro.url.pathname;
         background: rgba(0,0,0,0.03);
       }
       .nav-list a.active {
-        color: var(--accent);
+        color: var(--esco-purple);
         font-weight: 600;
-        border-left-color: var(--accent);
+        border-left-color: var(--esco-purple);
         background: var(--accent-light);
       }
 
-      /* Sub-items (phases) */
       .nav-list.sub a {
         padding-left: 1.75rem;
         font-size: 0.8rem;
       }
 
-      /* ── MAIN CONTENT ─────────────────────────────── */
+      /* ═══════════════════════════════════════════
+         CONTENT AREA
+      ══════════════════════════════════════════════ */
       .content-wrap {
         flex: 1;
         min-width: 0;
-        padding: 3rem 4rem 6rem 3rem;
       }
 
-      .page-content {
+      /* Page hero strip — ESco teal-light band at top of each page */
+      .page-hero {
+        background: var(--esco-purple);
+        padding: 2rem 4rem 2rem 2.5rem;
+        border-bottom: 3px solid var(--esco-teal);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero::after {
+        content: '';
+        position: absolute;
+        right: -60px; top: -60px;
+        width: 220px; height: 220px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        pointer-events: none;
+      }
+      .page-hero .hero-eyebrow {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--esco-teal);
+        margin-bottom: 0.35rem;
+      }
+      .page-hero .hero-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.2;
+        margin-bottom: 0.4rem;
+      }
+      .page-hero .hero-sub {
+        font-size: 0.875rem;
+        color: rgba(255,255,255,0.65);
+        line-height: 1.5;
+        max-width: 560px;
+      }
+
+      .page-body {
+        padding: 2.5rem 4rem 6rem 2.5rem;
         max-width: 740px;
       }
 
-      /* ── TYPOGRAPHY ───────────────────────────────── */
+      /* ═══════════════════════════════════════════
+         TYPOGRAPHY
+      ══════════════════════════════════════════════ */
       .page-title {
-        font-size: 1.875rem;
-        font-weight: 700;
-        color: var(--text);
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
         line-height: 1.2;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
       }
       .page-subtitle {
-        font-size: 1rem;
-        color: var(--text-muted);
-        margin-bottom: 2.5rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.65);
+        margin-bottom: 0;
+        line-height: 1.5;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
       }
 
       .section-heading {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text);
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: var(--esco-purple-dark);
         margin-bottom: 0.75rem;
-        margin-top: 2.5rem;
+        margin-top: 2.25rem;
         padding-bottom: 0.4rem;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 2px solid var(--esco-teal-light);
       }
       .section-heading:first-child { margin-top: 0; }
 
-      /* ── PLACEHOLDER CALLOUT ──────────────────────── */
+      /* ═══════════════════════════════════════════
+         PLACEHOLDER CALLOUT
+      ══════════════════════════════════════════════ */
       .placeholder {
         background: var(--ph-bg);
         border: 1px solid var(--ph-border);
@@ -246,39 +368,23 @@ const currentPath = Astro.url.pathname;
       }
       .placeholder strong { color: #78350f; font-weight: 600; }
 
-      /* ── PROSE (rendered markdown) ────────────────── */
-      .prose h1, .prose h2, .prose h3, .prose h4 {
-        font-weight: 600;
+      /* ═══════════════════════════════════════════
+         PROSE
+      ══════════════════════════════════════════════ */
+      .prose h2, .prose h3, .prose h4 {
+        font-weight: 700;
         line-height: 1.3;
         margin-top: 1.5rem;
         margin-bottom: 0.5rem;
-        color: var(--text);
+        color: var(--esco-purple-dark);
       }
-      .prose h1 { font-size: 1.5rem; }
-      .prose h2 { font-size: 1.2rem; }
-      .prose h3 { font-size: 1rem; }
+      .prose h2 { font-size: 1.1rem; padding-bottom: 0.3rem; border-bottom: 2px solid var(--esco-teal-light); }
+      .prose h3 { font-size: 0.975rem; }
       .prose p { margin-bottom: 0.875rem; font-size: 0.9375rem; }
       .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 0.875rem; }
       .prose li { margin-bottom: 0.25rem; font-size: 0.9375rem; }
-      .prose a { color: var(--accent); text-decoration: underline; }
+      .prose a { color: var(--esco-purple); text-decoration: underline; }
       .prose strong { font-weight: 600; }
-      .prose table {
-        width: 100%; border-collapse: collapse; font-size: 0.875rem;
-        margin-bottom: 1rem;
-      }
-      .prose th {
-        background: var(--sidebar-bg);
-        font-weight: 600;
-        text-align: left;
-        padding: 0.5rem 0.75rem;
-        border: 1px solid var(--border);
-      }
-      .prose td {
-        padding: 0.5rem 0.75rem;
-        border: 1px solid var(--border);
-        vertical-align: top;
-      }
-      /* Placeholder blockquotes in markdown files */
       .prose blockquote {
         background: var(--ph-bg);
         border: 1px solid var(--ph-border);
@@ -287,56 +393,66 @@ const currentPath = Astro.url.pathname;
         padding: 0.875rem 1.1rem;
         margin: 0.5rem 0;
       }
-      .prose blockquote p {
-        color: var(--ph-text);
-        font-size: 0.85rem;
-        margin-bottom: 0;
-      }
-      .prose blockquote strong { color: #78350f; }
+      .prose blockquote p { color: var(--ph-text); font-size: 0.85rem; margin-bottom: 0; }
 
-      /* ── VERDICT BADGE ────────────────────────────── */
+      /* ═══════════════════════════════════════════
+         VERDICT BADGE
+      ══════════════════════════════════════════════ */
       .verdict {
         display: inline-block;
-        padding: 0.25rem 0.75rem;
+        padding: 0.2rem 0.65rem;
         border-radius: 999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.02em;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
       }
-      .verdict.chosen {
-        background: var(--chosen-bg);
-        color: var(--chosen-text);
-      }
-      .verdict.rejected {
-        background: var(--rejected-bg);
-        color: var(--rejected-text);
-      }
+      .verdict.chosen  { background: var(--chosen-bg);   color: var(--chosen-text); }
+      .verdict.rejected { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.85); }
 
-      /* ── RESPONSIVE ───────────────────────────────── */
+      /* ═══════════════════════════════════════════
+         RESPONSIVE
+      ══════════════════════════════════════════════ */
       @media (max-width: 768px) {
-        .sidebar {
-          display: none;
-        }
-        .content-wrap {
-          padding: 2rem 1.25rem 4rem;
-        }
+        .sidebar { display: none; }
+        .page-body { padding: 1.5rem 1.25rem 4rem; }
+        .page-hero { padding: 1.5rem 1.25rem; }
+        .topbar-title .tt-name { font-size: 0.85rem; }
       }
     </style>
   </head>
   <body>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <a class="topbar-logo" href="/">
+        <div class="esco-wordmark">
+          <span class="wm-esco">e<span>S</span>co</span>
+          <svg class="esco-swoosh" viewBox="0 0 52 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 6 C10 2, 22 1, 32 3 C40 4.5, 46 5, 50 3" stroke="oklch(0.7193 0.123 193.41)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div style="width:1px; height:28px; background:rgba(255,255,255,0.15); margin: 0 0.25rem;"></div>
+        <div class="topbar-title">
+          <span class="tt-label">Internal</span>
+          <span class="tt-name">Tech Transformation</span>
+        </div>
+      </a>
+
+      <!-- Right side spacer / could hold breadcrumb later -->
+      <div style="flex:1"></div>
+    </header>
+
+    <!-- DRAFT BANNER -->
     {isDraft && (
       <div class="draft-banner">
-        <strong>Draft in progress</strong> -- this site is being built out section by section. Content will be added shortly.
+        <strong>Draft in progress</strong> -- this site is being built out. Content will continue to be added.
       </div>
     )}
 
+    <!-- BODY -->
     <div class="site">
       <aside class="sidebar">
-        <a class="sidebar-brand" href="/">
-          <span class="brand-top">ESco</span>
-          <span class="brand-sub">Tech Transformation</span>
-        </a>
-
         {nav.map(group => (
           <div class="nav-group">
             {group.label && <span class="nav-group-label">{group.label}</span>}
@@ -359,10 +475,9 @@ const currentPath = Astro.url.pathname;
       </aside>
 
       <div class="content-wrap">
-        <div class="page-content">
-          <slot />
-        </div>
+        <slot />
       </div>
     </div>
+
   </body>
 </html>

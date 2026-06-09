@@ -4,8 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Architecture">
 
-  <h1 class="page-title">Architecture</h1>
-  <p class="page-subtitle">The technical shape of the chosen solution -- the Harbour and Crane pattern, and the CRM-agnostic design that underpins it.</p>
+  <div class="page-hero">
+    <div class="hero-eyebrow">Technical reference</div>
+    <h1 class="page-title">Architecture</h1>
+    <p class="page-subtitle">The technical shape of the chosen solution -- the Harbour and Crane pattern, and the CRM-agnostic design that underpins it.</p>
+  </div>
+
+  <div class="page-body">
 
   <h2 class="section-heading">The CRM-agnostic approach</h2>
   <p>The central objective of the architecture is to ensure ESco is not locked to Myriad, or any single CRM. By making backend systems interchangeable, ESco dramatically reduces vendor lock-in risk. If a new client wants to use their own CRM, or if ESco decides to replace Myriad entirely, the core microservices continue to function without a complete system rebuild.</p>
@@ -66,6 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p><strong>Build or buy for the Crane.</strong> Whether ESco builds the ETL/RTL Crane entirely in-house or procures an external iPaaS platform is still unresolved and sits as an open procurement decision.</p>
   </div>
 
+  </div>
 </BaseLayout>
 
 <style>
