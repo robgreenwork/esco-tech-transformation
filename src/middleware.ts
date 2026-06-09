@@ -6,10 +6,10 @@ const PASSWORD = import.meta.env.AUTH_PASSWORD ?? 'EscoTech2024';
 const REALM = 'Esco Tech Transformation';
 
 export const onRequest = defineMiddleware((context, next) => {
+  // Static builds (GitHub Pages) can't enforce server-side auth — skip entirely
+  if (import.meta.env.PROD) return next();
   // Skip auth in dev if env var opted out (useful for local editing)
-  if (import.meta.env.DEV && import.meta.env.AUTH_BYPASS === 'true') {
-    return next();
-  }
+  if (import.meta.env.AUTH_BYPASS === 'true') return next();
 
   const authHeader = context.request.headers.get('Authorization');
 
