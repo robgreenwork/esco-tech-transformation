@@ -1,6 +1,6 @@
 ---
 // Set to false when the site is ready to publish
-const isDraft = true;
+const isDraft = false;
 
 interface Props {
   title: string;
@@ -82,9 +82,9 @@ const currentPath = Astro.url.pathname;
 
         /* Dimensions */
         --topbar-h:        64px;
-        --banner-h:        36px;
+        --banner-h:        0px;
         --sidebar-w:       248px;
-        --header-h:        calc(var(--topbar-h) + var(--banner-h));
+        --header-h:        var(--topbar-h);
       }
 
       html { font-size: 16px; }
@@ -270,43 +270,20 @@ const currentPath = Astro.url.pathname;
         min-width: 0;
       }
 
-      /* Page hero strip — ESco teal-light band at top of each page */
+      /* Page hero strip — white with teal accent line */
       .page-hero {
-        background: var(--esco-purple);
-        padding: 2rem 4rem 2rem 2.5rem;
+        background: #ffffff;
+        padding: 2.25rem 4rem 1.75rem 2.5rem;
         border-bottom: 3px solid var(--esco-teal);
         position: relative;
-        overflow: hidden;
-      }
-      .page-hero::after {
-        content: '';
-        position: absolute;
-        right: -60px; top: -60px;
-        width: 220px; height: 220px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.04);
-        pointer-events: none;
       }
       .page-hero .hero-eyebrow {
         font-size: 0.65rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        color: var(--esco-teal);
+        color: var(--esco-purple);
         margin-bottom: 0.35rem;
-      }
-      .page-hero .hero-title {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        line-height: 1.2;
-        margin-bottom: 0.4rem;
-      }
-      .page-hero .hero-sub {
-        font-size: 0.875rem;
-        color: rgba(255,255,255,0.65);
-        line-height: 1.5;
-        max-width: 560px;
       }
 
       .page-body {
@@ -318,15 +295,15 @@ const currentPath = Astro.url.pathname;
          TYPOGRAPHY
       ══════════════════════════════════════════════ */
       .page-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: 800;
-        color: #ffffff;
+        color: var(--esco-purple-dark);
         line-height: 1.2;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.5rem;
       }
       .page-subtitle {
         font-size: 0.9rem;
-        color: rgba(255,255,255,0.65);
+        color: var(--text-muted);
         margin-bottom: 0;
         line-height: 1.5;
         display: flex;
@@ -407,8 +384,8 @@ const currentPath = Astro.url.pathname;
         letter-spacing: 0.03em;
         text-transform: uppercase;
       }
-      .verdict.chosen  { background: var(--chosen-bg);   color: var(--chosen-text); }
-      .verdict.rejected { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.85); }
+      .verdict.chosen   { background: var(--chosen-bg);   color: var(--chosen-text); }
+      .verdict.rejected { background: var(--rejected-bg); color: var(--rejected-text); }
 
       /* ═══════════════════════════════════════════
          RESPONSIVE
