@@ -1,19 +1,42 @@
 ---
+// Set to false when the site is ready to publish
+const isDraft = true;
+
 interface Props {
   title: string;
   description?: string;
 }
-const { title, description = 'A four-year programme of digital transformation at ESco.' } = Astro.props;
+const { title, description = 'ESco technology transformation programme handover.' } = Astro.props;
+
 const nav = [
-  { href: '/',                  label: 'Overview' },
-  { href: '/timeline',          label: 'Timeline' },
-  { href: '/phases/discovery',  label: 'Phases' },
-  { href: '/roles',             label: 'Roles' },
-  { href: '/lessons',           label: 'Lessons Learned' },
+  {
+    items: [
+      { href: '/', label: 'Overview' },
+    ],
+  },
+  {
+    label: 'Phases',
+    items: [
+      { href: '/phases/phase-1', label: 'Phase 1 -- Azure / Microsoft' },
+      { href: '/phases/phase-2', label: 'Phase 2 -- Off the shelf' },
+      { href: '/phases/phase-3', label: 'Phase 3 -- Hybrid build and buy' },
+    ],
+  },
+  {
+    items: [
+      { href: '/architecture',   label: 'Architecture' },
+      { href: '/decisions',      label: 'Decisions and Rationale' },
+      { href: '/current-state',  label: 'Current State' },
+      { href: '/reference',      label: 'Reference' },
+    ],
+  },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,226 +44,325 @@ const nav = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <title>{title} | ESco Tech Transformation</title>
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title} -- ESco Tech Transformation</title>
+    <style is:global>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        --purple:        #5E2589;
-        --purple-dark:   #3D1A6E;
-        --purple-light:  #8B4EC4;
-        --purple-tint:   #F3EEF9;
-        --teal:          #3DBFB5;
-        --teal-light:    #B8E8E4;
-        --teal-tint:     #EBF8F7;
-        --pink:          #F07870;
-        --white:         #FFFFFF;
-        --grey-bg:       #F7F5FB;
-        --border:        #E5DDF2;
-        --text:          #1A0A2E;
-        --text-muted:    #6B5E82;
-        --font:          'Poppins', system-ui, sans-serif;
-        --max-w:         1100px;
-        --radius:        16px;
-        --radius-lg:     24px;
+        --font:           'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --bg:             #ffffff;
+        --sidebar-bg:     #f8f9fa;
+        --text:           #1c1917;
+        --text-muted:     #6b7280;
+        --text-faint:     #9ca3af;
+        --border:         #e5e7eb;
+        --accent:         #5b21b6;
+        --accent-light:   #f5f3ff;
+        --banner-bg:      #fef9c3;
+        --banner-border:  #fde047;
+        --banner-text:    #713f12;
+        --ph-bg:          #fefce8;
+        --ph-border:      #fde047;
+        --ph-text:        #854d0e;
+        --chosen-bg:      #dcfce7;
+        --chosen-text:    #14532d;
+        --rejected-bg:    #f1f5f9;
+        --rejected-text:  #475569;
+        --sidebar-w:      244px;
+        --banner-h:       40px;
       }
+
+      html { font-size: 16px; }
 
       body {
         font-family: var(--font);
-        background: var(--white);
+        background: var(--bg);
         color: var(--text);
-        line-height: 1.6;
-        min-height: 100vh;
+        line-height: 1.65;
         -webkit-font-smoothing: antialiased;
       }
 
-      /* ── NAV ── */
-      nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: var(--white);
-        border-bottom: 3px solid var(--pink);
-      }
-      .nav-inner {
-        max-width: var(--max-w);
-        margin: 0 auto;
-        padding: 0 1.5rem;
+      /* ── DRAFT BANNER ─────────────────────────────── */
+      .draft-banner {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--banner-h);
+        background: var(--banner-bg);
+        border-bottom: 1px solid var(--banner-border);
+        color: var(--banner-text);
+        font-size: 0.8rem;
+        font-weight: 500;
         display: flex;
         align-items: center;
-        gap: 2rem;
-        height: 64px;
+        justify-content: center;
+        gap: 0.5rem;
+        z-index: 200;
+        letter-spacing: 0.01em;
       }
-      .nav-brand {
+      .draft-banner strong { font-weight: 700; }
+
+      /* ── LAYOUT ───────────────────────────────────── */
+      .site {
+        display: flex;
+        min-height: 100vh;
+        padding-top: var(--banner-h);
+      }
+
+      /* ── SIDEBAR ──────────────────────────────────── */
+      .sidebar {
+        width: var(--sidebar-w);
+        flex-shrink: 0;
+        position: sticky;
+        top: var(--banner-h);
+        height: calc(100vh - var(--banner-h));
+        overflow-y: auto;
+        background: var(--sidebar-bg);
+        border-right: 1px solid var(--border);
+        padding: 1.5rem 0;
         display: flex;
         flex-direction: column;
-        line-height: 1.1;
+        gap: 0;
+      }
+
+      .sidebar-brand {
+        padding: 0 1.25rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 1rem;
         text-decoration: none;
-        flex-shrink: 0;
       }
-      .nav-brand .brand-esco {
-        font-size: 1.05rem;
-        font-weight: 800;
-        color: var(--purple);
-        letter-spacing: -0.01em;
+      .sidebar-brand .brand-top {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--accent);
+        display: block;
       }
-      .nav-brand .brand-sub {
-        font-size: 0.65rem;
-        font-weight: 600;
-        color: var(--teal);
-        letter-spacing: 0.08em;
+      .sidebar-brand .brand-sub {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--text-muted);
         text-transform: uppercase;
+        letter-spacing: 0.08em;
+        display: block;
+        margin-top: 0.1rem;
       }
-      .nav-links {
-        display: flex;
-        gap: 0.25rem;
-        list-style: none;
-        flex-wrap: wrap;
+
+      .nav-group { margin-bottom: 0.25rem; }
+
+      .nav-group-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-faint);
+        padding: 0.75rem 1.25rem 0.25rem;
+        display: block;
       }
-      .nav-links a {
-        padding: 0.4rem 1rem;
-        border-radius: 999px;
+
+      .nav-list { list-style: none; }
+
+      .nav-list a {
+        display: block;
+        padding: 0.4rem 1.25rem;
+        font-size: 0.875rem;
         color: var(--text-muted);
         text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 500;
-        transition: all 0.15s;
-        white-space: nowrap;
+        border-radius: 0;
+        transition: color 0.1s, background 0.1s;
+        border-left: 2px solid transparent;
       }
-      .nav-links a:hover {
-        background: var(--purple-tint);
-        color: var(--purple);
+      .nav-list a:hover {
+        color: var(--text);
+        background: rgba(0,0,0,0.03);
       }
-      .nav-links a.active {
-        background: var(--purple);
-        color: var(--white);
-      }
-
-      /* ── MAIN ── */
-      main {
-        max-width: var(--max-w);
-        margin: 0 auto;
-        padding: 3rem 1.5rem 6rem;
+      .nav-list a.active {
+        color: var(--accent);
+        font-weight: 600;
+        border-left-color: var(--accent);
+        background: var(--accent-light);
       }
 
-      /* ── FOOTER ── */
-      footer {
-        background: var(--purple-dark);
-        color: rgba(255,255,255,0.6);
-        text-align: center;
-        padding: 2rem 1.5rem;
+      /* Sub-items (phases) */
+      .nav-list.sub a {
+        padding-left: 1.75rem;
         font-size: 0.8rem;
       }
-      footer strong { color: var(--white); }
 
-      /* ── PAGE HEADER ── */
-      .page-header {
-        margin-bottom: 3rem;
-      }
-      .page-header .label {
-        display: inline-block;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--teal);
-        background: var(--teal-tint);
-        padding: 0.3rem 0.8rem;
-        border-radius: 999px;
-        margin-bottom: 1rem;
-      }
-      .page-header h1 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-        font-weight: 800;
-        line-height: 1.15;
-        color: var(--purple-dark);
-        margin-bottom: 1rem;
-      }
-      .page-header p {
-        font-size: 1.05rem;
-        color: var(--text-muted);
-        max-width: 640px;
-        line-height: 1.7;
-      }
-
-      /* ── CARDS ── */
-      .card {
-        background: var(--white);
-        border: 1.5px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 1.75rem;
-        transition: border-color 0.15s, box-shadow 0.15s;
-      }
-      .card:hover { border-color: var(--purple-light); box-shadow: 0 4px 20px rgba(94,37,137,0.08); }
-      .card h2, .card h3 { color: var(--purple-dark); margin-bottom: 0.6rem; font-weight: 700; }
-      .card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
-
-      .grid-2 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.25rem;
-      }
-
-      /* ── PLACEHOLDER NOTICE ── */
-      .placeholder-notice {
-        background: var(--teal-tint);
-        border: 1.5px solid var(--teal-light);
-        border-radius: var(--radius);
-        padding: 0.9rem 1.25rem;
-        font-size: 0.85rem;
-        color: var(--purple);
-        font-weight: 500;
-        margin-bottom: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .placeholder-notice::before { content: '✏️'; }
-
-      /* ── SECTION HEADINGS ── */
-      .section-title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--purple-dark);
-        margin-bottom: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .section-title::after {
-        content: '';
+      /* ── MAIN CONTENT ─────────────────────────────── */
+      .content-wrap {
         flex: 1;
-        height: 2px;
-        background: var(--border);
-        border-radius: 1px;
+        min-width: 0;
+        padding: 3rem 4rem 6rem 3rem;
+      }
+
+      .page-content {
+        max-width: 740px;
+      }
+
+      /* ── TYPOGRAPHY ───────────────────────────────── */
+      .page-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+      .page-subtitle {
+        font-size: 1rem;
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section-heading {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 0.75rem;
+        margin-top: 2.5rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-heading:first-child { margin-top: 0; }
+
+      /* ── PLACEHOLDER CALLOUT ──────────────────────── */
+      .placeholder {
+        background: var(--ph-bg);
+        border: 1px solid var(--ph-border);
+        border-radius: 6px;
+        padding: 0.875rem 1.1rem;
+        font-size: 0.85rem;
+        color: var(--ph-text);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .placeholder::before {
+        content: '📋';
+        flex-shrink: 0;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+      .placeholder strong { color: #78350f; font-weight: 600; }
+
+      /* ── PROSE (rendered markdown) ────────────────── */
+      .prose h1, .prose h2, .prose h3, .prose h4 {
+        font-weight: 600;
+        line-height: 1.3;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+      }
+      .prose h1 { font-size: 1.5rem; }
+      .prose h2 { font-size: 1.2rem; }
+      .prose h3 { font-size: 1rem; }
+      .prose p { margin-bottom: 0.875rem; font-size: 0.9375rem; }
+      .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 0.875rem; }
+      .prose li { margin-bottom: 0.25rem; font-size: 0.9375rem; }
+      .prose a { color: var(--accent); text-decoration: underline; }
+      .prose strong { font-weight: 600; }
+      .prose table {
+        width: 100%; border-collapse: collapse; font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+      .prose th {
+        background: var(--sidebar-bg);
+        font-weight: 600;
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+      }
+      .prose td {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+        vertical-align: top;
+      }
+      /* Placeholder blockquotes in markdown files */
+      .prose blockquote {
+        background: var(--ph-bg);
+        border: 1px solid var(--ph-border);
+        border-left: 4px solid var(--ph-border);
+        border-radius: 0 6px 6px 0;
+        padding: 0.875rem 1.1rem;
+        margin: 0.5rem 0;
+      }
+      .prose blockquote p {
+        color: var(--ph-text);
+        font-size: 0.85rem;
+        margin-bottom: 0;
+      }
+      .prose blockquote strong { color: #78350f; }
+
+      /* ── VERDICT BADGE ────────────────────────────── */
+      .verdict {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .verdict.chosen {
+        background: var(--chosen-bg);
+        color: var(--chosen-text);
+      }
+      .verdict.rejected {
+        background: var(--rejected-bg);
+        color: var(--rejected-text);
+      }
+
+      /* ── RESPONSIVE ───────────────────────────────── */
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+        .content-wrap {
+          padding: 2rem 1.25rem 4rem;
+        }
       }
     </style>
   </head>
   <body>
-    <nav>
-      <div class="nav-inner">
-        <a class="nav-brand" href="/">
-          <span class="brand-esco">ESco</span>
+    {isDraft && (
+      <div class="draft-banner">
+        <strong>Draft in progress</strong> -- this site is being built out section by section. Content will be added shortly.
+      </div>
+    )}
+
+    <div class="site">
+      <aside class="sidebar">
+        <a class="sidebar-brand" href="/">
+          <span class="brand-top">ESco</span>
           <span class="brand-sub">Tech Transformation</span>
         </a>
-        <ul class="nav-links">
-          {nav.map(({ href, label }) => {
-            const isActive = href === '/'
-              ? Astro.url.pathname === '/'
-              : Astro.url.pathname.startsWith(href);
-            return (
-              <li><a href={href} class={isActive ? 'active' : ''}>{label}</a></li>
-            );
-          })}
-        </ul>
+
+        {nav.map(group => (
+          <div class="nav-group">
+            {group.label && <span class="nav-group-label">{group.label}</span>}
+            <ul class={`nav-list${group.label ? ' sub' : ''}`}>
+              {group.items.map(item => {
+                const isActive = item.href === '/'
+                  ? currentPath === '/'
+                  : currentPath.startsWith(item.href);
+                return (
+                  <li>
+                    <a href={item.href} class={isActive ? 'active' : ''}>
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </aside>
+
+      <div class="content-wrap">
+        <div class="page-content">
+          <slot />
+        </div>
       </div>
-    </nav>
-    <main>
-      <slot />
-    </main>
-    <footer>
-      <p><strong>ESco Tech Transformation</strong> &nbsp;·&nbsp; 2020–2024 &nbsp;·&nbsp; Rob Green</p>
-    </footer>
+    </div>
   </body>
 </html>
