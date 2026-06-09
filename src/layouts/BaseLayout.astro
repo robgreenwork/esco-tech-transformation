@@ -81,7 +81,8 @@ const currentPath = Astro.url.pathname;
         --rejected-text:   #475569;
 
         /* Dimensions */
-        --topbar-h:        64px;
+        --topbar-h:        88px;
+        --coral:           #f08a6e;
         --banner-h:        0px;
         --sidebar-w:       248px;
         --header-h:        var(--topbar-h);
@@ -98,81 +99,42 @@ const currentPath = Astro.url.pathname;
       }
 
       /* ═══════════════════════════════════════════
-         TOP BAR  —  full-width ESco-branded header
+         TOP BAR  —  white, brand wordmark, coral line
       ══════════════════════════════════════════════ */
       .topbar {
         position: fixed;
         top: 0; left: 0; right: 0;
         height: var(--topbar-h);
-        background: var(--esco-purple);
+        background: #ffffff;
+        border-bottom: 3px solid var(--coral);
         display: flex;
         align-items: center;
-        padding: 0 1.5rem 0 0;
+        padding: 0 2.5rem;
         z-index: 300;
-        gap: 0;
       }
 
-      /* Sidebar-width logo block */
       .topbar-logo {
-        width: var(--sidebar-w);
-        flex-shrink: 0;
         display: flex;
-        align-items: center;
-        padding: 0 1.25rem;
-        height: 100%;
+        flex-direction: column;
+        align-items: flex-start;
         text-decoration: none;
-        border-right: 1px solid rgba(255,255,255,0.12);
-        gap: 0.75rem;
-      }
-
-      /* SVG wordmark */
-      .esco-wordmark {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
         line-height: 1;
+        gap: 0.4rem;
       }
-      .esco-wordmark .wm-esco {
-        font-size: 1.5rem;
+      .topbar-logo .tl-name {
+        font-size: 1.6rem;
         font-weight: 800;
-        color: #ffffff;
-        letter-spacing: -0.03em;
+        color: var(--esco-purple);
+        letter-spacing: -0.01em;
         line-height: 1;
       }
-      .esco-wordmark .wm-esco span {
-        color: var(--esco-teal);
-      }
-      /* Teal swoosh underline */
-      .esco-swoosh {
-        display: block;
-        width: 48px;
-        height: 6px;
-        margin-top: 2px;
-        overflow: visible;
-      }
-
-      /* Right side of topbar: programme title */
-      .topbar-title {
-        flex: 1;
-        padding-left: 1.75rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .topbar-title .tt-label {
-        font-size: 0.65rem;
+      .topbar-logo .tl-sub {
+        font-size: 0.7rem;
         font-weight: 700;
+        color: var(--esco-teal);
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--esco-teal);
         line-height: 1;
-        margin-bottom: 0.2rem;
-      }
-      .topbar-title .tt-name {
-        font-size: 0.975rem;
-        font-weight: 700;
-        color: #ffffff;
-        line-height: 1.2;
       }
 
       /* ═══════════════════════════════════════════
@@ -403,21 +365,9 @@ const currentPath = Astro.url.pathname;
     <!-- TOP BAR -->
     <header class="topbar">
       <a class="topbar-logo" href="/">
-        <div class="esco-wordmark">
-          <span class="wm-esco">e<span>S</span>co</span>
-          <svg class="esco-swoosh" viewBox="0 0 52 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M2 6 C10 2, 22 1, 32 3 C40 4.5, 46 5, 50 3" stroke="oklch(0.7193 0.123 193.41)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          </svg>
-        </div>
-        <div style="width:1px; height:28px; background:rgba(255,255,255,0.15); margin: 0 0.25rem;"></div>
-        <div class="topbar-title">
-          <span class="tt-label">Internal</span>
-          <span class="tt-name">Tech Transformation</span>
-        </div>
+        <span class="tl-name">ESco</span>
+        <span class="tl-sub">Tech Transformation</span>
       </a>
-
-      <!-- Right side spacer / could hold breadcrumb later -->
-      <div style="flex:1"></div>
     </header>
 
     <!-- DRAFT BANNER -->
