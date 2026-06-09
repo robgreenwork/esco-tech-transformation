@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Overview">
+  <div class="page-header">
+    <div class="label">2020 – 2024</div>
+    <h1>Esco Tech Transformation</h1>
+    <p>
+      A four-year programme to modernise the technology, processes, and culture
+      at Esco — from the original mandate through to delivery and lessons learned.
+    </p>
+  </div>
+
+  <div class="placeholder-notice">
+    Content coming soon — this site is being built out. Each section below will be populated with the full programme detail.
+  </div>
+
+  <!-- Mission / original mandate -->
+  <section style="margin-bottom: 3rem;">
+    <h2 style="margin-bottom: 1.25rem; font-size: 1.4rem;">The Original Mandate</h2>
+    <div class="card">
+      <p>
+        <em>[Placeholder — add the key goals from your original slide deck here: what you committed to deliver, the problem statement, the scope, and the success criteria.]</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- Quick-nav cards -->
+  <section>
+    <h2 style="margin-bottom: 1.25rem; font-size: 1.4rem;">Explore the Programme</h2>
+    <div class="grid-2">
+      <a href="/timeline" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
+        <h3>Timeline</h3>
+        <p>A chronological view of the programme — key milestones, decisions, and pivots from start to finish.</p>
+      </a>
+      <a href="/phases/discovery" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
+        <h3>Phases</h3>
+        <p>Deep-dives into each phase: objectives, what was delivered, what changed, and what came next.</p>
+      </a>
+      <a href="/roles" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
+        <h3>Roles &amp; Responsibilities</h3>
+        <p>Who was involved, what each person or team owned, and how the structure evolved over time.</p>
+      </a>
+      <a href="/lessons" class="card" style="text-decoration:none; display:block; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#4f8ef7'" onmouseout="this.style.borderColor='#2a2d3a'">
+        <h3>Lessons Learned</h3>
+        <p>Honest reflections on what worked, what didn't, and what you'd do differently.</p>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

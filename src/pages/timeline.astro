@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Timeline" description="Chronological record of the Esco Tech Transformation programme.">
+  <div class="page-header">
+    <div class="label">Programme Timeline</div>
+    <h1>What Happened &amp; When</h1>
+    <p>A chronological record of the programme — key milestones, decisions, pivots, and moments that defined the journey.</p>
+  </div>
+
+  <div class="placeholder-notice">
+    Add your timeline events below. Each item follows the same structure: date, title, description, and optional phase tag.
+  </div>
+
+  <div class="timeline">
+    <!-- EXAMPLE EVENTS — replace with real content -->
+    <div class="event">
+      <div class="event-date">Q1 2020</div>
+      <div class="event-body">
+        <div class="event-tag">Discovery</div>
+        <h3>Programme kick-off</h3>
+        <p>[Placeholder — describe what happened, the context, and why it mattered.]</p>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-date">Q3 2020</div>
+      <div class="event-body">
+        <div class="event-tag">Foundation</div>
+        <h3>First milestone</h3>
+        <p>[Placeholder]</p>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-date">2021</div>
+      <div class="event-body">
+        <div class="event-tag">Delivery</div>
+        <h3>Major delivery</h3>
+        <p>[Placeholder]</p>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-date">2022</div>
+      <div class="event-body">
+        <div class="event-tag">Scale</div>
+        <h3>Scaling &amp; change</h3>
+        <p>[Placeholder]</p>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-date">2023–2024</div>
+      <div class="event-body">
+        <div class="event-tag">Close</div>
+        <h3>Programme close</h3>
+        <p>[Placeholder]</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 1rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--c-border);
+  }
+  .event {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .event::before {
+    content: '';
+    position: absolute;
+    left: -1.4rem;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    border: 2px solid var(--c-bg);
+  }
+  .event-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--c-muted);
+    padding-top: 0.1rem;
+    text-align: right;
+  }
+  .event-body { }
+  .event-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    background: var(--c-accent-dim);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  .event-body h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  .event-body p {
+    color: var(--c-muted);
+    font-size: 0.9rem;
+  }
+</style>

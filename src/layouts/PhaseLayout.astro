@@ -1,0 +1,70 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  phase: string;
+  description?: string;
+}
+
+const { title, phase, description } = Astro.props;
+
+const phases = [
+  { slug: 'discovery', label: 'Discovery' },
+  { slug: 'foundation', label: 'Foundation' },
+  { slug: 'delivery', label: 'Delivery' },
+  { slug: 'scale', label: 'Scale & Embed' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page-header">
+    <div class="label">Phase</div>
+    <h1>{title}</h1>
+    {description && <p>{description}</p>}
+  </div>
+
+  <!-- Phase sub-nav -->
+  <nav class="phase-nav" aria-label="Phases">
+    {phases.map(p => (
+      <a
+        href={`/phases/${p.slug}`}
+        class={Astro.url.pathname === `/phases/${p.slug}` ? 'active' : ''}
+      >
+        {p.label}
+      </a>
+    ))}
+  </nav>
+
+  <slot />
+</BaseLayout>
+
+<style>
+  .phase-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--c-border);
+  }
+  .phase-nav a {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--c-border);
+    color: var(--c-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.15s;
+  }
+  .phase-nav a:hover {
+    border-color: var(--c-accent);
+    color: var(--c-text);
+  }
+  .phase-nav a.active {
+    border-color: var(--c-accent);
+    background: var(--c-accent-dim);
+    color: var(--c-accent);
+    font-weight: 600;
+  }
+</style>

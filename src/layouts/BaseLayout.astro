@@ -1,0 +1,175 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Esco Tech Transformation — a four-year programme of digital change.' } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title} | Esco Tech Transformation</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --c-bg: #0f1117;
+        --c-surface: #1a1d27;
+        --c-border: #2a2d3a;
+        --c-accent: #4f8ef7;
+        --c-accent-dim: #2a4a8a;
+        --c-text: #e2e8f0;
+        --c-muted: #8892a4;
+        --font: 'Inter', system-ui, sans-serif;
+        --max-w: 1100px;
+      }
+
+      body {
+        font-family: var(--font);
+        background: var(--c-bg);
+        color: var(--c-text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15,17,23,0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--c-border);
+      }
+      .nav-inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        height: 56px;
+      }
+      .nav-brand {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--c-text);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .nav-links {
+        display: flex;
+        gap: 0.25rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+        color: var(--c-muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.15s, background 0.15s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--c-text);
+        background: var(--c-surface);
+      }
+      .nav-links a.active {
+        color: var(--c-accent);
+      }
+
+      /* MAIN */
+      main {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 3rem 1.5rem 6rem;
+      }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--c-border);
+        text-align: center;
+        padding: 2rem 1.5rem;
+        color: var(--c-muted);
+        font-size: 0.8rem;
+      }
+
+      /* SHARED COMPONENTS */
+      .page-header {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--c-border);
+      }
+      .page-header .label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--c-accent);
+        margin-bottom: 0.75rem;
+      }
+      .page-header h1 {
+        font-size: clamp(1.75rem, 4vw, 2.75rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+      .page-header p {
+        font-size: 1.1rem;
+        color: var(--c-muted);
+        max-width: 680px;
+      }
+
+      .card {
+        background: var(--c-surface);
+        border: 1px solid var(--c-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+      .card h2, .card h3 { margin-bottom: 0.75rem; }
+      .card p { color: var(--c-muted); font-size: 0.95rem; }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.25rem;
+      }
+
+      .placeholder-notice {
+        background: var(--c-accent-dim);
+        border: 1px solid var(--c-accent);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        font-size: 0.875rem;
+        color: var(--c-accent);
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-inner">
+        <a class="nav-brand" href="/">Esco Tech Transformation</a>
+        <ul class="nav-links">
+          <li><a href="/" class={Astro.url.pathname === '/' ? 'active' : ''}>Overview</a></li>
+          <li><a href="/timeline" class={Astro.url.pathname.startsWith('/timeline') ? 'active' : ''}>Timeline</a></li>
+          <li><a href="/phases/discovery" class={Astro.url.pathname.startsWith('/phases') ? 'active' : ''}>Phases</a></li>
+          <li><a href="/roles" class={Astro.url.pathname.startsWith('/roles') ? 'active' : ''}>Roles</a></li>
+          <li><a href="/lessons" class={Astro.url.pathname.startsWith('/lessons') ? 'active' : ''}>Lessons Learned</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>Esco Tech Transformation &mdash; 2020–2024 &mdash; Rob Green</p>
+    </footer>
+  </body>
+</html>

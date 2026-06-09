@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Lessons Learned" description="Honest reflections on what worked, what didn't, and what we'd do differently.">
+  <div class="page-header">
+    <div class="label">Reflections</div>
+    <h1>Lessons Learned</h1>
+    <p>An honest account of what worked, what didn't, and what we'd approach differently if starting again.</p>
+  </div>
+
+  <div class="placeholder-notice">
+    Add your reflections below. Group by theme, by phase, or however feels most natural. These are often the most valuable pages for anyone reading this site.
+  </div>
+
+  <div class="lessons">
+    <div class="lesson">
+      <div class="lesson-type worked">What Worked</div>
+      <h3>[Placeholder]</h3>
+      <p>[Describe what worked well and why you think it did.]</p>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-type didnt">What Didn't Work</div>
+      <h3>[Placeholder]</h3>
+      <p>[Describe what fell short and the root cause — structural, political, technical?]</p>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-type different">Do Differently</div>
+      <h3>[Placeholder]</h3>
+      <p>[What would you change if you were starting this programme today?]</p>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-type surprise">Unexpected</div>
+      <h3>[Placeholder]</h3>
+      <p>[Something that surprised you — positively or negatively — that you didn't anticipate.]</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .lessons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .lesson {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--c-border);
+  }
+  .lesson-type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .worked { color: #4ade80; }
+  .lesson:has(.worked) { border-left-color: #4ade80; }
+  .didnt { color: #f87171; }
+  .lesson:has(.didnt) { border-left-color: #f87171; }
+  .different { color: #fb923c; }
+  .lesson:has(.different) { border-left-color: #fb923c; }
+  .surprise { color: #a78bfa; }
+  .lesson:has(.surprise) { border-left-color: #a78bfa; }
+  .lesson h3 { margin-bottom: 0.4rem; }
+  .lesson p { color: var(--c-muted); font-size: 0.9rem; }
+</style>
