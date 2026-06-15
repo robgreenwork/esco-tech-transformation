@@ -1,0 +1,1 @@
+We found that using a document database like MongoDB as a high-throughput processing queue introduces potential operational complexity. External consultants flagged this as a risk, noting Mongo is not naturally optimised for queueing semantics.

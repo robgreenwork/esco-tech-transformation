@@ -30,15 +30,6 @@ collections:
             name: body
             widget: markdown
 
-      - name: intro
-        label: "Three phases intro line"
-        file: "src/content/sections/home-intro.md"
-        format: frontmatter
-        fields:
-          - label: "Content"
-            name: body
-            widget: markdown
-
       - name: phase4
         label: "Phase 4 notice box"
         file: "src/content/sections/home-phase4-note.md"
@@ -158,6 +149,41 @@ collections:
       - name: documents
         label: "Key supporting documents"
         file: "src/content/sections/phase-3-documents.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+  # ───────────────────────────────────────────────
+  - name: phase-4
+    label: "Phase 4"
+    files:
+      - name: hypothesis
+        label: "Hypothesis"
+        file: "src/content/sections/phase-4-hypothesis.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: explored
+        label: "What we explored"
+        file: "src/content/sections/phase-4-explored.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: found
+        label: "What we found"
+        file: "src/content/sections/phase-4-found.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: decision
+        label: "Decision and reasoning"
+        file: "src/content/sections/phase-4-decision.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: documents
+        label: "Key supporting documents"
+        file: "src/content/sections/phase-4-documents.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }

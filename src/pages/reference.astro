@@ -8,14 +8,14 @@ const people = [
   { name: 'Alistair Wood',     role: 'Lead, Phase 2 software benchmarking',         detail: '' },
   { name: 'Greg Viney',        role: 'IT Development Team',                         detail: 'Building the architecture and proof of concepts.' },
   { name: 'Darren Laplain',    role: 'IT Development Team',                         detail: 'Building the architecture and proof of concepts.' },
-  { name: 'Ed Caswell',        role: 'Tech Lead -- AI implementation',              detail: 'Responsible for Aimee development.' },
+  { name: 'Ed Caswell',        role: 'Tech Lead, AI implementation',              detail: 'Responsible for Aimee development.' },
   { name: 'Ivan Teage',        role: 'External Solution Architect (Harmonication)', detail: 'Advising on conceptual architecture.' },
   { name: 'James McBurnie',    role: 'External Technical Architect (Async Jam)',    detail: 'Advising on practical tech implementation and cloud deployment.' },
 ];
 
 const tools = [
   { name: 'Myriad',              desc: 'ESco\'s legacy, on-premises core subscription management database. The system this programme is designed to reduce dependency on.' },
-  { name: 'MongoDB',             desc: 'A NoSQL document database used for the Harbour -- initially as a data warehouse (Phase 3), then as a process queue system (Phase 4).' },
+  { name: 'MongoDB',             desc: 'A NoSQL document database used for the Harbour, initially as a data warehouse (Phase 3), then as a process queue system (Phase 4).' },
   { name: 'Google Cloud Platform (GCP)', desc: 'The cloud infrastructure provider hosting the new architecture, API endpoints, and AI services.' },
   { name: 'Microsoft Azure',     desc: 'Microsoft\'s cloud platform. Evaluated during Phase 1 for a full infrastructure migration. Rejected.' },
   { name: 'Aimee',               desc: 'An agentic AI chatbot for the ESco client portal, enabling self-service tasks such as promotion code creation.' },
@@ -30,7 +30,7 @@ const glossary = [
   { term: 'SCV (Single Customer View)', def: 'A consolidated, 360-degree view of all data held about a single customer, gathered from multiple different systems. The initial use case for the Phase 3 architecture.' },
   { term: 'CRM agnostic', def: 'An architectural approach in which no core system is permanently dependent on a specific CRM platform, allowing the CRM layer to be swapped without rebuilding everything around it.' },
   { term: 'iPaaS', def: 'Integration Platform as a Service. Cloud-based tools that connect different software applications. ESco is evaluating whether to procure one to replace or supplement the in-house Crane.' },
-  { term: 'Webhook', def: 'An automated, event-driven message sent from one system to another in real time when a specific action occurs -- for example, when a customer updates their subscription. Replaces the older approach of scheduled polling.' },
+  { term: 'Webhook', def: 'An automated, event-driven message sent from one system to another in real time when a specific action occurs, for example, when a customer updates their subscription. Replaces the older approach of scheduled polling.' },
   { term: 'Microservice', def: 'A small, independent software service that does one specific thing (such as fulfilment, document generation, or AI responses). Designed to be replaceable without affecting other services.' },
   { term: 'Proof of concept (PoC)', def: 'A narrow, focused build to test whether a technical approach works in principle, before committing to full-scale development.' },
 ];
@@ -52,7 +52,7 @@ const glossary = [
       <div class="person-row">
         <div class="person-name">{p.name}</div>
         <div class="person-role">
-          {p.role}{p.detail ? ` -- ${p.detail}` : ''}
+          {p.role}{p.detail ? `, ${p.detail}` : ''}
         </div>
       </div>
     ))}

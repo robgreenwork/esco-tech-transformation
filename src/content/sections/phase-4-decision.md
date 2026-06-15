@@ -1,0 +1,1 @@
+We decided to proceed with building the narrow proof of concept using our current tools (including Mongo) despite the external advisors' warnings. The reasoning was to maintain momentum and deliver the interval quickly; we accepted the risk, acknowledging that the underlying tools can be swapped out or formally procured later.

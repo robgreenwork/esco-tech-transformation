@@ -1,0 +1,1 @@
+We pivoted the architecture to handle real-time, bi-directional data flow using webhooks instead of just batch processing. We shifted the use of MongoDB from a static data warehouse to a "Process Queue System". We are currently building a narrow proof of concept using two microservices (Books/Backs and Comm Docs) as test cases.

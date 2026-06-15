@@ -1,3 +1,3 @@
-- **Phase 4 narrow proof of concept** -- delivery of the Books/Backs and Comm Docs microservices as test cases for the expanded Harbour and Crane architecture.
-- **Microservices Audit** -- a review of all existing microservices to decide whether to keep, improve, rebuild, buy, or retire each one.
-- **Aimee AI chatbot** -- development of an agentic AI chatbot for the client portal, enabling self-service promo code creation and other subscriber service tasks.
+- **Phase 4 narrow proof of concept**, delivery of the Books/Backs and Comm Docs microservices as test cases for the expanded Harbour and Crane architecture.
+- **Microservices Audit**, a review of all existing microservices to decide whether to keep, improve, rebuild, buy, or retire each one.
+- **Aimee AI chatbot**, development of an agentic AI chatbot for the client portal, enabling self-service promo code creation and other subscriber service tasks.

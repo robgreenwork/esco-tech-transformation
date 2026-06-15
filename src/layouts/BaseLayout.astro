@@ -17,9 +17,10 @@ const nav = [
   {
     label: 'Phases',
     items: [
-      { href: '/phases/phase-1', label: 'Phase 1 -- Azure / Microsoft' },
-      { href: '/phases/phase-2', label: 'Phase 2 -- Off the shelf' },
-      { href: '/phases/phase-3', label: 'Phase 3 -- Hybrid build and buy' },
+      { href: '/phases/phase-1', label: 'Phase 1: Azure / Microsoft' },
+      { href: '/phases/phase-2', label: 'Phase 2: Off the shelf' },
+      { href: '/phases/phase-3', label: 'Phase 3: Hybrid build and buy' },
+      { href: '/phases/phase-4', label: 'Phase 4: CRM agnostic core' },
     ],
   },
   {
@@ -45,7 +46,7 @@ const currentPath = Astro.url.pathname;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <title>{title} -- ESco Tech Transformation</title>
+    <title>{title} | ESco Tech Transformation</title>
 
     <!-- Password gate (client-side, casual protection only) -->
     <script is:inline>
@@ -403,6 +404,7 @@ const currentPath = Astro.url.pathname;
       }
       .verdict.chosen   { background: var(--chosen-bg);   color: var(--chosen-text); }
       .verdict.rejected { background: var(--rejected-bg); color: var(--rejected-text); }
+      .verdict.underway { background: #dbeafe;            color: #1e3a8a; }
 
       /* ═══════════════════════════════════════════
          RESPONSIVE
@@ -428,7 +430,7 @@ const currentPath = Astro.url.pathname;
     <!-- DRAFT BANNER -->
     {isDraft && (
       <div class="draft-banner">
-        <strong>Draft in progress</strong> -- this site is being built out. Content will continue to be added.
+        <strong>Draft in progress</strong>, this site is being built out. Content will continue to be added.
       </div>
     )}
 
