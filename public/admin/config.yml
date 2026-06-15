@@ -190,7 +190,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: architecture
-    label: "Architecture"
+    label: "Target Architecture"
     files:
       - name: crm-agnostic
         label: "The CRM-agnostic approach"
