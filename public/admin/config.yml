@@ -30,6 +30,20 @@ collections:
             name: body
             widget: markdown
 
+      - name: decisions-intro
+        label: "Key decisions: intro"
+        file: "src/content/sections/decisions-intro.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+      - name: decisions-patterns
+        label: "Patterns across the programme"
+        file: "src/content/sections/decisions-patterns.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
       - name: howtouse
         label: "How to use this site"
         file: "src/content/sections/home-how-to-use.md"
@@ -244,23 +258,6 @@ collections:
       - name: overview
         label: "Overview"
         file: "src/content/sections/architecture-overview.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-
-  # ───────────────────────────────────────────────
-  - name: decisions
-    label: "Decisions and Rationale"
-    files:
-      - name: intro
-        label: "Intro"
-        file: "src/content/sections/decisions-intro.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: patterns
-        label: "Patterns across the programme"
-        file: "src/content/sections/decisions-patterns.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
