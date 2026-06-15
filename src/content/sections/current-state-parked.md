@@ -1,0 +1,4 @@
+---
+---
+- **Single Customer View as a standalone product** -- full-scale development halted due to weak market demand. The underlying architecture it validated is being reused for Phase 4.
+- **Full cloud migration of legacy on-premises servers** -- delayed until non-Myriad dependencies are detangled through Phase 4.

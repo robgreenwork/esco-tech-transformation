@@ -1,0 +1,105 @@
+backend:
+  name: github
+  repo: robgreenwork/esco-tech-transformation
+  branch: main
+  base_url: https://escotech-cms-auth.robgreen-work.workers.dev
+  auth_endpoint: auth
+
+site_url: https://escotech.robgreen.work
+display_url: https://escotech.robgreen.work
+logo_url: https://escotech.robgreen.work/favicon.svg
+
+media_folder: "site/public/uploads"
+public_folder: "/uploads"
+
+# Use raw markdown only (no rich text) so what you type is what gets saved
+editor:
+  preview: false
+
+collections:
+  # ───────────────────────────────────────────────
+  - name: home
+    label: "Home page"
+    label_singular: "Home section"
+    files:
+      - name: about
+        label: "About this programme"
+        file: "site/src/content/sections/home-about.md"
+        fields:
+          - { name: body, label: "Content", widget: markdown }
+      - name: intro
+        label: "Three phases intro line"
+        file: "site/src/content/sections/home-intro.md"
+        fields:
+          - { name: body, label: "Content", widget: markdown }
+      - name: phase4
+        label: "Phase 4 notice box"
+        file: "site/src/content/sections/home-phase4-note.md"
+        fields:
+          - { name: body, label: "Content", widget: markdown }
+      - name: howtouse
+        label: "How to use this site"
+        file: "site/src/content/sections/home-how-to-use.md"
+        fields:
+          - { name: body, label: "Content", widget: markdown }
+
+  # ───────────────────────────────────────────────
+  - name: phase-1
+    label: "Phase 1"
+    files:
+      - { name: hypothesis, label: "Hypothesis", file: "site/src/content/sections/phase-1-hypothesis.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: explored,   label: "What we explored", file: "site/src/content/sections/phase-1-explored.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: found,      label: "What we found", file: "site/src/content/sections/phase-1-found.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: decision,   label: "Decision and reasoning", file: "site/src/content/sections/phase-1-decision.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: documents,  label: "Key supporting documents", file: "site/src/content/sections/phase-1-documents.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+
+  # ───────────────────────────────────────────────
+  - name: phase-2
+    label: "Phase 2"
+    files:
+      - { name: hypothesis, label: "Hypothesis", file: "site/src/content/sections/phase-2-hypothesis.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: explored,   label: "What we explored", file: "site/src/content/sections/phase-2-explored.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: found,      label: "What we found", file: "site/src/content/sections/phase-2-found.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: decision,   label: "Decision and reasoning", file: "site/src/content/sections/phase-2-decision.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: documents,  label: "Key supporting documents", file: "site/src/content/sections/phase-2-documents.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+
+  # ───────────────────────────────────────────────
+  - name: phase-3
+    label: "Phase 3"
+    files:
+      - { name: hypothesis, label: "Hypothesis", file: "site/src/content/sections/phase-3-hypothesis.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: explored,   label: "What we explored", file: "site/src/content/sections/phase-3-explored.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: found,      label: "What we found", file: "site/src/content/sections/phase-3-found.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: decision,   label: "Decision and reasoning", file: "site/src/content/sections/phase-3-decision.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: documents,  label: "Key supporting documents", file: "site/src/content/sections/phase-3-documents.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+
+  # ───────────────────────────────────────────────
+  - name: architecture
+    label: "Architecture"
+    files:
+      - { name: crm-agnostic,      label: "The CRM-agnostic approach", file: "site/src/content/sections/architecture-crm-agnostic.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: data-flow,         label: "How data flows", file: "site/src/content/sections/architecture-data-flow.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: integration-layer, label: "Integration layer", file: "site/src/content/sections/architecture-integration-layer.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: principles,        label: "Design principles", file: "site/src/content/sections/architecture-principles.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: risk-mongo,        label: "Risk: MongoDB as queue", file: "site/src/content/sections/architecture-risk-mongo.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: risk-crane,        label: "Risk: Build vs buy Crane", file: "site/src/content/sections/architecture-risk-crane.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+
+  # ───────────────────────────────────────────────
+  - name: decisions
+    label: "Decisions and Rationale"
+    files:
+      - { name: intro,    label: "Intro",    file: "site/src/content/sections/decisions-intro.md",    fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: patterns, label: "Patterns across the programme", file: "site/src/content/sections/decisions-patterns.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+
+  # ───────────────────────────────────────────────
+  - name: current-state
+    label: "Current State"
+    files:
+      - { name: complete,        label: "What is complete", file: "site/src/content/sections/current-state-complete.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: in-progress,     label: "What is in progress", file: "site/src/content/sections/current-state-in-progress.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: parked,          label: "What has been parked", file: "site/src/content/sections/current-state-parked.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: risk-mongo,      label: "Risk: MongoDB", file: "site/src/content/sections/current-state-risk-mongo.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: risk-crane,      label: "Risk: Build vs buy Crane", file: "site/src/content/sections/current-state-risk-crane.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: risk-intermedia, label: "Risk: Intermedia roadmap", file: "site/src/content/sections/current-state-risk-intermedia.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: risk-aimee,      label: "Risk: Aimee deployment", file: "site/src/content/sections/current-state-risk-aimee.md", fields: [{ name: body, label: "Content", widget: markdown }] }
+      - { name: handover,        label: "Handover notes", file: "site/src/content/sections/current-state-handover.md", fields: [{ name: body, label: "Content", widget: markdown }] }

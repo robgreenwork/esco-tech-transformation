@@ -1,0 +1,3 @@
+---
+---
+The integration layer relies on an ESco API and webhooks. Webhooks allow the architecture to respond to real-time events in the CRM rather than batch-processing data on a schedule. This is a significant shift from how ESco systems historically operated and is central to making the architecture scalable and responsive.

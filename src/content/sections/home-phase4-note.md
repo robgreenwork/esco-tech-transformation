@@ -1,0 +1,3 @@
+---
+---
+**Note: Phase 4 is underway.** In July 2025, following weak market demand for the Single Customer View product and the Intermedia acquisition of Gordon and Gotch, the programme pivoted into Phase 4 -- expanding the new architecture to cover the core Subscriptions, Memberships, and Charities business. See [Current State](/current-state) for details.

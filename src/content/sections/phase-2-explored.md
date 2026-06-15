@@ -1,0 +1,3 @@
+---
+---
+We conducted a light-touch market research exercise, benchmarking five alternative software vendors -- including Pelcro, Affino, AdvantageCS, and ChargeBee -- and obtaining quotes. We also ran cross-departmental SWOT analyses on Myriad and interviewed other publishers about their experiences with alternative systems.

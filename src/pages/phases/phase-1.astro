@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Content as Hypothesis } from '../../content/sections/phase-1-hypothesis.md';
+import { Content as Explored }   from '../../content/sections/phase-1-explored.md';
+import { Content as Found }      from '../../content/sections/phase-1-found.md';
+import { Content as Decision }   from '../../content/sections/phase-1-decision.md';
+import { Content as Documents }  from '../../content/sections/phase-1-documents.md';
 ---
 
 <BaseLayout title="Phase 1 -- Azure and the Microsoft stack">
@@ -13,23 +18,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <div class="page-body">
 
   <h2 class="section-heading">Hypothesis</h2>
-  <p>Could we build new infrastructure on Azure and the Microsoft stack? The phase tested the viability of moving to the cloud by trialling the move on an independent process.</p>
+  <div class="prose"><Hypothesis /></div>
 
   <h2 class="section-heading">What we explored</h2>
-  <p>We investigated the "all-in with Microsoft" option. This included restoring the Myriad database to an Azure database using the migration assistant to test compatibility, and exploring Azure Storage, Data Factory pipelines, and SQL Managed Instances.</p>
+  <div class="prose"><Explored /></div>
 
   <h2 class="section-heading">What we found</h2>
-  <p>Moving entirely to Microsoft Dynamics 365 and the Power Platform would cause significant disruption and require rebuilding the team's knowledge from scratch. More critically, the Myriad database had missing indexes and primary keys, causing data integrity issues in Azure -- a fundamental compatibility blocker.</p>
+  <div class="prose"><Found /></div>
 
   <h2 class="section-heading">Decision and reasoning</h2>
-  <p>We discounted the wholesale Microsoft cloud migration. The costs were too high, and the timeframe was unrealistic given the requirement to simultaneously run business as usual. The legacy database issues compounded the problem -- this was not a path we could realistically take without a complete rebuild of Myriad itself.</p>
+  <div class="prose"><Decision /></div>
 
   <h2 class="section-heading">Key supporting documents</h2>
-  <ul class="doc-list">
-    <li>2022 ESco Architectural Review V4.pdf</li>
-    <li>Phase 1 Outcomes.docx</li>
-    <li>Phase 1 Goal.pdf</li>
-  </ul>
+  <div class="prose doc-list"><Documents /></div>
 
   <div class="page-nav">
     <span></span>
@@ -40,22 +41,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  p { font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.875rem; color: var(--text); }
-  .doc-list {
-    padding-left: 1.5rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.9;
-  }
-  .page-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
+  .doc-list :global(ul) { font-size: 0.9rem; color: var(--text-muted); line-height: 1.9; }
+  .page-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.875rem; font-weight: 600; }
   .page-nav a { color: var(--accent); text-decoration: none; }
   .page-nav a:hover { text-decoration: underline; }
 </style>
