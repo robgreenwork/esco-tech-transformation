@@ -49,6 +49,28 @@ collections:
             widget: markdown
 
   # ───────────────────────────────────────────────
+  - name: people-context
+    label: "People context"
+    files:
+      - name: overview
+        label: "Overview"
+        file: "src/content/sections/people-context-overview.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+  # ───────────────────────────────────────────────
+  - name: process-changes
+    label: "Process changes"
+    files:
+      - name: overview
+        label: "Overview"
+        file: "src/content/sections/process-changes-overview.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+  # ───────────────────────────────────────────────
   - name: phase-1
     label: "Phase 1"
     files:
