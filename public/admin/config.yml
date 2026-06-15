@@ -30,15 +30,6 @@ collections:
             name: body
             widget: markdown
 
-      - name: phase4
-        label: "Phase 4 notice box"
-        file: "src/content/sections/home-phase4-note.md"
-        format: frontmatter
-        fields:
-          - label: "Content"
-            name: body
-            widget: markdown
-
       - name: howtouse
         label: "How to use this site"
         file: "src/content/sections/home-how-to-use.md"

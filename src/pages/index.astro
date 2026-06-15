@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Content as HomeAbout }     from '../content/sections/home-about.md';
-import { Content as HomePhase4 }    from '../content/sections/home-phase4-note.md';
 import { Content as HomeHowToUse }  from '../content/sections/home-how-to-use.md';
 
 const phases = [
@@ -48,17 +47,12 @@ const phases = [
 ];
 ---
 
-<BaseLayout title="Overview">
+<BaseLayout title="Summary">
 
   <div class="page-hero">
-    <div class="hero-eyebrow">Programme overview</div>
+    <div class="hero-eyebrow">Programme summary</div>
     <h1 class="page-title">ESco Tech Transformation</h1>
     <p class="page-subtitle">A four-year programme of work to understand, explore, and ultimately decide the future technology direction for ESco. This site documents the journey: the hypotheses tested, the evidence gathered, the decisions made, and the path chosen.</p>
-  </div>
-
-  <div class="page-body">
-    <h2 class="section-heading">About this programme</h2>
-    <div class="prose"><HomeAbout /></div>
   </div>
 
   <div class="roadmap-wrap">
@@ -86,7 +80,8 @@ const phases = [
   </div>
 
   <div class="page-body">
-    <div class="note-box prose"><HomePhase4 /></div>
+    <h2 class="section-heading">About this programme</h2>
+    <div class="prose"><HomeAbout /></div>
 
     <h2 class="section-heading">How to use this site</h2>
     <div class="prose"><HomeHowToUse /></div>
