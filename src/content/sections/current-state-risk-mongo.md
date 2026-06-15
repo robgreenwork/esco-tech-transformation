@@ -1,3 +1,1 @@
----
----
 The Phase 3 documents championed MongoDB for its flexible schema as a data warehouse. When Phase 4 pivoted to using it as a high-throughput process queue, external consultants explicitly warned that document databases are not optimised for queueing semantics and will introduce operational complexity at scale. The internal team proceeded anyway to maintain momentum. It remains an open question whether MongoDB will perform adequately under production queue loads, or whether it will need to be replaced with a purpose-built queue tool.
