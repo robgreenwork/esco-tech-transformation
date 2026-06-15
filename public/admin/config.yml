@@ -2,8 +2,8 @@ backend:
   name: github
   repo: robgreenwork/esco-tech-transformation
   branch: main
-  base_url: https://escotech-cms-auth.robgreen-work.workers.dev
-  auth_endpoint: auth
+  # Sveltia CMS hosted OAuth — free, no proxy to deploy.
+  base_url: https://auth.sveltia.app
 
 site_url: https://escotech.robgreen.work
 display_url: https://escotech.robgreen.work
