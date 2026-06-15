@@ -1,3 +1,1 @@
----
----
 Could we build a hybrid, adaptable infrastructure -- the Harbour and Crane -- to process data specifically for the Single Customer View product, and in doing so prove the CRM-agnostic approach that Phases 1 and 2 pointed towards?

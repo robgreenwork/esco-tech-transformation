@@ -1,3 +1,1 @@
----
----
 Commercials still need to establish Intermedia's actual long-term plan and pricing structure for Myriad following the acquisition of Gordon and Gotch. This affects the urgency and investment case for the full CRM-agnostic transition.

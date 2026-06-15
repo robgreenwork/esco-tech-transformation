@@ -1,3 +1,1 @@
----
----
 We decided not to migrate to a new system immediately. Before any replacement could be viable, we needed to "detangle" our custom systems from Myriad by building a middle integration layer. This would allow ESco to integrate payment processing and eCommerce out of the box in the future, and make any future CRM swap far more straightforward.

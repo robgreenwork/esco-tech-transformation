@@ -1,5 +1,3 @@
----
----
 - **CRM agnostic:** no component should be permanently tied to Myriad or any specific subscription management platform.
 - **Interchangeable:** individual components (Crane, Harbour, microservices, CRM) should be replaceable without rebuilding the whole.
 - **Modular:** each microservice does one thing and does it independently.

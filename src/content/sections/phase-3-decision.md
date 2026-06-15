@@ -1,5 +1,3 @@
----
----
 We halted exclusive development on the SCV product and pivoted the strategic focus. Two factors drove this decision:
 
 1. **Weak commercial demand** for SCV as a standalone product.
