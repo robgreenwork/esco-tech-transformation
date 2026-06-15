@@ -7,7 +7,7 @@ site_url: https://escotech.robgreen.work
 display_url: https://escotech.robgreen.work
 logo_url: https://escotech.robgreen.work/favicon.svg
 
-media_folder: "site/public/uploads"
+media_folder: "public/uploads"
 public_folder: "/uploads"
 
 # Default format for all collections: YAML frontmatter + markdown body
@@ -23,7 +23,7 @@ collections:
     files:
       - name: about
         label: "About this programme"
-        file: "site/src/content/sections/home-about.md"
+        file: "src/content/sections/home-about.md"
         format: frontmatter
         fields:
           - label: "Content"
@@ -32,7 +32,7 @@ collections:
 
       - name: intro
         label: "Three phases intro line"
-        file: "site/src/content/sections/home-intro.md"
+        file: "src/content/sections/home-intro.md"
         format: frontmatter
         fields:
           - label: "Content"
@@ -41,7 +41,7 @@ collections:
 
       - name: phase4
         label: "Phase 4 notice box"
-        file: "site/src/content/sections/home-phase4-note.md"
+        file: "src/content/sections/home-phase4-note.md"
         format: frontmatter
         fields:
           - label: "Content"
@@ -50,7 +50,7 @@ collections:
 
       - name: howtouse
         label: "How to use this site"
-        file: "site/src/content/sections/home-how-to-use.md"
+        file: "src/content/sections/home-how-to-use.md"
         format: frontmatter
         fields:
           - label: "Content"
@@ -63,31 +63,31 @@ collections:
     files:
       - name: hypothesis
         label: "Hypothesis"
-        file: "site/src/content/sections/phase-1-hypothesis.md"
+        file: "src/content/sections/phase-1-hypothesis.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: explored
         label: "What we explored"
-        file: "site/src/content/sections/phase-1-explored.md"
+        file: "src/content/sections/phase-1-explored.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: found
         label: "What we found"
-        file: "site/src/content/sections/phase-1-found.md"
+        file: "src/content/sections/phase-1-found.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: decision
         label: "Decision and reasoning"
-        file: "site/src/content/sections/phase-1-decision.md"
+        file: "src/content/sections/phase-1-decision.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: documents
         label: "Key supporting documents"
-        file: "site/src/content/sections/phase-1-documents.md"
+        file: "src/content/sections/phase-1-documents.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
@@ -98,31 +98,31 @@ collections:
     files:
       - name: hypothesis
         label: "Hypothesis"
-        file: "site/src/content/sections/phase-2-hypothesis.md"
+        file: "src/content/sections/phase-2-hypothesis.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: explored
         label: "What we explored"
-        file: "site/src/content/sections/phase-2-explored.md"
+        file: "src/content/sections/phase-2-explored.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: found
         label: "What we found"
-        file: "site/src/content/sections/phase-2-found.md"
+        file: "src/content/sections/phase-2-found.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: decision
         label: "Decision and reasoning"
-        file: "site/src/content/sections/phase-2-decision.md"
+        file: "src/content/sections/phase-2-decision.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: documents
         label: "Key supporting documents"
-        file: "site/src/content/sections/phase-2-documents.md"
+        file: "src/content/sections/phase-2-documents.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
@@ -133,31 +133,31 @@ collections:
     files:
       - name: hypothesis
         label: "Hypothesis"
-        file: "site/src/content/sections/phase-3-hypothesis.md"
+        file: "src/content/sections/phase-3-hypothesis.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: explored
         label: "What we explored"
-        file: "site/src/content/sections/phase-3-explored.md"
+        file: "src/content/sections/phase-3-explored.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: found
         label: "What we found"
-        file: "site/src/content/sections/phase-3-found.md"
+        file: "src/content/sections/phase-3-found.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: decision
         label: "Decision and reasoning"
-        file: "site/src/content/sections/phase-3-decision.md"
+        file: "src/content/sections/phase-3-decision.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: documents
         label: "Key supporting documents"
-        file: "site/src/content/sections/phase-3-documents.md"
+        file: "src/content/sections/phase-3-documents.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
@@ -168,37 +168,37 @@ collections:
     files:
       - name: crm-agnostic
         label: "The CRM-agnostic approach"
-        file: "site/src/content/sections/architecture-crm-agnostic.md"
+        file: "src/content/sections/architecture-crm-agnostic.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: data-flow
         label: "How data flows"
-        file: "site/src/content/sections/architecture-data-flow.md"
+        file: "src/content/sections/architecture-data-flow.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: integration-layer
         label: "Integration layer"
-        file: "site/src/content/sections/architecture-integration-layer.md"
+        file: "src/content/sections/architecture-integration-layer.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: principles
         label: "Design principles"
-        file: "site/src/content/sections/architecture-principles.md"
+        file: "src/content/sections/architecture-principles.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: risk-mongo
         label: "Risk: MongoDB as queue"
-        file: "site/src/content/sections/architecture-risk-mongo.md"
+        file: "src/content/sections/architecture-risk-mongo.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: risk-crane
         label: "Risk: Build vs buy Crane"
-        file: "site/src/content/sections/architecture-risk-crane.md"
+        file: "src/content/sections/architecture-risk-crane.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
@@ -209,13 +209,13 @@ collections:
     files:
       - name: intro
         label: "Intro"
-        file: "site/src/content/sections/decisions-intro.md"
+        file: "src/content/sections/decisions-intro.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: patterns
         label: "Patterns across the programme"
-        file: "site/src/content/sections/decisions-patterns.md"
+        file: "src/content/sections/decisions-patterns.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
@@ -226,49 +226,49 @@ collections:
     files:
       - name: complete
         label: "What is complete"
-        file: "site/src/content/sections/current-state-complete.md"
+        file: "src/content/sections/current-state-complete.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: in-progress
         label: "What is in progress"
-        file: "site/src/content/sections/current-state-in-progress.md"
+        file: "src/content/sections/current-state-in-progress.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: parked
         label: "What has been parked"
-        file: "site/src/content/sections/current-state-parked.md"
+        file: "src/content/sections/current-state-parked.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: risk-mongo
         label: "Risk: MongoDB"
-        file: "site/src/content/sections/current-state-risk-mongo.md"
+        file: "src/content/sections/current-state-risk-mongo.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: risk-crane
         label: "Risk: Build vs buy Crane"
-        file: "site/src/content/sections/current-state-risk-crane.md"
+        file: "src/content/sections/current-state-risk-crane.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: risk-intermedia
         label: "Risk: Intermedia roadmap"
-        file: "site/src/content/sections/current-state-risk-intermedia.md"
+        file: "src/content/sections/current-state-risk-intermedia.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: risk-aimee
         label: "Risk: Aimee deployment"
-        file: "site/src/content/sections/current-state-risk-aimee.md"
+        file: "src/content/sections/current-state-risk-aimee.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
       - name: handover
         label: "Handover notes"
-        file: "site/src/content/sections/current-state-handover.md"
+        file: "src/content/sections/current-state-handover.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
