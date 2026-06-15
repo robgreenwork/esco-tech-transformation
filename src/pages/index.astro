@@ -47,6 +47,16 @@ const phases = [
     verdictClass: 'paused',
     keypoint: 'Paused after an underwhelming response to Aimee from Anthem and consistent lack of confidence in the Solutions team.',
   },
+  {
+    n: 'Now',
+    href: '/current-state',
+    label: 'Back to Phase 2: RFP for a Myriad replacement',
+    dates: 'Late 2025',
+    headline: 'Returning to the off-the-shelf path',
+    verdict: 'RFP underway',
+    verdictClass: 'active',
+    keypoint: 'With the 3-year Myriad contract ending and licence costs rising, ESco has initiated an RFP for new subscription management software.',
+  },
 ];
 
 const decisions = [
@@ -164,8 +174,8 @@ const decisions = [
   .roadmap {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
   }
 
   .roadmap-line {
@@ -217,6 +227,14 @@ const decisions = [
   .stop-underway .stop-dot { background: #2563eb; }
   .stop-pivoted  .stop-dot { background: #d97706; }
   .stop-paused   .stop-dot { background: #b91c1c; }
+  .stop-active   .stop-dot {
+    background: var(--esco-teal);
+    width: 44px;
+    height: 44px;
+    margin-top: -2.4rem;
+    font-size: 0.7rem;
+    box-shadow: 0 0 0 4px rgba(115, 195, 191, 0.25);
+  }
 
   .stop-meta { display: flex; flex-direction: column; gap: 0.05rem; }
   .stop-period {
