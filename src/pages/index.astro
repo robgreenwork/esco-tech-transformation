@@ -9,6 +9,7 @@ import { Content as DecisionsPatterns }from '../content/sections/decisions-patte
 const phases = [
   {
     n: '1',
+    period: 'Phase 1',
     href: '/phases/phase-1',
     label: 'Build on Azure',
     dates: 'Mid-2022 to Early 2023',
@@ -19,6 +20,7 @@ const phases = [
   },
   {
     n: '2',
+    period: 'Phase 2',
     href: '/phases/phase-2',
     label: 'Buy off-the-shelf',
     dates: 'May 2023 to June 2024',
@@ -29,6 +31,7 @@ const phases = [
   },
   {
     n: '3',
+    period: 'Phase 3',
     href: '/phases/phase-3',
     label: 'Hybrid build and buy',
     dates: 'Late 2023 to Mid-2025',
@@ -39,6 +42,7 @@ const phases = [
   },
   {
     n: '4',
+    period: 'Phase 4',
     href: '/phases/phase-4',
     label: 'CRM agnostic core',
     dates: 'July 2025 to present',
@@ -49,6 +53,7 @@ const phases = [
   },
   {
     n: 'Now',
+    period: 'Current state',
     href: '/current-state',
     label: 'Back to Phase 2: RFP for a Myriad replacement',
     dates: 'Late 2025',
@@ -106,7 +111,7 @@ const decisions = [
           <a href={p.href} class={`stop stop-${p.verdictClass}`}>
             <div class="stop-dot"><span>{p.n}</span></div>
             <div class="stop-meta">
-              <span class="stop-period">Phase {p.n}</span>
+              <span class="stop-period">{p.period}</span>
               <span class="stop-dates">{p.dates}</span>
             </div>
             <div class="stop-label">{p.label}</div>
@@ -234,6 +239,27 @@ const decisions = [
     margin-top: -2.4rem;
     font-size: 0.7rem;
     box-shadow: 0 0 0 4px rgba(115, 195, 191, 0.25);
+  }
+
+  /* "Now" card stands out: thicker border, deeper shadow, lifted */
+  .stop.stop-active {
+    background: #fff;
+    border: 2px solid var(--esco-teal);
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 30px -8px rgba(115, 195, 191, 0.45),
+      0 4px 12px -4px rgba(0, 0, 0, 0.08);
+  }
+  .stop.stop-active:hover {
+    transform: translateY(-9px);
+    box-shadow:
+      0 18px 40px -10px rgba(115, 195, 191, 0.55),
+      0 6px 16px -4px rgba(0, 0, 0, 0.1);
+    border-color: var(--esco-teal);
+  }
+  .stop-active .stop-period {
+    color: var(--esco-purple);
+    font-weight: 800;
   }
 
   .stop-meta { display: flex; flex-direction: column; gap: 0.05rem; }
