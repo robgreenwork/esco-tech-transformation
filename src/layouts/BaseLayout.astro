@@ -176,18 +176,19 @@ const currentPath = Astro.url.pathname;
 
       .topbar-logo {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         text-decoration: none;
-        line-height: 1;
-        gap: 0.4rem;
+        gap: 1rem;
       }
-      .topbar-logo .tl-name {
-        font-size: 1.6rem;
-        font-weight: 800;
-        color: var(--esco-purple);
-        letter-spacing: -0.01em;
-        line-height: 1;
+      .topbar-logo .tl-img {
+        height: 56px;
+        width: auto;
+        display: block;
+      }
+      .topbar-logo .tl-divider {
+        width: 1px;
+        height: 36px;
+        background: var(--border);
       }
       .topbar-logo .tl-sub {
         font-size: 0.7rem;
@@ -427,7 +428,8 @@ const currentPath = Astro.url.pathname;
     <!-- TOP BAR -->
     <header class="topbar">
       <a class="topbar-logo" href="/">
-        <span class="tl-name">ESco</span>
+        <img class="tl-img" src="/esco-logo.svg" alt="ESco" />
+        <span class="tl-divider" aria-hidden="true"></span>
         <span class="tl-sub">Tech Transformation</span>
       </a>
     </header>

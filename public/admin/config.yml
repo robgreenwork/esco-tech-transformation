@@ -30,6 +30,15 @@ collections:
             name: body
             widget: markdown
 
+      - name: market-change
+        label: "The changing publishing market"
+        file: "src/content/sections/home-market-change.md"
+        format: frontmatter
+        fields:
+          - label: "Content"
+            name: body
+            widget: markdown
+
       - name: decisions-intro
         label: "Key decisions: intro"
         file: "src/content/sections/decisions-intro.md"

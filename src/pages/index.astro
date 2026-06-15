@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Content as HomeAbout }     from '../content/sections/home-about.md';
-import { Content as HomeHowToUse }  from '../content/sections/home-how-to-use.md';
-import { Content as DecisionsIntro }    from '../content/sections/decisions-intro.md';
-import { Content as DecisionsPatterns } from '../content/sections/decisions-patterns.md';
+import { Content as HomeAbout }        from '../content/sections/home-about.md';
+import { Content as HomeMarketChange } from '../content/sections/home-market-change.md';
+import { Content as HomeHowToUse }     from '../content/sections/home-how-to-use.md';
+import { Content as DecisionsIntro }   from '../content/sections/decisions-intro.md';
+import { Content as DecisionsPatterns }from '../content/sections/decisions-patterns.md';
 
 const phases = [
   {
@@ -109,6 +110,9 @@ const decisions = [
   </div>
 
   <div class="page-body">
+
+    <h2 class="section-heading">The changing publishing market</h2>
+    <div class="prose"><HomeMarketChange /></div>
 
     <h2 class="section-heading">Key decisions</h2>
     <div class="prose intro-prose"><DecisionsIntro /></div>
