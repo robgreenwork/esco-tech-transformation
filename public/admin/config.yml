@@ -41,7 +41,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: people-context
-    label: "People context"
+    label: "People"
     files:
       - name: overview
         label: "Overview"
@@ -52,7 +52,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: process-changes
-    label: "Process changes"
+    label: "Process"
     files:
       - name: overview
         label: "Overview"
