@@ -33,9 +33,9 @@ const phases = [
     label: 'Hybrid build and buy',
     dates: 'Late 2023 to Mid-2025',
     headline: 'Build the Harbour and Crane for Single Customer View',
-    verdict: 'Chosen path',
-    verdictClass: 'chosen',
-    keypoint: 'Architecture proven. SCV product paused due to weak market demand.',
+    verdict: 'Pivoted',
+    verdictClass: 'pivoted',
+    keypoint: 'Architecture proven, but pivoted away from after the Intermedia acquisition of Myriad made CRM agnosticism the priority across the whole business.',
   },
   {
     n: '4',
@@ -43,9 +43,9 @@ const phases = [
     label: 'CRM agnostic core',
     dates: 'July 2025 to present',
     headline: 'Adapt the architecture for Subscriptions, Memberships, and Charities',
-    verdict: 'Underway',
-    verdictClass: 'underway',
-    keypoint: 'Narrow proof of concept in development on Books/Backs and Comm Docs.',
+    verdict: 'Paused',
+    verdictClass: 'paused',
+    keypoint: 'Paused after an underwhelming response to Aimee from Anthem and consistent lack of confidence in the Solutions team.',
   },
 ];
 
@@ -215,6 +215,8 @@ const decisions = [
   .stop-rejected .stop-dot { background: #94a3b8; }
   .stop-chosen   .stop-dot { background: var(--esco-purple); }
   .stop-underway .stop-dot { background: #2563eb; }
+  .stop-pivoted  .stop-dot { background: #d97706; }
+  .stop-paused   .stop-dot { background: #b91c1c; }
 
   .stop-meta { display: flex; flex-direction: column; gap: 0.05rem; }
   .stop-period {
