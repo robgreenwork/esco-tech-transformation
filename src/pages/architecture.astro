@@ -37,6 +37,13 @@ import { Content as Risks }          from '../content/sections/architecture-risk
     <h2 class="section-heading">Architectural target model</h2>
     <div class="prose"><TargetModel /></div>
 
+    <figure class="arch-figure">
+      <a href="/target-architecture-diagram.jpg" target="_blank" rel="noopener" aria-label="Open full size">
+        <img src="/target-architecture-diagram.jpg" alt="Target architecture diagram showing Customer touchpoints, Toolset, API and integrations, and Data layer" />
+      </a>
+      <figcaption>Figure 5 from the review: the upgraded approach. Customer touchpoints, an MS Cloud / Power Platform toolset, the ESco API layer, and a data layer with Myriad alongside the ESco DB and data warehouse.</figcaption>
+    </figure>
+
     <h2 class="section-heading">Recommended principles</h2>
     <div class="prose"><Principles /></div>
 
@@ -83,6 +90,29 @@ import { Content as Risks }          from '../content/sections/architecture-risk
   @media (max-width: 600px) {
     .download-box { flex-wrap: wrap; }
     .download-btn { width: 100%; text-align: center; }
+  }
+
+  .arch-figure {
+    margin: 1.5rem 0 2rem;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .arch-figure a { display: block; }
+  .arch-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    background: #fff;
+  }
+  .arch-figure figcaption {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+    line-height: 1.5;
+    text-align: center;
   }
 
   .risks :global(table) {
