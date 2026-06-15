@@ -270,6 +270,42 @@ collections:
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
+      - name: background
+        label: "Background (SWOT and discounted options)"
+        file: "src/content/sections/architecture-background.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: target-model
+        label: "Architectural target model"
+        file: "src/content/sections/architecture-target-model.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: principles
+        label: "Recommended principles"
+        file: "src/content/sections/architecture-principles.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: roadmap
+        label: "Migration roadmap"
+        file: "src/content/sections/architecture-roadmap.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: business-impact
+        label: "Business impact by area"
+        file: "src/content/sections/architecture-business-impact.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: risks
+        label: "Potential risks"
+        file: "src/content/sections/architecture-risks.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
 
   # ───────────────────────────────────────────────
   - name: current-state

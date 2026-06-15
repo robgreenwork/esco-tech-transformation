@@ -1,34 +1,107 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Content as Overview } from '../content/sections/architecture-overview.md';
+import { Content as Overview }       from '../content/sections/architecture-overview.md';
+import { Content as Background }     from '../content/sections/architecture-background.md';
+import { Content as TargetModel }    from '../content/sections/architecture-target-model.md';
+import { Content as Principles }     from '../content/sections/architecture-principles.md';
+import { Content as Roadmap }        from '../content/sections/architecture-roadmap.md';
+import { Content as BusinessImpact } from '../content/sections/architecture-business-impact.md';
+import { Content as Risks }          from '../content/sections/architecture-risks.md';
 ---
 
 <BaseLayout title="Target Architecture">
 
   <div class="page-hero">
-    <div class="hero-eyebrow">Technical reference</div>
+    <div class="hero-eyebrow">May / July 2022 · Ivan Teage, Harmonic Action Technologies</div>
     <h1 class="page-title">Target Architecture</h1>
-    <p class="page-subtitle">The end-state architecture the programme is working towards.</p>
+    <p class="page-subtitle">The external architecture review that opened the programme - an outside perspective on the existing stack, a recommended target model, and a roadmap for getting there.</p>
   </div>
 
   <div class="page-body">
+
     <h2 class="section-heading">Overview</h2>
     <div class="prose"><Overview /></div>
 
-    <p class="aside">The Phase 3 Harbour and Crane proof of concept architecture is documented on the <a href="/phases/phase-3">Phase 3 page</a>. This page is for the broader target architecture the programme is working towards across Phase 4 and beyond.</p>
-  </div>
+    <div class="download-box">
+      <div class="download-icon" aria-hidden="true">📄</div>
+      <div class="download-meta">
+        <div class="download-title">2022 ESco Solution Architecture Review</div>
+        <div class="download-sub">Ivan Teage, Harmonic Action Technologies · 16 pages · PDF · 569 KB</div>
+      </div>
+      <a class="download-btn" href="/2022-esco-architectural-review.pdf" download>Download</a>
+    </div>
 
+    <h2 class="section-heading">Background</h2>
+    <div class="prose"><Background /></div>
+
+    <h2 class="section-heading">Architectural target model</h2>
+    <div class="prose"><TargetModel /></div>
+
+    <h2 class="section-heading">Recommended principles</h2>
+    <div class="prose"><Principles /></div>
+
+    <h2 class="section-heading">Migration roadmap</h2>
+    <div class="prose"><Roadmap /></div>
+
+    <h2 class="section-heading">Business impact by area</h2>
+    <div class="prose"><BusinessImpact /></div>
+
+    <h2 class="section-heading">Potential risks</h2>
+    <div class="prose risks"><Risks /></div>
+
+  </div>
 </BaseLayout>
 
 <style>
-  .aside {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+  .download-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
     background: var(--sidebar-bg);
-    border-left: 3px solid var(--esco-teal);
-    padding: 0.75rem 1rem;
-    border-radius: 0 6px 6px 0;
-    margin-top: 2rem;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--esco-teal);
+    border-radius: 6px;
+    margin: 1.5rem 0 2.5rem;
   }
-  .aside a { color: var(--accent); }
+  .download-icon { font-size: 1.75rem; flex-shrink: 0; }
+  .download-meta { flex: 1; min-width: 0; }
+  .download-title { font-size: 0.95rem; font-weight: 700; color: var(--esco-purple-dark); }
+  .download-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem; }
+  .download-btn {
+    background: var(--esco-purple);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .download-btn:hover { background: var(--esco-purple-dark); }
+  @media (max-width: 600px) {
+    .download-box { flex-wrap: wrap; }
+    .download-btn { width: 100%; text-align: center; }
+  }
+
+  .risks :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .risks :global(th) {
+    background: var(--sidebar-bg);
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    font-weight: 700;
+    color: var(--esco-purple-dark);
+  }
+  .risks :global(td) {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
 </style>
