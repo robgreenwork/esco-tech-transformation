@@ -1,3 +1,5 @@
+---
+---
 The programme is at an active pivot point. Phase 3 proved the technical concept. Phase 4 is the strategic expansion of that concept to the core business. The two immediate priorities for whoever picks this up are:
 
 1. Complete the Phase 4 narrow proof of concept (Books/Backs and Comm Docs microservices) to validate the architecture at the Subscriptions/Memberships/Charities level.

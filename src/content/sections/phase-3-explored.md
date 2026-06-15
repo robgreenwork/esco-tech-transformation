@@ -1,3 +1,5 @@
+---
+---
 We set up Google Cloud Platform (GCP) and MongoDB cloud environments. We designed and built two core components:
 
 - **The Crane** -- a custom ESco integration service to extract, transform, and load data from Myriad via APIs.

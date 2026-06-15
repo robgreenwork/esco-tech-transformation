@@ -1,1 +1,3 @@
+---
+---
 Moving entirely to Microsoft Dynamics 365 and the Power Platform would cause significant disruption and require rebuilding the team's knowledge from scratch. More critically, the Myriad database had missing indexes and primary keys, causing data integrity issues in Azure -- a fundamental compatibility blocker.

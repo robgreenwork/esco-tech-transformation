@@ -1,3 +1,5 @@
+---
+---
 The central objective of the architecture is to ensure ESco is not locked to Myriad, or any single CRM. By making backend systems interchangeable, ESco dramatically reduces vendor lock-in risk. If a new client wants to use their own CRM, or if ESco decides to replace Myriad entirely, the core microservices continue to function without a complete system rebuild.
 
 This matters because the acquisition of Gordon and Gotch (the company behind Myriad) by Intermedia created genuine uncertainty about Myriad's long-term roadmap and pricing. The architecture is designed so that Myriad can be swapped out -- or supplemented -- without disruption to the systems around it.

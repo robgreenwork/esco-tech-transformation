@@ -1,1 +1,3 @@
+---
+---
 **MongoDB as a queue system.** External consultants flagged that document databases are not naturally optimised for high-throughput queueing semantics. The internal team accepted this risk and proceeded with MongoDB to maintain momentum, noting that the underlying tools can be swapped out if the proof of concept validates the approach but MongoDB buckles under production queue loads.

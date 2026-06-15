@@ -1,1 +1,3 @@
+---
+---
 Whether ESco builds the ETL/RTL Crane entirely in-house or procures an external iPaaS (Integration Platform as a Service) is still unresolved. This is an open procurement decision that will need to be addressed once the narrow proof of concept validates the overall approach.
