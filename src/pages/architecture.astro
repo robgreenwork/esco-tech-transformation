@@ -1,11 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Content as CrmAgnostic }      from '../content/sections/architecture-crm-agnostic.md';
-import { Content as DataFlow }         from '../content/sections/architecture-data-flow.md';
-import { Content as IntegrationLayer } from '../content/sections/architecture-integration-layer.md';
-import { Content as Principles }       from '../content/sections/architecture-principles.md';
-import { Content as RiskMongo }        from '../content/sections/architecture-risk-mongo.md';
-import { Content as RiskCrane }        from '../content/sections/architecture-risk-crane.md';
+import { Content as Overview } from '../content/sections/architecture-overview.md';
 ---
 
 <BaseLayout title="Target Architecture">
@@ -13,61 +8,27 @@ import { Content as RiskCrane }        from '../content/sections/architecture-ri
   <div class="page-hero">
     <div class="hero-eyebrow">Technical reference</div>
     <h1 class="page-title">Target Architecture</h1>
-    <p class="page-subtitle">The technical shape of the chosen solution - the Harbour and Crane pattern, and the CRM-agnostic design that underpins it.</p>
+    <p class="page-subtitle">The end-state architecture the programme is working towards.</p>
   </div>
 
   <div class="page-body">
+    <h2 class="section-heading">Overview</h2>
+    <div class="prose"><Overview /></div>
 
-  <h2 class="section-heading">The CRM-agnostic approach</h2>
-  <div class="prose"><CrmAgnostic /></div>
-
-  <h2 class="section-heading">Core components</h2>
-
-  <div class="component-grid">
-    <div class="component-card">
-      <div class="component-name">The Crane</div>
-      <div class="component-subtitle">ETL / RTL Engine</div>
-      <p>The intermediary tool built to extract, receive, transform, and load data. Acts as the universal translator between the CRM and the microservices. ESco is currently evaluating whether to continue building this in-house or procure an iPaaS.</p>
-    </div>
-    <div class="component-card">
-      <div class="component-name">The Harbour</div>
-      <div class="component-subtitle">Process Queue System</div>
-      <p>The central data repository, built on MongoDB. Initially used in Phase 3 as a static data warehouse with a flexible schema. In Phase 4, repurposed to act as a process queue system.</p>
-    </div>
-    <div class="component-card">
-      <div class="component-name">Microservices</div>
-      <div class="component-subtitle">Modular business processes</div>
-      <p>Independent services (such as Aimee, eCommerce, document generation) that interact with the Harbour. Designed to be replaceable and independent of the core CRM.</p>
-    </div>
-    <div class="component-card">
-      <div class="component-name">Google Cloud Platform</div>
-      <div class="component-subtitle">Cloud infrastructure</div>
-      <p>Chosen to host the new architecture, including API endpoints and AI integrations, shifting ESco away from on-premises servers.</p>
-    </div>
+    <p class="aside">The Phase 3 Harbour and Crane proof of concept architecture is documented on the <a href="/phases/phase-3">Phase 3 page</a>. This page is for the broader target architecture the programme is working towards across Phase 4 and beyond.</p>
   </div>
 
-  <h2 class="section-heading">How data flows</h2>
-  <div class="prose"><DataFlow /></div>
-
-  <h2 class="section-heading">Integration layer</h2>
-  <div class="prose"><IntegrationLayer /></div>
-
-  <h2 class="section-heading">Design principles</h2>
-  <div class="prose"><Principles /></div>
-
-  <h2 class="section-heading">Known risks and open questions</h2>
-  <div class="risk-box prose"><RiskMongo /></div>
-  <div class="risk-box prose"><RiskCrane /></div>
-
-  </div>
 </BaseLayout>
 
 <style>
-  .component-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-  .component-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; background: var(--sidebar-bg); }
-  .component-name { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 0.15rem; }
-  .component-subtitle { font-size: 0.75rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
-  .component-card p { font-size: 0.875rem; margin-bottom: 0; }
-  .risk-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 6px; padding: 0.875rem 1.1rem; margin-bottom: 0.75rem; }
-  .risk-box :global(p) { font-size: 0.875rem; color: #7c2d12; margin-bottom: 0; }
+  .aside {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--sidebar-bg);
+    border-left: 3px solid var(--esco-teal);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin-top: 2rem;
+  }
+  .aside a { color: var(--accent); }
 </style>

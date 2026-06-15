@@ -165,6 +165,42 @@ collections:
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
+      - name: architecture-crm-agnostic
+        label: "Architecture: CRM-agnostic approach"
+        file: "src/content/sections/phase-3-architecture-crm-agnostic.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: architecture-data-flow
+        label: "Architecture: How data flows"
+        file: "src/content/sections/phase-3-architecture-data-flow.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: architecture-integration-layer
+        label: "Architecture: Integration layer"
+        file: "src/content/sections/phase-3-architecture-integration-layer.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: architecture-principles
+        label: "Architecture: Design principles"
+        file: "src/content/sections/phase-3-architecture-principles.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: architecture-risk-mongo
+        label: "Architecture: MongoDB as queue risk"
+        file: "src/content/sections/phase-3-architecture-risk-mongo.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: architecture-risk-crane
+        label: "Architecture: Build vs buy Crane risk"
+        file: "src/content/sections/phase-3-architecture-risk-crane.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
 
   # ───────────────────────────────────────────────
   - name: phase-4
@@ -205,39 +241,9 @@ collections:
   - name: architecture
     label: "Target Architecture"
     files:
-      - name: crm-agnostic
-        label: "The CRM-agnostic approach"
-        file: "src/content/sections/architecture-crm-agnostic.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: data-flow
-        label: "How data flows"
-        file: "src/content/sections/architecture-data-flow.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: integration-layer
-        label: "Integration layer"
-        file: "src/content/sections/architecture-integration-layer.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: principles
-        label: "Design principles"
-        file: "src/content/sections/architecture-principles.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: risk-mongo
-        label: "Risk: MongoDB as queue"
-        file: "src/content/sections/architecture-risk-mongo.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: risk-crane
-        label: "Risk: Build vs buy Crane"
-        file: "src/content/sections/architecture-risk-crane.md"
+      - name: overview
+        label: "Overview"
+        file: "src/content/sections/architecture-overview.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }

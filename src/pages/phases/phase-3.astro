@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Content as Hypothesis } from '../../content/sections/phase-3-hypothesis.md';
-import { Content as Explored }   from '../../content/sections/phase-3-explored.md';
-import { Content as Found }      from '../../content/sections/phase-3-found.md';
-import { Content as Decision }   from '../../content/sections/phase-3-decision.md';
-import { Content as Documents }  from '../../content/sections/phase-3-documents.md';
+import { Content as Hypothesis }       from '../../content/sections/phase-3-hypothesis.md';
+import { Content as Explored }         from '../../content/sections/phase-3-explored.md';
+import { Content as Found }            from '../../content/sections/phase-3-found.md';
+import { Content as Decision }         from '../../content/sections/phase-3-decision.md';
+import { Content as Documents }        from '../../content/sections/phase-3-documents.md';
+import { Content as CrmAgnostic }      from '../../content/sections/phase-3-architecture-crm-agnostic.md';
+import { Content as DataFlow }         from '../../content/sections/phase-3-architecture-data-flow.md';
+import { Content as IntegrationLayer } from '../../content/sections/phase-3-architecture-integration-layer.md';
+import { Content as Principles }       from '../../content/sections/phase-3-architecture-principles.md';
+import { Content as RiskMongo }        from '../../content/sections/phase-3-architecture-risk-mongo.md';
+import { Content as RiskCrane }        from '../../content/sections/phase-3-architecture-risk-crane.md';
 ---
 
 <BaseLayout title="Phase 3: Hybrid build and buy">
@@ -29,6 +35,48 @@ import { Content as Documents }  from '../../content/sections/phase-3-documents.
   <h2 class="section-heading">Decision and reasoning</h2>
   <div class="prose"><Decision /></div>
 
+  <h2 class="section-heading section-divider">Phase 3 architecture</h2>
+
+  <h3 class="subsection-heading">The CRM-agnostic approach</h3>
+  <div class="prose"><CrmAgnostic /></div>
+
+  <h3 class="subsection-heading">Core components</h3>
+  <div class="component-grid">
+    <div class="component-card">
+      <div class="component-name">The Crane</div>
+      <div class="component-subtitle">ETL / RTL Engine</div>
+      <p>The intermediary tool built to extract, receive, transform, and load data. Acts as the universal translator between the CRM and the microservices. ESco is currently evaluating whether to continue building this in-house or procure an iPaaS.</p>
+    </div>
+    <div class="component-card">
+      <div class="component-name">The Harbour</div>
+      <div class="component-subtitle">Process Queue System</div>
+      <p>The central data repository, built on MongoDB. Initially used in Phase 3 as a static data warehouse with a flexible schema. In Phase 4, repurposed to act as a process queue system.</p>
+    </div>
+    <div class="component-card">
+      <div class="component-name">Microservices</div>
+      <div class="component-subtitle">Modular business processes</div>
+      <p>Independent services (such as Aimee, eCommerce, document generation) that interact with the Harbour. Designed to be replaceable and independent of the core CRM.</p>
+    </div>
+    <div class="component-card">
+      <div class="component-name">Google Cloud Platform</div>
+      <div class="component-subtitle">Cloud infrastructure</div>
+      <p>Chosen to host the new architecture, including API endpoints and AI integrations, shifting ESco away from on-premises servers.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-heading">How data flows</h3>
+  <div class="prose"><DataFlow /></div>
+
+  <h3 class="subsection-heading">Integration layer</h3>
+  <div class="prose"><IntegrationLayer /></div>
+
+  <h3 class="subsection-heading">Design principles</h3>
+  <div class="prose"><Principles /></div>
+
+  <h3 class="subsection-heading">Known risks and open questions</h3>
+  <div class="risk-box prose"><RiskMongo /></div>
+  <div class="risk-box prose"><RiskCrane /></div>
+
   <h2 class="section-heading">Key supporting documents</h2>
   <div class="prose doc-list"><Documents /></div>
 
@@ -42,6 +90,23 @@ import { Content as Documents }  from '../../content/sections/phase-3-documents.
 
 <style>
   .doc-list :global(ul) { font-size: 0.9rem; color: var(--text-muted); line-height: 1.9; }
+  .section-divider { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--esco-teal-light); }
+  .subsection-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--esco-purple-dark);
+    margin-top: 1.75rem;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .component-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .component-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; background: var(--sidebar-bg); }
+  .component-name { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 0.15rem; }
+  .component-subtitle { font-size: 0.75rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+  .component-card p { font-size: 0.875rem; margin-bottom: 0; }
+  .risk-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 6px; padding: 0.875rem 1.1rem; margin-bottom: 0.75rem; }
+  .risk-box :global(p) { font-size: 0.875rem; color: #7c2d12; margin-bottom: 0; }
   .page-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.875rem; font-weight: 600; }
   .page-nav a { color: var(--accent); text-decoration: none; }
   .page-nav a:hover { text-decoration: underline; }
