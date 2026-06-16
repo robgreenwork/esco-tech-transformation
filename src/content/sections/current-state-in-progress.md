@@ -1,3 +1,1 @@
-- **[Phase 4](/phases/phase-4) narrow proof of concept**, delivery of the Books/Backs and Comm Docs microservices as test cases for the expanded Harbour and Crane architecture.
-- **Microservices Audit**, a review of all existing microservices to decide whether to keep, improve, rebuild, buy, or retire each one.
-- **Aimee AI chatbot**, development of an agentic AI chatbot for the client portal, enabling self-service promo code creation and other subscriber service tasks.
+- **RFP for Myriad replacement**, revisiting the [Phase 2](/phases/phase-2) question with three additional years of context: do we need to build custom software, or buy an off-the-shelf subscription management platform? With the Myriad contract ending and licence costs rising, this is the active priority.

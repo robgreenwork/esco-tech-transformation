@@ -1,1 +1,1 @@
-Meeting notes indicate outstanding issues deploying updates to the cloud for the Aimee AI environment, which was blocking AI environment mirroring. Status at handover is unclear and should be confirmed with the development team.
+The Myriad contract is ending and licence costs are rising. The RFP must move quickly enough to have a credible alternative assessed before renewal pressure forces a default decision. Delay risks either an unplanned Myriad renewal or a rushed procurement — both poor outcomes.

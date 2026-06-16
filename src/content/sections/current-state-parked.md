@@ -1,2 +1,6 @@
-- **Single Customer View as a standalone product**, full-scale development halted due to weak market demand. The underlying architecture it validated is being reused for [Phase 4](/phases/phase-4).
-- **Full cloud migration of legacy on-premises servers**, delayed until non-Myriad dependencies are detangled through [Phase 4](/phases/phase-4).
+- **[Phase 4](/phases/phase-4) narrow proof of concept delivery**, the planned Books/Backs and Comm Docs microservices build has been paused following the Anthem demo in April 2026. The demo produced useful learnings but not enough commercial signal to justify continued investment at this stage.
+- **Single Customer View as a standalone product**, full-scale development halted due to weak market demand. The underlying architecture it validated remains intact.
+- **Crane architecture expansion**, the Harbour and Crane integration layer was proven at POC level but was never built out beyond that. Whether to build, buy (iPaaS), or revisit entirely depends on the outcome of the RFP.
+- **Microservices Audit**, a review of existing microservices to decide whether to keep, improve, rebuild, buy, or retire each one. Partially completed; paused with the rest of [Phase 4](/phases/phase-4). Needs to resume — the findings connect directly to the EOS process component.
+- **Aimee AI chatbot**, the agentic chatbot for the client portal was in early development and is paused with [Phase 4](/phases/phase-4). Its relevance depends on which direction the RFP takes.
+- **Full cloud migration of legacy on-premises servers**, delayed pending clarity on the Myriad replacement path. Should be actively reconsidered during the current pause — the RFP outcome will determine what migration makes sense.
