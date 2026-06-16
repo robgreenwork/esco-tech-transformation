@@ -48,7 +48,7 @@ import { Content as Risks }          from '../content/sections/architecture-risk
     <div class="prose"><Principles /></div>
 
     <h2 class="section-heading">Migration roadmap</h2>
-    <div class="prose"><Roadmap /></div>
+    <div class="prose roadmap"><Roadmap /></div>
 
     <h2 class="section-heading">Business impact by area</h2>
     <div class="prose"><BusinessImpact /></div>
@@ -113,6 +113,30 @@ import { Content as Risks }          from '../content/sections/architecture-risk
     margin-top: 0.6rem;
     line-height: 1.5;
     text-align: center;
+  }
+
+  .roadmap :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .roadmap :global(th) {
+    background: var(--sidebar-bg);
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    font-weight: 700;
+    color: var(--esco-purple-dark);
+  }
+  .roadmap :global(td) {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .roadmap :global(td:first-child) {
+    color: var(--text-muted);
+    white-space: nowrap;
   }
 
   .risks :global(table) {

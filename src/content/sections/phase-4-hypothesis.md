@@ -1,1 +1,1 @@
-Could we build one important, concrete user need — promo code creation — on top of the Phase 3 architecture, using the existing POC stack augmented with agentic AI capabilities, so that clients could log in to the client portal and create promo codes themselves?
+Could we build one important, concrete user need (promo code creation) on top of the [Phase 3](/phases/phase-3) architecture, using the existing POC stack augmented with agentic AI capabilities, so that clients could log in to the client portal and create promo codes themselves?
