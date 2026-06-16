@@ -16,8 +16,21 @@ slug:
 
 # Collections mirror the website sidebar, in the same order.
 # Summary and Reference pages have no editable markdown sections — they are not listed here.
+# Exception: the "About ESco" prose on the Summary page is editable below.
 
 collections:
+  # ───────────────────────────────────────────────
+  - name: summary
+    label: "Summary"
+    files:
+      - name: about
+        label: "About ESco and this programme"
+        file: "src/content/sections/home-about.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+
   # ───────────────────────────────────────────────
   - name: architecture
     label: "Target Architecture"
