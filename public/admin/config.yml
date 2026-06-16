@@ -18,8 +18,8 @@ slug:
 collections:
   # ───────────────────────────────────────────────
   - name: home
-    label: "Home page"
-    label_singular: "Home section"
+    label: "Summary"
+    label_singular: "Summary section"
     files:
       - name: about
         label: "About this programme"
@@ -63,30 +63,55 @@ collections:
             widget: markdown
 
   # ───────────────────────────────────────────────
-  - name: people-context
-    label: "People"
+  - name: architecture
+    label: "Target Architecture"
     files:
       - name: overview
         label: "Overview"
-        file: "src/content/sections/people-context-overview.md"
+        file: "src/content/sections/architecture-overview.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
-
-  # ───────────────────────────────────────────────
-  - name: process-changes
-    label: "Process"
-    files:
-      - name: overview
-        label: "Overview"
-        file: "src/content/sections/process-changes-overview.md"
+      - name: background
+        label: "Background (SWOT and discounted options)"
+        file: "src/content/sections/architecture-background.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: target-model
+        label: "Architectural target model"
+        file: "src/content/sections/architecture-target-model.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: principles
+        label: "Recommended principles"
+        file: "src/content/sections/architecture-principles.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: roadmap
+        label: "Migration roadmap"
+        file: "src/content/sections/architecture-roadmap.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: business-impact
+        label: "Business impact by area"
+        file: "src/content/sections/architecture-business-impact.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: risks
+        label: "Potential risks"
+        file: "src/content/sections/architecture-risks.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
 
   # ───────────────────────────────────────────────
   - name: phase-1
-    label: "Phase 1"
+    label: "Phase 1: Azure / Microsoft"
     files:
       - name: hypothesis
         label: "Hypothesis"
@@ -121,7 +146,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: phase-2
-    label: "Phase 2"
+    label: "Phase 2: Off the shelf"
     files:
       - name: hypothesis
         label: "Hypothesis"
@@ -156,7 +181,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: phase-3
-    label: "Phase 3"
+    label: "Phase 3: Hybrid build and buy"
     files:
       - name: hypothesis
         label: "Hypothesis"
@@ -227,7 +252,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: phase-4
-    label: "Phase 4"
+    label: "Phase 4: CRM agnostic core"
     files:
       - name: hypothesis
         label: "Hypothesis"
@@ -256,53 +281,6 @@ collections:
       - name: documents
         label: "Key supporting documents"
         file: "src/content/sections/phase-4-documents.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-
-  # ───────────────────────────────────────────────
-  - name: architecture
-    label: "Target Architecture"
-    files:
-      - name: overview
-        label: "Overview"
-        file: "src/content/sections/architecture-overview.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: background
-        label: "Background (SWOT and discounted options)"
-        file: "src/content/sections/architecture-background.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: target-model
-        label: "Architectural target model"
-        file: "src/content/sections/architecture-target-model.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: principles
-        label: "Recommended principles"
-        file: "src/content/sections/architecture-principles.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: roadmap
-        label: "Migration roadmap"
-        file: "src/content/sections/architecture-roadmap.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: business-impact
-        label: "Business impact by area"
-        file: "src/content/sections/architecture-business-impact.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: risks
-        label: "Potential risks"
-        file: "src/content/sections/architecture-risks.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
@@ -356,6 +334,34 @@ collections:
       - name: handover
         label: "Handover notes"
         file: "src/content/sections/current-state-handover.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+  # ───────────────────────────────────────────────
+  - name: people-context
+    label: "People"
+    files:
+      - name: overview
+        label: "Overview"
+        file: "src/content/sections/people-context-overview.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+  # ───────────────────────────────────────────────
+  - name: process-changes
+    label: "Process"
+    files:
+      - name: overview
+        label: "Overview"
+        file: "src/content/sections/process-changes-overview.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+      - name: eos
+        label: "EOS"
+        file: "src/content/sections/process-changes-eos.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
