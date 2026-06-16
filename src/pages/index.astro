@@ -5,8 +5,15 @@ import { Content as HomeHowToUse }     from '../content/sections/home-how-to-use
 import { Content as DecisionsIntro }   from '../content/sections/decisions-intro.md';
 import { Content as DecisionsPatterns }from '../content/sections/decisions-patterns.md';
 
-// Each item is either a 'phase' or a 'decision', interleaved chronologically
+// Each item is a 'phase', 'decision', or 'event', interleaved chronologically
 const timeline = [
+  {
+    type: 'event',
+    when: 'May 2022',
+    label: 'Architecture review commissioned',
+    detail: 'ESco commissioned Ivan Teage (Harmonic Action Technologies) to carry out an external review of the technology architecture and recommend how to evolve it for the next decade. This review was the starting point for the whole programme.',
+    href: '/architecture',
+  },
   {
     type: 'phase',
     n: '1',
@@ -84,6 +91,19 @@ const timeline = [
     reasoning: 'Maintaining project momentum was critical. The team accepted the operational risk, noting that underlying tools can be swapped out via standard procurement later if the concept proves viable but MongoDB proves unsuitable under production loads.',
   },
   {
+    type: 'event',
+    when: 'September 2025',
+    label: 'Intermedia acquires Myriad',
+    detail: 'Intermedia acquired Myriad, ESco\'s core subscription management platform. This materially changed the landscape, making CRM agnosticism an urgent priority across the whole business and accelerating the decision to run a formal RFP for a replacement.',
+  },
+  {
+    type: 'event',
+    when: 'October 2025',
+    label: 'Developers restructured into Solutions Team',
+    detail: 'Greg and Darren were moved out of developer roles and into a newly defined Solutions Team, shifting their mandate from bespoke software development to finding and configuring the right tools and systems to solve business problems. See the People section for full context.',
+    href: '/people-context',
+  },
+  {
     type: 'phase',
     n: 'Now',
     period: 'Current state',
@@ -111,38 +131,68 @@ const timeline = [
     <h2 class="section-heading">Programme roadmap and key decisions</h2>
     <div class="prose intro-prose"><DecisionsIntro /></div>
 
-    <div class="timeline">
-      {timeline.map((item) => item.type === 'phase' ? (
-        <a href={item.href} class={`tl-phase tl-phase-${item.verdictClass}`}>
-          <div class="tl-spine">
-            <div class={`tl-dot tl-dot-${item.verdictClass}`}><span>{item.n}</span></div>
-            <div class="tl-line"></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-card-meta">
-              <span class="tl-period">{item.period}</span>
-              <span class="tl-dates">{item.dates}</span>
-              <span class={`verdict ${item.verdictClass}`}>{item.verdict}</span>
-            </div>
-            <div class="tl-label">{item.label}</div>
-            <div class="tl-headline">{item.headline}</div>
-            <div class="tl-keypoint">{item.keypoint}</div>
-          </div>
-        </a>
-      ) : (
-        <div class="tl-decision">
-          <div class="tl-spine">
-            <div class="tl-decision-dot"></div>
-            <div class="tl-line"></div>
-          </div>
-          <div class="tl-decision-card">
-            <div class="tl-decision-when">{item.when}</div>
-            <div class="tl-decision-label">Decision: {item.decision}</div>
-            <div class="tl-decision-options"><span class="meta-label">Options considered</span> {item.options}</div>
-            <div class="tl-decision-reasoning"><span class="meta-label">Reasoning</span> {item.reasoning}</div>
-          </div>
-        </div>
-      ))}
+    <div class="timeline-wrap">
+      <div class="timeline">
+        {timeline.map((item) => (
+          <>
+            {item.type === 'phase' && (
+              <a href={item.href} class={`tl-phase tl-phase-${item.verdictClass}`}>
+                <div class="tl-spine">
+                  <div class={`tl-dot tl-dot-${item.verdictClass}`}><span>{item.n}</span></div>
+                  <div class="tl-spine-date">{item.dates}</div>
+                  <div class="tl-line"></div>
+                </div>
+                <div class="tl-card">
+                  <div class="tl-card-meta">
+                    <span class="tl-period">{item.period}</span>
+                    <span class={`verdict ${item.verdictClass}`}>{item.verdict}</span>
+                  </div>
+                  <div class="tl-label">{item.label}</div>
+                  <div class="tl-headline">{item.headline}</div>
+                  <div class="tl-keypoint">{item.keypoint}</div>
+                </div>
+              </a>
+            )}
+            {item.type === 'decision' && (
+              <div class="tl-decision">
+                <div class="tl-spine">
+                  <div class="tl-decision-dot"></div>
+                  <div class="tl-spine-date">{item.when}</div>
+                  <div class="tl-line"></div>
+                </div>
+                <div class="tl-decision-card">
+                  <div class="tl-decision-when">{item.when}</div>
+                  <div class="tl-decision-label">Decision: {item.decision}</div>
+                  <div class="tl-decision-options"><span class="meta-label">Options considered</span> {item.options}</div>
+                  <div class="tl-decision-reasoning"><span class="meta-label">Reasoning</span> {item.reasoning}</div>
+                </div>
+              </div>
+            )}
+            {item.type === 'event' && (
+              <div class="tl-event">
+                <div class="tl-spine">
+                  <div class="tl-event-dot"></div>
+                  <div class="tl-spine-date">{item.when}</div>
+                  <div class="tl-line"></div>
+                </div>
+                {item.href ? (
+                  <a href={item.href} class="tl-event-card tl-event-card-link">
+                    <div class="tl-event-when">{item.when}</div>
+                    <div class="tl-event-label">{item.label}</div>
+                    <div class="tl-event-detail">{item.detail}</div>
+                  </a>
+                ) : (
+                  <div class="tl-event-card">
+                    <div class="tl-event-when">{item.when}</div>
+                    <div class="tl-event-label">{item.label}</div>
+                    <div class="tl-event-detail">{item.detail}</div>
+                  </div>
+                )}
+              </div>
+            )}
+          </>
+        ))}
+      </div>
     </div>
 
     <h2 class="section-heading">Patterns across the programme</h2>
@@ -170,10 +220,14 @@ const timeline = [
   /* ── TIMELINE ─────────────────────────────────────── */
   .intro-prose :global(p) { color: var(--text-muted); }
 
+  .timeline-wrap {
+    margin: 0 -2rem 2.5rem;
+  }
+
   .timeline {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2.5rem;
+    max-width: 1100px;
   }
 
   /* shared spine column */
@@ -181,14 +235,22 @@ const timeline = [
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 48px;
+    width: 90px;
     flex-shrink: 0;
+  }
+  .tl-spine-date {
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    text-align: center;
+    line-height: 1.3;
+    margin-top: 0.2rem;
+    padding: 0 0.25rem;
   }
   .tl-line {
     flex: 1;
     width: 2px;
     background: var(--border);
-    min-height: 1rem;
+    min-height: 0.75rem;
   }
   /* hide the trailing line on the last item */
   .timeline > *:last-child .tl-line { display: none; }
@@ -291,7 +353,60 @@ const timeline = [
     flex-shrink: 0;
     position: relative;
     z-index: 1;
-    margin: 0 12px;
+    margin: 0 37px;
+  }
+
+  /* ── Event rows ── */
+  .tl-event {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .tl-event-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--esco-teal);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    margin: 0 38px;
+  }
+  .tl-event-card {
+    flex: 1;
+    background: #f0fafa;
+    border: 1px solid rgba(115, 195, 191, 0.4);
+    border-left: 3px solid var(--esco-teal);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .tl-event-card-link:hover {
+    border-color: var(--esco-teal);
+    box-shadow: 0 2px 10px rgba(115, 195, 191, 0.2);
+  }
+  .tl-event-when {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--esco-teal);
+  }
+  .tl-event-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .tl-event-detail {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
   }
 
   .tl-decision-card {
@@ -334,10 +449,14 @@ const timeline = [
     margin-right: 0.4rem;
   }
 
+  @media (max-width: 768px) {
+    .timeline-wrap { margin: 0 0 2.5rem; }
+  }
   @media (max-width: 600px) {
-    .tl-spine { width: 32px; }
+    .tl-spine { width: 56px; }
     .tl-dot { width: 32px; height: 32px; font-size: 0.75rem; }
     .tl-dot-active { width: 36px; height: 36px; }
-    .tl-decision-dot { margin: 0 8px; }
+    .tl-decision-dot { margin: 0 20px; }
+    .tl-event-dot { margin: 0 21px; }
   }
 </style>
