@@ -123,97 +123,81 @@ const timeline = [
     <p class="page-subtitle">This site documents the journey: the hypotheses tested the evidence gathered the decisions made and the path chosen.</p>
   </div>
 
+  <div class="wide-section">
+    <h2 class="section-heading">About ESco and this programme</h2>
+    <div class="prose">
+      <p>ESco is a publishing services bureau offering subscription management, customer service, and eCommerce solutions. For many years the business relied heavily on Myriad as its core subscription management database, a single point of failure that had accumulated significant technical debt, an outdated interface, and deeply embedded bespoke integrations that made it slow to adapt. When the company behind Myriad (Gordon and Gotch) was acquired by Intermedia in 2025, the urgency to reduce dependency on any single CRM became critical. The Tech Transformation programme was initiated to find a path to a CRM-agnostic architecture: one where ESco could plug in new systems, cut operating costs, improve scalability, and confidently price and sell services with healthy margins.</p>
+    </div>
+  </div>
+
   <div class="page-body">
-
     <h2 class="section-heading">Programme roadmap and key decisions</h2>
-    <div class="prose intro-prose"><DecisionsIntro /></div>
+    <div class="prose"><DecisionsIntro /></div>
+  </div>
 
-    <div class="timeline-wrap">
-      <div class="timeline">
-        {timeline.map((item) => (
-          <>
-            {item.type === 'phase' && (
-              <a href={item.href} class={`tl-phase tl-phase-${item.verdictClass}`}>
-                <div class="tl-spine">
-                  <div class={`tl-dot tl-dot-${item.verdictClass}`}><span>{item.n}</span></div>
-                  <div class="tl-spine-date">{item.dates}</div>
-                  <div class="tl-line"></div>
-                </div>
-                <div class="tl-card">
-                  <div class="tl-card-meta">
-                    <span class="tl-period">{item.period}</span>
-                    <span class={`verdict ${item.verdictClass}`}>{item.verdict}</span>
-                  </div>
-                  <div class="tl-label">{item.label}</div>
-                  <div class="tl-headline">{item.headline}</div>
-                  <div class="tl-keypoint">{item.keypoint}</div>
-                </div>
-              </a>
-            )}
-            {item.type === 'decision' && (
-              <div class="tl-decision">
-                <div class="tl-spine">
-                  <div class="tl-decision-dot"></div>
-                  <div class="tl-spine-date">{item.when}</div>
-                  <div class="tl-line"></div>
-                </div>
-                <div class="tl-decision-card">
-                  <div class="tl-decision-when">{item.when}</div>
-                  <div class="tl-decision-label">Decision: {item.decision}</div>
-                  <div class="tl-decision-options"><span class="meta-label">Options considered</span> {item.options}</div>
-                  <div class="tl-decision-reasoning"><span class="meta-label">Reasoning</span> {item.reasoning}</div>
-                </div>
+  <div class="wide-section">
+    <div class="timeline">
+      {timeline.map((item) => (
+        <>
+          {item.type === 'phase' && (
+            <a href={item.href} class={`tl-phase tl-phase-${item.verdictClass}`}>
+              <div class="tl-spine">
+                <div class={`tl-dot tl-dot-${item.verdictClass}`}><span>{item.n}</span></div>
+                <div class="tl-spine-date">{item.dates}</div>
+                <div class="tl-line"></div>
               </div>
-            )}
-            {item.type === 'event' && (
-              <div class="tl-event">
-                <div class="tl-spine">
-                  <div class="tl-event-dot"></div>
-                  <div class="tl-spine-date">{item.when}</div>
-                  <div class="tl-line"></div>
+              <div class="tl-card">
+                <div class="tl-card-meta">
+                  <span class="tl-period">{item.period}</span>
+                  <span class={`verdict ${item.verdictClass}`}>{item.verdict}</span>
                 </div>
-                {item.href ? (
-                  <a href={item.href} class="tl-event-card tl-event-card-link">
-                    <div class="tl-event-when">{item.when}</div>
-                    <div class="tl-event-label">{item.label}</div>
-                    <div class="tl-event-detail">{item.detail}</div>
-                  </a>
-                ) : (
-                  <div class="tl-event-card">
-                    <div class="tl-event-when">{item.when}</div>
-                    <div class="tl-event-label">{item.label}</div>
-                    <div class="tl-event-detail">{item.detail}</div>
-                  </div>
-                )}
+                <div class="tl-label">{item.label}</div>
+                <div class="tl-headline">{item.headline}</div>
+                <div class="tl-keypoint">{item.keypoint}</div>
               </div>
-            )}
-          </>
-        ))}
-      </div>
+            </a>
+          )}
+          {item.type === 'decision' && (
+            <div class="tl-decision">
+              <div class="tl-spine">
+                <div class="tl-decision-dot"></div>
+                <div class="tl-spine-date">{item.when}</div>
+                <div class="tl-line"></div>
+              </div>
+              <div class="tl-decision-card">
+                <div class="tl-decision-when">{item.when}</div>
+                <div class="tl-decision-label">Decision: {item.decision}</div>
+                <div class="tl-decision-options"><span class="meta-label">Options considered</span> {item.options}</div>
+                <div class="tl-decision-reasoning"><span class="meta-label">Reasoning</span> {item.reasoning}</div>
+              </div>
+            </div>
+          )}
+          {item.type === 'event' && (
+            <div class="tl-event">
+              <div class="tl-spine">
+                <div class="tl-event-dot"></div>
+                <div class="tl-spine-date">{item.when}</div>
+                <div class="tl-line"></div>
+              </div>
+              {item.href ? (
+                <a href={item.href} class="tl-event-card tl-event-card-link">
+                  <div class="tl-event-when">{item.when}</div>
+                  <div class="tl-event-label">{item.label}</div>
+                  <div class="tl-event-detail">{item.detail}</div>
+                </a>
+              ) : (
+                <div class="tl-event-card">
+                  <div class="tl-event-when">{item.when}</div>
+                  <div class="tl-event-label">{item.label}</div>
+                  <div class="tl-event-detail">{item.detail}</div>
+                </div>
+              )}
+            </div>
+          )}
+        </>
+      ))}
     </div>
-
-    <div class="about-wrap">
-      <h2 class="section-heading">About ESco</h2>
-      <div class="prose">
-        <p>ESco is a publishing services bureau offering subscription management, customer service, and eCommerce solutions. For many years the business relied heavily on Myriad as its core subscription management database — a single point of failure that had accumulated significant technical debt, an outdated interface, and deeply embedded bespoke integrations that made it slow to adapt.</p>
-      </div>
-
-      <h2 class="section-heading">Why this programme</h2>
-      <div class="prose">
-        <p>When the company behind Myriad (Gordon and Gotch) was acquired by Intermedia in 2025, the urgency to reduce dependency on any single CRM became critical. The Tech Transformation programme was initiated to find a path to a CRM-agnostic architecture: one where ESco could plug in new systems, cut operating costs, improve scalability, and confidently price and sell services with healthy margins.</p>
-      </div>
-
-      <h2 class="section-heading">Programme scope</h2>
-      <div class="prose">
-        <p>The programme was designed to protect the core business for existing publishing clients while enabling ESco to scale into new verticals — memberships, charities, and non-publishing subscription businesses.</p>
-      </div>
-
-      <h2 class="section-heading">How to use this site</h2>
-      <div class="prose">
-        <p>Each phase has its own page covering the period it ran, the hypothesis being tested, what was explored, what was found, the decision reached, and the key supporting documents. Use the navigation on the left to move between sections.</p>
-        <p>The <a href="/architecture">Target Architecture</a> page documents the technical shape of the chosen solution. <a href="/current-state">Current State</a> describes where the programme sits at handover. <a href="/reference">Reference</a> collects people, tools, and the glossary.</p>
-      </div>
-    </div>
+  </div>
   </div>
 
 </BaseLayout>
@@ -228,22 +212,16 @@ const timeline = [
     letter-spacing: 0;
   }
 
-  /* ── ABOUT ────────────────────────────────────────── */
-  .about-wrap {
+  /* ── WIDE SECTIONS (about + timeline) ─────────────── */
+  .wide-section {
+    padding: 0 2rem 2.5rem 2.5rem;
     max-width: 1210px;
-    margin: 2.5rem -2rem 0;
   }
 
   /* ── TIMELINE ─────────────────────────────────────── */
-
-  .timeline-wrap {
-    margin: 0 -2rem 2.5rem;
-  }
-
   .timeline {
     display: flex;
     flex-direction: column;
-    max-width: 1210px;
   }
 
   /* shared spine column */
