@@ -1,1 +1,1 @@
-The Myriad contract is ending and licence costs are rising. The RFP must move quickly enough to have a credible alternative assessed before renewal pressure forces a default decision. Delay risks either an unplanned Myriad renewal or a rushed procurement — both poor outcomes.
+The Myriad contract is ending and licence costs are rising. The RFP must move quickly enough to have a credible alternative assessed before renewal pressure forces a default decision. Delay risks either an unplanned Myriad renewal or a rushed procurement both poor outcomes.
