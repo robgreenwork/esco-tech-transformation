@@ -10,58 +10,14 @@ logo_url: https://escotech.robgreen.work/favicon.svg
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-# Default format for all collections: YAML frontmatter + markdown body
 slug:
   encoding: ascii
   clean_accents: true
 
+# Collections mirror the website sidebar, in the same order.
+# Summary and Reference pages have no editable markdown sections — they are not listed here.
+
 collections:
-  # ───────────────────────────────────────────────
-  - name: home
-    label: "Summary"
-    label_singular: "Summary section"
-    files:
-      - name: about
-        label: "About this programme"
-        file: "src/content/sections/home-about.md"
-        format: frontmatter
-        fields:
-          - label: "Content"
-            name: body
-            widget: markdown
-
-      - name: market-change
-        label: "The changing publishing market"
-        file: "src/content/sections/home-market-change.md"
-        format: frontmatter
-        fields:
-          - label: "Content"
-            name: body
-            widget: markdown
-
-      - name: decisions-intro
-        label: "Key decisions: intro"
-        file: "src/content/sections/decisions-intro.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-
-      - name: decisions-patterns
-        label: "Patterns across the programme"
-        file: "src/content/sections/decisions-patterns.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-
-      - name: howtouse
-        label: "How to use this site"
-        file: "src/content/sections/home-how-to-use.md"
-        format: frontmatter
-        fields:
-          - label: "Content"
-            name: body
-            widget: markdown
-
   # ───────────────────────────────────────────────
   - name: architecture
     label: "Target Architecture"
@@ -111,7 +67,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: phase-1
-    label: "Phase 1: Azure / Microsoft"
+    label: "Phase 1: Build on Azure"
     files:
       - name: hypothesis
         label: "Hypothesis"
@@ -146,7 +102,7 @@ collections:
 
   # ───────────────────────────────────────────────
   - name: phase-2
-    label: "Phase 2: Off the shelf"
+    label: "Phase 2: Buy off-the-shelf"
     files:
       - name: hypothesis
         label: "Hypothesis"
@@ -207,12 +163,6 @@ collections:
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
-      - name: documents
-        label: "Key supporting documents"
-        file: "src/content/sections/phase-3-documents.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
       - name: architecture-crm-agnostic
         label: "Architecture: CRM-agnostic approach"
         file: "src/content/sections/phase-3-architecture-crm-agnostic.md"
@@ -249,10 +199,16 @@ collections:
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
+      - name: documents
+        label: "Key supporting documents"
+        file: "src/content/sections/phase-3-documents.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
 
   # ───────────────────────────────────────────────
   - name: phase-4
-    label: "Phase 4: CRM agnostic core"
+    label: "Phase 4: Promo code POC"
     files:
       - name: hypothesis
         label: "Hypothesis"
@@ -307,6 +263,12 @@ collections:
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
+      - name: handover
+        label: "Handover notes"
+        file: "src/content/sections/current-state-handover.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
       - name: risk-mongo
         label: "Risk: MongoDB"
         file: "src/content/sections/current-state-risk-mongo.md"
@@ -328,12 +290,6 @@ collections:
       - name: risk-aimee
         label: "Risk: Aimee deployment"
         file: "src/content/sections/current-state-risk-aimee.md"
-        format: frontmatter
-        fields:
-          - { label: "Content", name: body, widget: markdown }
-      - name: handover
-        label: "Handover notes"
-        file: "src/content/sections/current-state-handover.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
@@ -362,6 +318,17 @@ collections:
       - name: eos
         label: "EOS"
         file: "src/content/sections/process-changes-eos.md"
+        format: frontmatter
+        fields:
+          - { label: "Content", name: body, widget: markdown }
+
+  # ───────────────────────────────────────────────
+  - name: publishing-market
+    label: "Publishing Market"
+    files:
+      - name: market-change
+        label: "The changing publishing market"
+        file: "src/content/sections/home-market-change.md"
         format: frontmatter
         fields:
           - { label: "Content", name: body, widget: markdown }
