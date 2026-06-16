@@ -100,6 +100,14 @@ const decisions = [
     <p class="page-subtitle">A four-year programme of work to understand, explore, and ultimately decide the future technology direction for ESco. This site documents the journey: the hypotheses tested, the evidence gathered, the decisions made, and the path chosen.</p>
   </div>
 
+  <div class="goal-wrap">
+    <div class="goal-inner">
+      <div class="goal-eyebrow">The programme goal</div>
+      <p class="goal-statement">Technology that can <em>adapt</em> to the ever-changing needs of ESco.</p>
+      <p class="goal-equation"><span>Technology</span> <span class="goal-eq">=</span> <strong>people</strong>, <strong>processes</strong> and <strong>tools</strong></p>
+    </div>
+  </div>
+
   <div class="roadmap-wrap">
     <div class="roadmap-inner">
       <h2 class="section-heading roadmap-heading">Programme roadmap</h2>
@@ -159,6 +167,81 @@ const decisions = [
 </BaseLayout>
 
 <style>
+  /* ── GOAL CALLOUT ──────────────────────────────── */
+  .goal-wrap {
+    background: linear-gradient(135deg, var(--esco-purple-dark) 0%, var(--esco-purple) 100%);
+    padding: 2.75rem 2.5rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .goal-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--esco-teal);
+  }
+  .goal-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--coral);
+  }
+  .goal-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .goal-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--esco-teal);
+    margin-bottom: 0.85rem;
+  }
+  .goal-statement {
+    font-size: clamp(1.3rem, 3.2vw, 1.85rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+  .goal-statement em {
+    font-style: normal;
+    color: var(--esco-teal-light);
+    border-bottom: 3px solid var(--coral);
+    padding-bottom: 1px;
+  }
+  .goal-equation {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.6rem 1.1rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    margin-bottom: 0;
+  }
+  .goal-equation strong { color: #fff; font-weight: 700; }
+  .goal-eq {
+    color: var(--esco-teal);
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin: 0 0.1rem;
+  }
+  @media (max-width: 600px) {
+    .goal-wrap { padding: 2rem 1.25rem; }
+  }
+
   /* ── ROADMAP ───────────────────────────────────── */
   .roadmap-wrap {
     background: var(--sidebar-bg);
