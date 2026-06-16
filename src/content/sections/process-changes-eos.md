@@ -1,0 +1,1 @@
+To improve long-term vision and accountability, ESco adopted the foundational elements of the EOS (Entrepreneurial Operating System) framework. Rather than a rigid, dogmatic implementation, our approach has been an honest, evolving journey of structuring our leadership, our teams, and our milestones.
