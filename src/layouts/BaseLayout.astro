@@ -175,65 +175,48 @@ const currentPath = Astro.url.pathname;
         z-index: 300;
       }
 
-      /* Programme goal — purple section on the right side of the topbar */
+      /* Programme goal — sits inline in the topbar, white background */
       .topbar-goal {
         flex: 1;
-        align-self: stretch;
         display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        background: linear-gradient(135deg, var(--esco-purple-dark) 0%, var(--esco-purple) 100%);
-        margin-right: -2.5rem;
-        padding: 0 2.5rem 0 1.75rem;
+        align-items: flex-end;
+        padding-left: 1.5rem;
+        padding-bottom: 3px;
+        border-left: 1px solid var(--border);
         min-width: 0;
       }
-      .topbar-goal .tg-label {
-        font-size: 0.75rem;
-        font-weight: 800;
-        letter-spacing: 0.04em;
-        color: var(--esco-teal);
-        flex-shrink: 0;
-        white-space: nowrap;
+      .topbar-goal .tg-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        min-width: 0;
       }
       .topbar-goal .tg-statement {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #ffffff;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--esco-purple-dark);
         line-height: 1.3;
-        letter-spacing: -0.01em;
-        min-width: 0;
-        flex: 1;
       }
       .topbar-goal .tg-statement em {
         font-style: normal;
-        color: var(--esco-teal-light);
+        color: var(--esco-purple);
         border-bottom: 2px solid var(--coral);
         padding-bottom: 1px;
       }
       .topbar-goal .tg-equation {
-        font-size: 0.72rem;
-        color: rgba(255,255,255,0.85);
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.15);
-        border-radius: 999px;
-        padding: 0.3rem 0.85rem;
-        white-space: nowrap;
-        flex-shrink: 0;
-        font-weight: 500;
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        line-height: 1.3;
       }
       .topbar-goal .tg-equation strong {
-        color: #ffffff;
-        font-weight: 700;
+        font-weight: 600;
+        color: var(--esco-purple-dark);
       }
       .topbar-goal .tg-eq {
         color: var(--esco-teal);
         font-weight: 800;
-        margin: 0 0.15rem;
       }
 
-      @media (max-width: 1100px) {
-        .topbar-goal .tg-equation { display: none; }
-      }
       @media (max-width: 768px) {
         .topbar-goal { display: none; }
       }
@@ -501,9 +484,10 @@ const currentPath = Astro.url.pathname;
       </a>
 
       <div class="topbar-goal" aria-label="Programme goal">
-        <span class="tg-label">Goal =</span>
-        <span class="tg-statement">Technology that can <em>adapt</em> to the ever-changing needs of ESco.</span>
-        <span class="tg-equation"><strong>Technology</strong> <span class="tg-eq">=</span> <strong>people</strong>, <strong>processes</strong> and <strong>tools</strong></span>
+        <div class="tg-body">
+          <span class="tg-statement">Technology that can <em>adapt</em> to the ever-changing needs of ESco.</span>
+          <span class="tg-equation"><strong>Technology</strong> <span class="tg-eq">=</span> <strong>people</strong>, <strong>processes</strong> and <strong>tools</strong></span>
+        </div>
       </div>
     </header>
 
