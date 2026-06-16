@@ -143,11 +143,10 @@ const currentPath = Astro.url.pathname;
 
         /* Dimensions */
         --topbar-h:        88px;
-        --goal-band-h:     68px;
         --coral:           #f08a6e;
         --banner-h:        0px;
         --sidebar-w:       248px;
-        --header-h:        calc(var(--topbar-h) + var(--goal-band-h));
+        --header-h:        var(--topbar-h);
       }
 
       html { font-size: 16px; }
@@ -176,44 +175,43 @@ const currentPath = Astro.url.pathname;
         z-index: 300;
       }
 
-      /* Programme goal — full-width purple gradient band below the topbar */
-      .goal-band {
-        position: fixed;
-        top: var(--topbar-h);
-        left: 0; right: 0;
-        height: var(--goal-band-h);
-        background: linear-gradient(135deg, var(--esco-purple-dark) 0%, var(--esco-purple) 100%);
-        border-bottom: 3px solid var(--coral);
+      /* Programme goal — purple section on the right side of the topbar */
+      .topbar-goal {
+        flex: 1;
+        align-self: stretch;
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        padding: 0 2.5rem;
-        z-index: 290;
+        gap: 0.85rem;
+        background: linear-gradient(135deg, var(--esco-purple-dark) 0%, var(--esco-purple) 100%);
+        margin-right: -2.5rem;
+        padding: 0 2.5rem 0 1.75rem;
+        min-width: 0;
       }
-      .goal-band .gb-eyebrow {
-        font-size: 0.6rem;
+      .topbar-goal .tg-label {
+        font-size: 0.75rem;
         font-weight: 800;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
+        letter-spacing: 0.04em;
         color: var(--esco-teal);
         flex-shrink: 0;
+        white-space: nowrap;
       }
-      .goal-band .gb-statement {
-        font-size: 1rem;
+      .topbar-goal .tg-statement {
+        font-size: 0.95rem;
         font-weight: 700;
         color: #ffffff;
         line-height: 1.3;
         letter-spacing: -0.01em;
+        min-width: 0;
+        flex: 1;
       }
-      .goal-band .gb-statement em {
+      .topbar-goal .tg-statement em {
         font-style: normal;
         color: var(--esco-teal-light);
         border-bottom: 2px solid var(--coral);
         padding-bottom: 1px;
       }
-      .goal-band .gb-equation {
-        font-size: 0.75rem;
+      .topbar-goal .tg-equation {
+        font-size: 0.72rem;
         color: rgba(255,255,255,0.85);
         background: rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.15);
@@ -223,22 +221,21 @@ const currentPath = Astro.url.pathname;
         flex-shrink: 0;
         font-weight: 500;
       }
-      .goal-band .gb-equation strong {
+      .topbar-goal .tg-equation strong {
         color: #ffffff;
         font-weight: 700;
       }
-      .goal-band .gb-eq {
+      .topbar-goal .tg-eq {
         color: var(--esco-teal);
         font-weight: 800;
         margin: 0 0.15rem;
       }
 
       @media (max-width: 1100px) {
-        .goal-band .gb-equation { display: none; }
+        .topbar-goal .tg-equation { display: none; }
       }
       @media (max-width: 768px) {
-        .goal-band { display: none; }
-        :root { --goal-band-h: 0px; }
+        .topbar-goal { display: none; }
       }
 
       .topbar-logo {
@@ -502,14 +499,13 @@ const currentPath = Astro.url.pathname;
         <span class="tl-divider" aria-hidden="true"></span>
         <span class="tl-sub">Tech Transformation</span>
       </a>
-    </header>
 
-    <!-- GOAL BAND -->
-    <div class="goal-band" aria-label="Programme goal">
-      <span class="gb-eyebrow">The programme goal</span>
-      <span class="gb-statement">Technology that can <em>adapt</em> to the ever-changing needs of ESco.</span>
-      <span class="gb-equation"><strong>Technology</strong> <span class="gb-eq">=</span> <strong>people</strong>, <strong>processes</strong> and <strong>tools</strong></span>
-    </div>
+      <div class="topbar-goal" aria-label="Programme goal">
+        <span class="tg-label">Goal =</span>
+        <span class="tg-statement">Technology that can <em>adapt</em> to the ever-changing needs of ESco.</span>
+        <span class="tg-equation"><strong>Technology</strong> <span class="tg-eq">=</span> <strong>people</strong>, <strong>processes</strong> and <strong>tools</strong></span>
+      </div>
+    </header>
 
     <!-- DRAFT BANNER -->
     {isDraft && (
