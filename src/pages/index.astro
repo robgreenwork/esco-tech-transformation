@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Content as DecisionsIntro }   from '../content/sections/decisions-intro.md';
 
 // Each item is a 'phase', 'decision', or 'event', interleaved chronologically
 const timeline = [
@@ -131,8 +130,6 @@ const timeline = [
   </div>
 
   <div class="wide-section">
-    <h2 class="section-heading">Programme roadmap and key decisions</h2>
-    <div class="prose"><DecisionsIntro /></div>
     <div class="timeline">
       {timeline.map((item) => (
         <>
