@@ -1,3 +1,3 @@
 - [Phase 1](/phases/phase-1) and [Phase 2](/phases/phase-2) research and evaluation stages are fully complete.
-- The [Phase 3](/phases/phase-3) Single Customer View proof of concept is complete, including foundational setup of GCP and MongoDB environments.
+- [Phase 3](/phases/phase-3) foundations and infrastructure are established: GCP and MongoDB environments configured, Crane and Harbour architecture designed. The full Single Customer View proof of concept was not completed — SCV was paused in July 2025.
 - [Phase 4](/phases/phase-4) Interval 1, Task 1 (project board alignment) and Task 2 (narrow proof of concept plan creation) are done.
