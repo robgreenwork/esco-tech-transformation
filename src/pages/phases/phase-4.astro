@@ -23,6 +23,11 @@ import { Content as Documents }  from '../../content/sections/phase-4-documents.
   <h2 class="section-heading">What we explored</h2>
   <div class="prose"><Explored /></div>
 
+  <figure class="diagram-figure">
+    <img src="/phase4-architecture-diagram.png" alt="Phase 4 target architecture: data flows from Myriad via webhooks and API connections through the ESco Crane, into the ESco API, through the MongoDB processing queue, and out to micro services" />
+    <figcaption>Phase 4 target architecture — <a href="/phase4-strategic-pivot.pdf" target="_blank">Strategic Architecture Pivot document</a></figcaption>
+  </figure>
+
   <h2 class="section-heading">What we found</h2>
   <div class="prose"><Found /></div>
 
@@ -42,6 +47,10 @@ import { Content as Documents }  from '../../content/sections/phase-4-documents.
 
 <style>
   .doc-list :global(ul) { font-size: 0.9rem; color: var(--text-muted); line-height: 1.9; }
+  .diagram-figure { margin: 1.5rem 0; }
+  .diagram-figure img { width: 100%; border-radius: 6px; border: 1px solid var(--border); }
+  .diagram-figure figcaption { font-size: 0.8rem; color: var(--text-faint); margin-top: 0.5rem; text-align: center; }
+  .diagram-figure figcaption a { color: var(--accent); }
   .page-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.875rem; font-weight: 600; }
   .page-nav a { color: var(--accent); text-decoration: none; }
   .page-nav a:hover { text-decoration: underline; }
