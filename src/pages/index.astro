@@ -77,9 +77,16 @@ const timeline = [
   {
     type: 'decision',
     when: 'July 2025',
-    decision: 'Pivot from SCV focus to promo code creation on the new architecture',
-    options: 'Continue the SCV project vs. pivot to a narrower, high-value user need on the Phase 3 architecture',
-    reasoning: 'Market demand for SCV was weak. News of the Intermedia acquisition made CRM agnosticism urgent. Rather than tackle the whole business at once, the team chose one concrete user need,promo code creation,as the vehicle for the next phase, using the existing POC stack augmented with AI agentic capabilities.',
+    decision: 'Pause SCV and run a broader proof of concept',
+    options: 'Continue focused on SCV vs. prove the middle layer architecture works for the wider business',
+    reasoning: 'SCV commercial demand was weak, and the Intermedia acquisition made broader CRM agnosticism urgent. Rather than continue narrowly, the team paused SCV and spent the summer and autumn of 2025 proving the Harbour and Crane pattern could support other use cases — including processing queue and invoicing flows.',
+  },
+  {
+    type: 'decision',
+    when: 'November / December 2025',
+    decision: 'Apply the architecture to promo code creation',
+    options: 'Continue broader POC work vs. focus on one specific, high-value user need',
+    reasoning: 'The summer POC had validated the middle layer approach. Rather than continue proving the concept in the abstract, the team chose promo code creation as the concrete vehicle for Phase 4, brought in Amy, and began building with agentic AI capabilities.',
   },
   {
     type: 'phase',
@@ -87,7 +94,7 @@ const timeline = [
     period: 'Phase 4',
     href: '/phases/phase-4',
     label: 'Promo code creation on the new architecture',
-    dates: 'July 2025 to April 2026',
+    dates: 'December 2025 to April 2026',
     headline: 'Build one high-value user need on the Phase 3 architecture with agentic AI',
     verdict: 'Paused',
     verdictClass: 'paused',
