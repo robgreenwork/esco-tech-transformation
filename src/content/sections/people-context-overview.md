@@ -1,12 +1,10 @@
-If there is one factor that has shaped the difficulty of this programme more than any other, it is this: the gap between the direction set by senior leadership and the understanding and adoption demonstrated by the tech team, ESco's two most senior technical staff.
-
-This is not a side note. It is the root cause of the majority of technical friction encountered from [Phase 3](/phases/phase-3) onwards.
+If there is one factor that has shaped the difficulty of this programme more than any other it is the gap between the direction set by senior leadership and the understanding and adoption demonstrated by the tech team. It is the root cause of the majority of technical friction encountered from [Phase 3](/phases/phase-3) onwards.
 
 ## The intent
 
-From the outset, the programme was designed to bring the development team with it. The tech team were not sidelined, they were central to the plan. The senior leadership team invested heavily in sharing context: the architecture principles, the strategic direction, the rationale behind every major decision. The aim was to empower them to grow into the new model and become active participants in designing ESco's technical future rather than passive recipients of instruction.
+From the outset the programme was designed to bring the tech team with it and they were central to the plan. The senior leadership team invested heavily in sharing context, the architecture principles, the strategic direction, the rationale behind every major decision. The aim was to empower them to grow into the new model and become active participants in designing ESco's technical future rather than passive recipients of instruction.
 
-That intent was real and sustained over a long period. It was also, ultimately, not realised.
+That intent was real and sustained over a long period but was also ultimately not realised.
 
 ## The pattern
 
