@@ -3,60 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Content as Overview } from '../content/sections/people-context-overview.md';
 ---
 
-<script is:inline>
-  (function () {
-    var EXPECTED = '5035e783b75bd0b52e1b86848fd7bbc9d97b75186e9b35b9dd75ed3dc52928d0';
-    var KEY = 'esco_tt_people_auth';
-    try { if (sessionStorage.getItem(KEY) === EXPECTED) return; } catch (e) {}
-
-    document.documentElement.style.visibility = 'hidden';
-
-    async function sha256(s) {
-      var buf = new TextEncoder().encode(s);
-      var hash = await crypto.subtle.digest('SHA-256', buf);
-      return Array.from(new Uint8Array(hash))
-        .map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
-    }
-
-    function gate() {
-      document.documentElement.style.visibility = 'visible';
-      document.body.innerHTML =
-        '<div style="position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Inter,system-ui,sans-serif;">' +
-        '  <form id="people-gate-form" style="max-width:340px;width:100%;padding:2rem;text-align:left;">' +
-        '    <div style="font-size:1.75rem;font-weight:800;color:oklch(0.3529 0.131 313.78);letter-spacing:-0.01em;line-height:1;">ESco</div>' +
-        '    <div style="font-size:0.7rem;font-weight:700;color:oklch(0.7193 0.123 193.41);letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem;">Tech Transformation</div>' +
-        '    <div style="height:3px;background:#f08a6e;margin:1.25rem 0 1.5rem;width:60px;"></div>' +
-        '    <p style="font-size:0.85rem;color:#374151;margin-bottom:1rem;line-height:1.5;">This section contains sensitive information about individuals and requires a separate password.</p>' +
-        '    <label for="people-gate-pw" style="display:block;font-size:0.8rem;color:#374151;font-weight:600;margin-bottom:0.5rem;">Password</label>' +
-        '    <input id="people-gate-pw" type="password" autocomplete="off" autofocus style="width:100%;padding:0.6rem 0.75rem;font-size:0.95rem;border:1px solid #d1d5db;border-radius:6px;outline:none;font-family:inherit;" />' +
-        '    <div id="people-gate-err" style="color:#b91c1c;font-size:0.8rem;margin-top:0.5rem;min-height:1.1rem;"></div>' +
-        '    <button type="submit" style="margin-top:0.5rem;width:100%;padding:0.65rem;background:oklch(0.408 0.157 313.5);color:#fff;border:none;border-radius:6px;font-weight:600;font-size:0.9rem;cursor:pointer;font-family:inherit;">Continue</button>' +
-        '  </form>' +
-        '</div>';
-
-      document.getElementById('people-gate-form').addEventListener('submit', async function (e) {
-        e.preventDefault();
-        var pw = document.getElementById('people-gate-pw').value;
-        var hex = await sha256(pw);
-        if (hex === EXPECTED) {
-          try { sessionStorage.setItem(KEY, EXPECTED); } catch (e) {}
-          location.reload();
-        } else {
-          document.getElementById('people-gate-err').textContent = 'Incorrect password.';
-          document.getElementById('people-gate-pw').select();
-        }
-      });
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', gate);
-    } else {
-      gate();
-    }
-  })();
-</script>
-
-<BaseLayout title="People">
+<BaseLayout title="People" public={true}>
 
   <div class="page-hero">
     <div class="hero-eyebrow">Programme context</div>

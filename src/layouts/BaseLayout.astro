@@ -5,8 +5,9 @@ const isDraft = false;
 interface Props {
   title: string;
   description?: string;
+  public?: boolean;
 }
-const { title, description = 'ESco technology transformation programme handover.' } = Astro.props;
+const { title, description = 'ESco technology transformation programme handover.', public: isPublic = false } = Astro.props;
 
 const nav = [
   {
@@ -43,7 +44,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" data-public={isPublic ? 'true' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -57,6 +58,7 @@ const currentPath = Astro.url.pathname;
     <!-- Password gate (client-side, casual protection only) -->
     <script is:inline>
       (function () {
+        if (document.documentElement.dataset.public === 'true') return;
         var EXPECTED = '71fb4daceabfa1591d91fe464f68abae9e937088c1de9baf4022959c5f87c617';
         var KEY = 'esco_tt_auth_v2';
         try { if (sessionStorage.getItem(KEY) === EXPECTED) return; } catch (e) {}
